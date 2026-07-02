@@ -90,6 +90,7 @@ export const researchItems = [
     innovation:
       "Developed the Detect–Mislead–Neutralize–Learn lifecycle with adaptive attacker redirection, intelligence collection, and autonomous neutralization through coordinated multi-agent orchestration.",
     github: "https://github.com/mithilkg10",
+    paperUrl: "/research papers/CH32 (2).pdf",
   },
   {
     id: "carbon-credit",
@@ -107,6 +108,7 @@ export const researchItems = [
     innovation:
       "Combines Digital Carbon Passports with intelligent governance and the STAVP pipeline for end-to-end secure carbon credit authorization and verification.",
     github: "https://github.com/mithilkg10",
+    paperUrl: "/research papers/carbon paper .pdf",
   },
   {
     id: "c3t-stavp",

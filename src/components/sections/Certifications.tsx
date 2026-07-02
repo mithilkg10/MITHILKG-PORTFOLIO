@@ -25,10 +25,15 @@ export function Certifications() {
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {certifications.map((cert, index) => {
             const colorClass = issuerColors[cert.issuer] || "from-white/10 to-white/5 border-white/10 text-white/80";
+            const CardWrapper = cert.url ? motion.a : motion.div;
+            
             return (
-              <motion.div
+              <CardWrapper
                 key={cert.id}
-                className="group h-56 [perspective:1000px]"
+                href={cert.url}
+                target={cert.url ? "_blank" : undefined}
+                rel={cert.url ? "noopener noreferrer" : undefined}
+                className="group h-56 [perspective:1000px] block cursor-pointer"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -56,19 +61,14 @@ export function Certifications() {
                       Year: {cert.year} &middot; {cert.status}
                     </p>
                     {cert.url && (
-                      <a 
-                        href={cert.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-5 flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 font-mono text-xs text-foreground/80 transition-colors hover:bg-white/10 hover:text-foreground"
-                      >
+                      <div className="mt-5 flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 font-mono text-xs text-foreground/80 transition-colors group-hover:bg-white/10 group-hover:text-foreground">
                         <ExternalLink className="h-3.5 w-3.5" />
                         Credential
-                      </a>
+                      </div>
                     )}
                   </div>
                 </div>
-              </motion.div>
+              </CardWrapper>
             );
           })}
         </div>

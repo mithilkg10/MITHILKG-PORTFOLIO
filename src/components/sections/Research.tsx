@@ -114,10 +114,12 @@ export function Research() {
                           <GitHubIcon className="h-4 w-4" />
                           Code
                         </MagneticButton>
-                        <MagneticButton href="#research" variant="primary">
-                          <ExternalLink className="h-4 w-4" />
-                          Paper
-                        </MagneticButton>
+                        {item.paperUrl && (
+                          <MagneticButton href={item.paperUrl} variant="primary" external>
+                            <ExternalLink className="h-4 w-4" />
+                            Paper
+                          </MagneticButton>
+                        )}
                       </div>
                     </div>
                   </div>
