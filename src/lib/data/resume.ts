@@ -274,6 +274,7 @@ export const certifications = [
     issuer: "IBM",
     year: "2026",
     status: "Coursera",
+    url: "https://www.coursera.org/account/accomplishments/specialization/Y1GBH9GSCHE5",
   },
   {
     id: "ibm-frontend",
@@ -281,6 +282,7 @@ export const certifications = [
     issuer: "IBM",
     year: "2026",
     status: "Coursera",
+    url: "https://www.coursera.org/account/accomplishments/specialization/YKUEYK44AIQI",
   },
   {
     id: "ceh-cisco",
@@ -288,6 +290,7 @@ export const certifications = [
     issuer: "Cisco",
     year: "2025",
     status: "Networking Academy",
+    url: "/certificates/cisco networking academy certified ethical hacker .jpg",
   },
   {
     id: "ignou-cyber",
@@ -295,6 +298,7 @@ export const certifications = [
     issuer: "IGNOU",
     year: "2025",
     status: "SWAYAM",
+    url: "/certificates/introduction to cyber security.jpg",
   },
   {
     id: "usable-security",
@@ -302,6 +306,7 @@ export const certifications = [
     issuer: "NPTEL",
     year: "2025",
     status: "Elite Certification",
+    url: "/certificates/systems and usable security.jpg",
   },
   {
     id: "iot",
@@ -309,6 +314,7 @@ export const certifications = [
     issuer: "NPTEL",
     year: "2025",
     status: "Silver Medal",
+    url: "/certificates/iot.jpg",
   },
   {
     id: "bi-analytics",
@@ -316,6 +322,7 @@ export const certifications = [
     issuer: "NPTEL",
     year: "2025",
     status: "Completed",
+    url: "/certificates/buissness intelligence and analytics.jpg",
   },
   {
     id: "gcp-nptel",
@@ -323,6 +330,7 @@ export const certifications = [
     issuer: "NPTEL",
     year: "2024",
     status: "Completed",
+    url: "/certificates/google cloud somputing.jpg",
   },
 ];
 

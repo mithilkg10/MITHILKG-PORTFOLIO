@@ -55,10 +55,17 @@ export function Certifications() {
                     <p className="mt-3 font-mono text-xs text-foreground/50">
                       Year: {cert.year} &middot; {cert.status}
                     </p>
-                    <button suppressHydrationWarning className="mt-5 flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 font-mono text-xs text-foreground/80 transition-colors hover:bg-white/10 hover:text-foreground">
-                      <ExternalLink className="h-3.5 w-3.5" />
-                      Credential
-                    </button>
+                    {cert.url && (
+                      <a 
+                        href={cert.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-5 flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 font-mono text-xs text-foreground/80 transition-colors hover:bg-white/10 hover:text-foreground"
+                      >
+                        <ExternalLink className="h-3.5 w-3.5" />
+                        Credential
+                      </a>
+                    )}
                   </div>
                 </div>
               </motion.div>
