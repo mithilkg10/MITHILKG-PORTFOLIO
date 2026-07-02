@@ -37,7 +37,7 @@ export const experience = [
     company: "Indian Space Research Organisation (ISRO) – LEOS",
     role: "Intern – Data Analytics and Full Stack Development",
     location: "Bangalore, India",
-    period: "2025 – Present",
+    period: "Aug 2025 – Oct 2025",
     logo: "ISRO",
     highlights: [
       "Contributing to analytics-driven software development projects involving data processing, visualization, and application design.",
