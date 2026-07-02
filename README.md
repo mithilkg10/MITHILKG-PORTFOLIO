@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mithil K Gowda — Cybersecurity Portfolio
 
-## Getting Started
+Premium cybersecurity portfolio built with Next.js 15, React, TypeScript, TailwindCSS, Framer Motion, GSAP, and Three.js.
 
-First, run the development server:
+## Quick Start
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Before Deploying
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Profile photo** — Add your professional photo to `public/profile.jpg`
+2. **Resume PDF** — Already at `public/resume.pdf` (sourced from your uploaded resume)
+3. **Reference video** — Stored in `reference/` (not deployed; UI inspiration only)
+4. **GitHub token** (optional) — Set `GITHUB_TOKEN` in `.env.local` for higher API rate limits
 
-## Learn More
+## Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+- Next.js 15 · React 19 · TypeScript
+- TailwindCSS v4
+- Framer Motion · GSAP ScrollTrigger
+- Three.js / React Three Fiber
+- Lucide Icons
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+├── app/              # Next.js app router
+├── components/
+│   ├── layout/       # Navigation, Footer
+│   ├── sections/     # Page sections
+│   ├── three/        # Three.js components
+│   └── ui/           # Reusable UI components
+└── lib/data/         # Resume content (single source of truth)
+```
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+All portfolio content is sourced from `src/lib/data/resume.ts` — edit that file to update text.
