@@ -42,7 +42,7 @@ export function ScrambleText({ text, className = "" }: ScrambleTextProps) {
         return;
       }
 
-      iteration += 1 / 3; // speed
+      iteration += 1 / 8; // Slower speed for the decrypt effect
       animationFrame = requestAnimationFrame(scramble);
     };
 
