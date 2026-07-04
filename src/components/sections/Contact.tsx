@@ -77,6 +77,31 @@ export function Contact() {
                 </MagneticButton>
               </div>
 
+              {/* OpSec PGP Block */}
+              <div className="mt-10 rounded-2xl border border-white/5 bg-white/[0.02] p-6">
+                <div className="mb-4 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Shield className="h-4 w-4 text-foreground/50" />
+                    <span className="font-mono text-xs uppercase tracking-wider text-foreground/50">PGP Public Key</span>
+                  </div>
+                  <MagneticButton 
+                    variant="ghost" 
+                    className="!px-3 !py-1.5 font-mono !text-[10px]"
+                    onClick={(e: React.MouseEvent) => {
+                      e.preventDefault();
+                      navigator.clipboard.writeText("-----BEGIN PGP PUBLIC KEY BLOCK-----\n\n[REPLACE_WITH_YOUR_KEY]\n\n-----END PGP PUBLIC KEY BLOCK-----");
+                    }}
+                  >
+                    Copy Key
+                  </MagneticButton>
+                </div>
+                <div className="scrollbar-hide h-28 overflow-y-auto break-all rounded-xl border border-white/5 bg-black/40 p-4 font-mono text-[10px] leading-relaxed text-foreground/40">
+                  -----BEGIN PGP PUBLIC KEY BLOCK-----<br /><br />
+                  mQINBGNX1...<br />
+                  [Add your actual PGP Key here in the source code]<br /><br />
+                  -----END PGP PUBLIC KEY BLOCK-----
+                </div>
+              </div>
             </div>
           </motion.div>
 

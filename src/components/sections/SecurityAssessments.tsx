@@ -68,8 +68,8 @@ export function SecurityAssessments() {
                 >
                   <div className="mb-8 flex items-center justify-between border-b border-white/10 pb-6">
                     <div>
-                      <h3 className="font-heading text-2xl font-bold tracking-tight text-foreground">Google Cybersecurity Audit</h3>
-                      <p className="mt-2 font-mono text-sm text-foreground/50">Internal Network Security Assessment</p>
+                      <h3 className="font-heading text-2xl font-bold tracking-tight text-foreground">Botium Toys Risk Assessment</h3>
+                      <p className="mt-2 font-mono text-sm text-foreground/50">Enterprise IT Assets & Compliance Audit</p>
                     </div>
                     <div className="hidden items-center gap-2 rounded-full border border-green-500/20 bg-green-500/10 px-3 py-1 text-xs text-green-400 sm:flex">
                       <CheckCircle className="h-3 w-3" />
@@ -86,15 +86,15 @@ export function SecurityAssessments() {
                         <ul className="space-y-3 text-sm text-foreground/60">
                           <li className="flex items-start gap-2">
                             <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-foreground/40" />
-                            Executed comprehensive vulnerability scans on internal subnets.
+                            Analyzed the entire security program, including IT assets and internal processes.
                           </li>
                           <li className="flex items-start gap-2">
                             <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-foreground/40" />
-                            Applied NIST Risk Management Framework to classify threats.
+                            Evaluated compliance against NIST CSF frameworks and international standards.
                           </li>
                           <li className="flex items-start gap-2">
                             <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-foreground/40" />
-                            Formulated mitigation strategies for unpatched legacy systems.
+                            Identified critical missing controls (encryption, IDS, separation of duties).
                           </li>
                         </ul>
                       </div>
@@ -105,12 +105,12 @@ export function SecurityAssessments() {
                         </h4>
                         <div className="grid grid-cols-2 gap-4">
                           <div className="rounded-xl border border-white/5 bg-black/40 p-4">
-                            <div className="font-mono text-xl font-bold text-red-400">3</div>
-                            <div className="text-xs text-foreground/40">Critical Vulnerabilities</div>
+                            <div className="font-mono text-xl font-bold text-red-400">8 / 10</div>
+                            <div className="text-xs text-foreground/40">High Risk Score</div>
                           </div>
                           <div className="rounded-xl border border-white/5 bg-black/40 p-4">
-                            <div className="font-mono text-xl font-bold text-green-400">100%</div>
-                            <div className="text-xs text-foreground/40">Mitigation Rate</div>
+                            <div className="font-mono text-xl font-bold text-orange-400">Critical</div>
+                            <div className="text-xs text-foreground/40">Mitigation Priority</div>
                           </div>
                         </div>
                       </div>
@@ -120,13 +120,17 @@ export function SecurityAssessments() {
                       <FileText className="mb-4 h-12 w-12 text-foreground/30" />
                       <h4 className="mb-2 font-medium text-foreground/80">Audit Documentation</h4>
                       <p className="mb-6 text-xs text-foreground/50">
-                        View the complete internal network security audit report, risk classifications, and recommended remediation steps.
+                        View the complete Risk Assessment report and the Control Categories matrix defining administrative, technical, and physical safeguards.
                       </p>
                       
-                      {/* You can replace href with the actual path to your document in the public folder */}
-                      <MagneticButton href="/Internal_Network_Security_Audit.pdf" variant="secondary" external>
-                        View Audit Report
-                      </MagneticButton>
+                      <div className="flex flex-col gap-3 w-full max-w-xs">
+                        <MagneticButton href="/111.pdf" variant="secondary" external>
+                          View Risk Assessment (111.pdf)
+                        </MagneticButton>
+                        <MagneticButton href="/222.pdf" variant="ghost" external>
+                          View Control Categories (222.pdf)
+                        </MagneticButton>
+                      </div>
                     </div>
                   </div>
                 </motion.div>
