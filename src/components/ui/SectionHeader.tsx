@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { ScrambleText } from "./ScrambleText";
 
 interface SectionHeaderProps {
   label: string;
@@ -24,7 +25,7 @@ export function SectionHeader({ label, title, description, className, align = "l
         {label}
       </span>
       <h2 className="mt-4 font-heading text-4xl font-semibold tracking-tight md:text-5xl">
-        <span className="text-foreground">{title}</span>
+        <ScrambleText text={title} className="text-foreground" />
       </h2>
       {description && (
         <p className="mt-4 text-base leading-relaxed text-foreground/70 md:text-lg">

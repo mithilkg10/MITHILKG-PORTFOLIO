@@ -410,6 +410,7 @@ export const navLinks = [
   { href: "#research", label: "Research" },
   { href: "#projects", label: "Projects" },
   { href: "#lab", label: "Cyber Lab" },
+  { href: "#assessments", label: "Assessments" },
   { href: "#certifications", label: "Certs" },
   { href: "#achievements", label: "Achievements" },
   { href: "#github", label: "Impact" },

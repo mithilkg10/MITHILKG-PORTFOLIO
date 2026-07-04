@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUp, Shield } from "lucide-react";
+import { ArrowUp, Shield, CheckCircle2 } from "lucide-react";
 import { personal } from "@/lib/data/resume";
 
 export function Footer() {
@@ -19,9 +19,15 @@ export function Footer() {
           </span>
         </div>
 
-        <p className="text-center font-mono text-sm text-foreground/40">
-          Securing critical infrastructure through research & engineering
-        </p>
+        <div className="flex flex-col items-center gap-3">
+          <p className="text-center font-mono text-sm text-foreground/40">
+            Securing critical infrastructure through research & engineering
+          </p>
+          <div className="flex items-center gap-1.5 rounded-full border border-green-500/20 bg-green-500/5 px-3 py-1 text-xs text-green-400">
+            <CheckCircle2 className="h-3 w-3" />
+            <span className="font-mono tracking-wide">A+ SECURITY AUDIT</span>
+          </div>
+        </div>
 
         <motion.button
           suppressHydrationWarning
