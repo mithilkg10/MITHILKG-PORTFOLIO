@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Shield, BookOpen, Award, ArrowRight, Download, Mail } from "lucide-react";
 import { personal, resumePath } from "@/lib/data/resume";
+import { ScrambleText } from "@/components/ui/ScrambleText";
 
 const roles = [
   "Cybersecurity Engineer",
@@ -76,10 +77,8 @@ export function Hero() {
           >
             {/* Name */}
             <h1 className="font-heading text-6xl font-black leading-[0.9] tracking-tighter text-foreground md:text-7xl lg:text-[6.5rem]">
-              MITHIL<br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40">
-                K GOWDA
-              </span>
+              <ScrambleText text="MITHIL" /><br/>
+              <ScrambleText text="K GOWDA" className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40" />
             </h1>
 
             {/* Rotating Role */}
