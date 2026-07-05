@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useInView } from "framer-motion";
 
-const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?";
+const CHARS = "0123456789ABCDEF";
 
 interface ScrambleTextProps {
   text: string;
