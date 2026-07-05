@@ -176,6 +176,10 @@ export function SecurityAssessments() {
                             <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-foreground/40" />
                             Documented root cause analysis indicating potential DoS attack or firewall misconfiguration.
                           </li>
+                          <li className="flex items-start gap-2">
+                            <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-foreground/40" />
+                            Applied the NIST Cybersecurity Framework (Identify, Protect, Detect, Respond, Recover) to document the incident and mitigation.
+                          </li>
                         </ul>
                       </div>
                       
@@ -204,7 +208,10 @@ export function SecurityAssessments() {
                       </p>
                       
                       <div className="flex flex-col gap-3 w-full max-w-xs">
-                        <MagneticButton href="/report incident traffic analysed.pdf" variant="secondary" external>
+                        <MagneticButton href="/Incident-report-analysis.pdf" variant="secondary" external>
+                          View NIST Framework Analysis
+                        </MagneticButton>
+                        <MagneticButton href="/report incident traffic analysed.pdf" variant="ghost" external>
                           View Traffic Analysis Report
                         </MagneticButton>
                         <MagneticButton href="/incident report.pdf" variant="ghost" external>
