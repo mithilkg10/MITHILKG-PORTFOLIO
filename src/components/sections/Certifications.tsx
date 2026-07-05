@@ -41,7 +41,7 @@ export function Certifications() {
               >
                 <div className="relative h-full w-full transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                   {/* Front */}
-                  <div className="glass-card absolute inset-0 flex flex-col items-center justify-center rounded-[2rem] p-6 [backface-visibility:hidden]">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center rounded-[2rem] border border-white/10 bg-black/40 p-6 [backface-visibility:hidden] [-webkit-backface-visibility:hidden]">
                     <div
                       className={`mb-5 flex h-16 w-16 items-center justify-center rounded-2xl border bg-gradient-to-br ${colorClass} font-mono text-xl font-bold`}
                     >
@@ -52,7 +52,7 @@ export function Certifications() {
                   </div>
 
                   {/* Back */}
-                  <div className="glass-card absolute inset-0 flex flex-col items-center justify-center rounded-[2rem] border-white/20 bg-white/5 p-6 [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center rounded-[2rem] border border-white/20 bg-black/60 p-6 [backface-visibility:hidden] [-webkit-backface-visibility:hidden] [transform:rotateY(180deg)]">
                     <p className="font-mono text-xs uppercase tracking-widest text-foreground/60">
                       {cert.issuer}
                     </p>
