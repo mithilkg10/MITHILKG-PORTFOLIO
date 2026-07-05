@@ -32,7 +32,7 @@ export function VisitorTelemetry() {
       else if (ua.indexOf("Firefox") !== -1) browser = "Firefox";
       else if (ua.indexOf("Edge") !== -1) browser = "Edge";
 
-      // @ts-ignore - non-standard API
+      // @ts-expect-error - non-standard API
       const connection = navigator.connection?.effectiveType || "TLS 1.3 / Secure";
 
       setTelemetry({

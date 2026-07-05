@@ -14,7 +14,7 @@ export function ThreatMapBackground() {
 
     let particles: Particle[] = [];
     let animationFrameId: number;
-    let mouse = { x: -1000, y: -1000 };
+    const mouse = { x: -1000, y: -1000 };
 
     // Responsive canvas sizing
     const setCanvasSize = () => {

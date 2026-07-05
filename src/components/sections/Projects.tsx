@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Shield, AlertTriangle, CheckCircle, Wrench } from "lucide-react";
+import { Shield, AlertTriangle, CheckCircle, Wrench } from "lucide-react";
 import { GitHubIcon } from "@/components/ui/SocialIcons";
 import { projects } from "@/lib/data/resume";
 import { SectionHeader } from "@/components/ui/SectionHeader";
