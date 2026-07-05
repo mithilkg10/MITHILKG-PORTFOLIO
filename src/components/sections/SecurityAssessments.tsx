@@ -2,14 +2,15 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Shield, Target, Flag, FileText, CheckCircle, ChevronRight, Lock } from "lucide-react";
+import { Shield, Target, Flag, FileText, CheckCircle, ChevronRight, Lock, Activity } from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 
-type TabId = "audits" | "ctf" | "htb";
+type TabId = "audits" | "incident" | "ctf" | "htb";
 
 const tabs = [
   { id: "audits", label: "Security Audits", icon: Shield },
+  { id: "incident", label: "Incident Response", icon: Activity },
   { id: "ctf", label: "CTF Challenges", icon: Flag },
   { id: "htb", label: "Hack The Box", icon: Target },
 ] as const;
@@ -129,6 +130,85 @@ export function SecurityAssessments() {
                         </MagneticButton>
                         <MagneticButton href="/222.pdf" variant="ghost" external>
                           View Control Categories (222.pdf)
+                        </MagneticButton>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+
+              {activeTab === "incident" && (
+                <motion.div
+                  key="incident"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.4 }}
+                  className="glass-card rounded-[2rem] p-8"
+                >
+                  <div className="mb-8 flex items-center justify-between border-b border-white/10 pb-6">
+                    <div>
+                      <h3 className="font-heading text-2xl font-bold tracking-tight text-foreground">Network Traffic Analysis</h3>
+                      <p className="mt-2 font-mono text-sm text-foreground/50">Incident Response & tcpdump Packet Sniffing</p>
+                    </div>
+                    <div className="hidden items-center gap-2 rounded-full border border-green-500/20 bg-green-500/10 px-3 py-1 text-xs text-green-400 sm:flex">
+                      <CheckCircle className="h-3 w-3" />
+                      COMPLETED
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+                    <div className="space-y-6">
+                      <div>
+                        <h4 className="mb-3 flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-foreground/70">
+                          <Target className="h-4 w-4" /> Methodology
+                        </h4>
+                        <ul className="space-y-3 text-sm text-foreground/60">
+                          <li className="flex items-start gap-2">
+                            <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-foreground/40" />
+                            Conducted packet sniffing using tcpdump to investigate unreachable DNS servers.
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-foreground/40" />
+                            Analyzed UDP/ICMP traffic logs to diagnose network connectivity issues (Port 53).
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-foreground/40" />
+                            Documented root cause analysis indicating potential DoS attack or firewall misconfiguration.
+                          </li>
+                        </ul>
+                      </div>
+                      
+                      <div>
+                        <h4 className="mb-3 flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-foreground/70">
+                          <Shield className="h-4 w-4" /> Forensics
+                        </h4>
+                        <div className="grid grid-cols-2 gap-4">
+                          <div className="rounded-xl border border-white/5 bg-black/40 p-4">
+                            <div className="font-mono text-xl font-bold text-cyan-400">tcpdump</div>
+                            <div className="text-xs text-foreground/40">Packet Analyzer</div>
+                          </div>
+                          <div className="rounded-xl border border-white/5 bg-black/40 p-4">
+                            <div className="font-mono text-xl font-bold text-orange-400">UDP/ICMP</div>
+                            <div className="text-xs text-foreground/40">Protocols Evaluated</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col items-center justify-center rounded-2xl border border-white/5 bg-white/[0.02] p-8 text-center">
+                      <FileText className="mb-4 h-12 w-12 text-foreground/30" />
+                      <h4 className="mb-2 font-medium text-foreground/80">Incident Reports</h4>
+                      <p className="mb-6 text-xs text-foreground/50">
+                        View the detailed traffic analysis report and the exemplar methodology breakdown.
+                      </p>
+                      
+                      <div className="flex flex-col gap-3 w-full max-w-xs">
+                        <MagneticButton href="/report incident traffic analysed.pdf" variant="secondary" external>
+                          View Traffic Analysis Report
+                        </MagneticButton>
+                        <MagneticButton href="/incident report.pdf" variant="ghost" external>
+                          View Exemplar Breakdown
                         </MagneticButton>
                       </div>
                     </div>
