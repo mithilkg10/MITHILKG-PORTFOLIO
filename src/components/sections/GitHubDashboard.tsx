@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Shield, Target, Activity } from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -37,6 +38,18 @@ const competencies = [
 ];
 
 export function GitHubDashboard() {
+  const [opacities, setOpacities] = useState<number[]>([]);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    setOpacities(
+      Array.from({ length: 182 }).map(() =>
+        Math.random() > 0.6 ? Math.random() * 0.5 + 0.1 : 0.03
+      )
+    );
+  }, []);
+
   return (
     <section id="github" className="section-padding relative">
       <div className="mx-auto max-w-7xl">
@@ -94,7 +107,7 @@ export function GitHubDashboard() {
                     key={i}
                     className="aspect-square rounded-[2px]"
                     style={{
-                      backgroundColor: `rgba(255, 255, 255, ${Math.random() > 0.6 ? Math.random() * 0.5 + 0.1 : 0.03})`,
+                      backgroundColor: `rgba(255, 255, 255, ${mounted ? opacities[i] : 0.03})`,
                     }}
                   />
                 ))}

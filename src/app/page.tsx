@@ -1,8 +1,9 @@
 import dynamic from "next/dynamic";
 import { Navigation } from "@/components/layout/Navigation";
 import { Footer } from "@/components/layout/Footer";
-import { MouseParallaxBackground } from "@/components/ui/MouseParallaxBackground";
+import { ThreatMapBackground } from "@/components/ui/ThreatMapBackground";
 import { Hero } from "@/components/sections/Hero";
+import { Preloader } from "@/components/ui/Preloader";
 
 // Dynamic imports for performance and Lighthouse code splitting
 const About = dynamic(() => import("@/components/sections/About").then((m) => m.About));
@@ -20,7 +21,8 @@ const Contact = dynamic(() => import("@/components/sections/Contact").then((m) =
 export default function Home() {
   return (
     <>
-      <MouseParallaxBackground />
+      <Preloader />
+      <ThreatMapBackground />
       <Navigation />
       <main>
         <Hero />
