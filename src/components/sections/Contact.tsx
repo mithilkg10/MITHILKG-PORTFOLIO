@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Download, Send, MapPin, Phone, User, MessageSquare, CheckCircle2, Shield, Loader2 } from "lucide-react";
+import { Mail, Download, Send, MapPin, Phone, User, MessageSquare, CheckCircle2 } from "lucide-react";
 import { GitHubIcon, LinkedInIcon } from "@/components/ui/SocialIcons";
 import { personal, resumePath } from "@/lib/data/resume";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -11,21 +11,7 @@ import { MagneticButton } from "@/components/ui/MagneticButton";
 export function Contact() {
   const [formState, setFormState] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
-  const [gpgKey, setGpgKey] = useState<string | null>(null);
-  const [loadingGpg, setLoadingGpg] = useState(true);
 
-  useEffect(() => {
-    // Dynamically fetch GPG keys from GitHub
-    fetch(`https://api.github.com/users/${personal.github.split("/").pop()}/gpg_keys`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data && data.length > 0 && data[0].raw_key) {
-          setGpgKey(data[0].raw_key);
-        }
-      })
-      .catch((err) => console.error("Failed to fetch GPG key", err))
-      .finally(() => setLoadingGpg(false));
-  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -92,47 +78,7 @@ export function Contact() {
                 </MagneticButton>
               </div>
 
-              {/* OpSec PGP Block (Dynamically fetched from GitHub) */}
-              <div className="mt-10 rounded-2xl border border-white/5 bg-white/[0.02] p-6">
-                <div className="mb-4 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <Shield className="h-4 w-4 text-foreground/50" />
-                    <span className="font-mono text-xs uppercase tracking-wider text-foreground/50">PGP Public Key</span>
-                  </div>
-                  {gpgKey && (
-                    <MagneticButton 
-                      variant="ghost" 
-                      className="!px-3 !py-1.5 font-mono !text-[10px]"
-                      onClick={(e: React.MouseEvent) => {
-                        e.preventDefault();
-                        navigator.clipboard.writeText(gpgKey);
-                      }}
-                    >
-                      Copy Key
-                    </MagneticButton>
-                  )}
-                </div>
-                <div className="scrollbar-hide h-28 overflow-y-auto break-all rounded-xl border border-white/5 bg-black/40 p-4 font-mono text-[10px] leading-relaxed text-foreground/40">
-                  {loadingGpg ? (
-                    <div className="flex h-full items-center justify-center gap-2">
-                      <Loader2 className="h-4 w-4 animate-spin" />
-                      <span>Fetching from GitHub...</span>
-                    </div>
-                  ) : gpgKey ? (
-                    gpgKey.split('\n').map((line, i) => (
-                      <span key={i}>
-                        {line}
-                        <br />
-                      </span>
-                    ))
-                  ) : (
-                    <div className="flex h-full flex-col items-center justify-center text-center text-foreground/30">
-                      <span>NO PUBLIC GPG KEY FOUND ON GITHUB</span>
-                      <span className="mt-2 text-[8px]">Upload a GPG key to your GitHub profile to display it here.</span>
-                    </div>
-                  )}
-                </div>
-              </div>
+
             </div>
           </motion.div>
 
