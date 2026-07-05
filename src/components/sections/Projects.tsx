@@ -115,9 +115,6 @@ export function Projects() {
                         <MagneticButton href={project.github} variant="secondary" external>
                           <GitHubIcon className="h-4 w-4" /> Code
                         </MagneticButton>
-                        <MagneticButton href={`/projects/${project.id}`} variant="ghost">
-                          Case Study
-                        </MagneticButton>
                       </div>
                     </div>
                   </div>
