@@ -1,32 +1,24 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Download, Send, MapPin, Phone, User, MessageSquare, CheckCircle2 } from "lucide-react";
+import { motion } from "framer-motion";
+import { Mail, Download, MapPin, Phone, Terminal, Copy, CheckCircle2, ExternalLink } from "lucide-react";
 import { GitHubIcon, LinkedInIcon } from "@/components/ui/SocialIcons";
 import { personal, resumePath } from "@/lib/data/resume";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 
 export function Contact() {
-  const [formState, setFormState] = useState({ name: "", email: "", message: "" });
-  const [sent, setSent] = useState(false);
+  const [copied, setCopied] = useState(false);
 
+  const handleCopy = () => {
+    navigator.clipboard.writeText(personal.email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const subject = encodeURIComponent(`Portfolio Contact from ${formState.name}`);
-    const body = encodeURIComponent(`Name: ${formState.name}\nEmail: ${formState.email}\n\nMessage:\n${formState.message}`);
-    const mailtoUrl = `mailto:${personal.email}?subject=${subject}&body=${body}`;
-    
-    // Reliably trigger mailto using an anchor tag
-    const link = document.createElement('a');
-    link.href = mailtoUrl;
-    link.target = '_blank';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    setSent(true);
+  const handleMailto = () => {
+    window.location.href = `mailto:${personal.email}`;
   };
 
   return (
@@ -85,103 +77,72 @@ export function Contact() {
                   <Download className="h-5 w-5" />
                 </MagneticButton>
               </div>
-
-
             </div>
           </motion.div>
 
-          <motion.form
-            onSubmit={handleSubmit}
-            className="glass-card group relative overflow-hidden rounded-[2rem] p-8 lg:col-span-3 lg:p-10"
+          <motion.div
+            className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-black/60 p-8 shadow-2xl backdrop-blur-xl lg:col-span-3 lg:p-10"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <div className="relative space-y-6">
-              <div className="group/input">
-                <label htmlFor="name" className="mb-2 flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-foreground/50 transition-colors group-focus-within/input:text-foreground/90">
-                  <User className="h-3.5 w-3.5" />
-                  Name
-                </label>
-                <input
-                  suppressHydrationWarning
-                  id="name"
-                  type="text"
-                  required
-                  value={formState.name}
-                  onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 text-sm text-foreground outline-none transition-all duration-300 placeholder:text-foreground/20 focus:border-white/30 focus:bg-white/10 focus:ring-1 focus:ring-white/20"
-                  placeholder="John Doe"
-                />
+            {/* Terminal Header */}
+            <div className="mb-6 flex items-center justify-between border-b border-white/10 pb-4">
+              <div className="flex items-center gap-2">
+                <Terminal className="h-4 w-4 text-white/50" />
+                <span className="font-mono text-xs uppercase tracking-wider text-white/50">Secure Comms Terminal</span>
               </div>
-
-              <div className="group/input">
-                <label htmlFor="email" className="mb-2 flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-foreground/50 transition-colors group-focus-within/input:text-foreground/90">
-                  <Mail className="h-3.5 w-3.5" />
-                  Email
-                </label>
-                <input
-                  suppressHydrationWarning
-                  id="email"
-                  type="email"
-                  required
-                  value={formState.email}
-                  onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 text-sm text-foreground outline-none transition-all duration-300 placeholder:text-foreground/20 focus:border-white/30 focus:bg-white/10 focus:ring-1 focus:ring-white/20"
-                  placeholder="john@example.com"
-                />
+              <div className="flex gap-1.5">
+                <div className="h-2.5 w-2.5 rounded-full bg-red-500/80" />
+                <div className="h-2.5 w-2.5 rounded-full bg-yellow-500/80" />
+                <div className="h-2.5 w-2.5 rounded-full bg-green-500/80" />
               </div>
-
-              <div className="group/input">
-                <label htmlFor="message" className="mb-2 flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-foreground/50 transition-colors group-focus-within/input:text-foreground/90">
-                  <MessageSquare className="h-3.5 w-3.5" />
-                  Message
-                </label>
-                <textarea
-                  suppressHydrationWarning
-                  id="message"
-                  required
-                  rows={5}
-                  value={formState.message}
-                  onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                  className="w-full resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 text-sm text-foreground outline-none transition-all duration-300 placeholder:text-foreground/20 focus:border-white/30 focus:bg-white/10 focus:ring-1 focus:ring-white/20"
-                  placeholder="Tell me about the opportunity or project..."
-                />
-              </div>
-
-              <MagneticButton 
-                type="submit" 
-                variant="primary" 
-                className={`w-full overflow-hidden transition-all duration-500 ${sent ? "!bg-green-500/20 !text-green-400 !border-green-500/50" : ""}`}
-              >
-                <AnimatePresence mode="wait">
-                  {sent ? (
-                    <motion.div
-                      key="sent"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
-                      className="flex items-center justify-center gap-2"
-                    >
-                      <CheckCircle2 className="h-4 w-4" />
-                      <span>Opening Client...</span>
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="send"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
-                      className="flex items-center justify-center gap-2"
-                    >
-                      <Send className="h-4 w-4 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
-                      <span>Send Message</span>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </MagneticButton>
             </div>
-          </motion.form>
+
+            {/* Terminal Body */}
+            <div className="space-y-4 font-mono text-sm">
+              <p className="text-green-400">
+                <span className="text-green-400/50">mithil@root:~$</span> ./initiate_contact.sh
+              </p>
+              <p className="text-white/70">
+                [+] Establishing secure channel...
+              </p>
+              <p className="text-white/70">
+                [+] Target acquired: <span className="font-semibold text-white">{personal.email}</span>
+              </p>
+              <p className="text-white/70">
+                [+] Awaiting transmission. Please send an encrypted payload (or just a regular email) to my inbox. I usually respond within 24 hours.
+              </p>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+              <button
+                onClick={handleCopy}
+                className="group flex flex-1 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-4 transition-all hover:bg-white/10 hover:text-white"
+              >
+                {copied ? (
+                  <>
+                    <CheckCircle2 className="h-4 w-4 text-green-400" />
+                    <span className="font-mono text-xs uppercase tracking-wider text-green-400">Copied to Clipboard</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy className="h-4 w-4 text-white/70 group-hover:text-white" />
+                    <span className="font-mono text-xs uppercase tracking-wider text-white/70 group-hover:text-white">Copy Address</span>
+                  </>
+                )}
+              </button>
+              
+              <button
+                onClick={handleMailto}
+                className="group flex flex-1 items-center justify-center gap-2 rounded-xl bg-white px-6 py-4 text-black transition-all hover:bg-white/90"
+              >
+                <ExternalLink className="h-4 w-4" />
+                <span className="font-mono text-xs font-bold uppercase tracking-wider">Launch Mail Client</span>
+              </button>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
