@@ -242,114 +242,108 @@ export const projects = [
 export const cyberLab = {
   categories: [
     {
-      name: "Systems & Cloud Infrastructure",
-      skills: ["Linux Kernel (Debian/RHEL)", "Docker & Containerization", "Kubernetes (K8s)", "AWS (IAM, EC2, S3, GuardDuty)", "Apache Kafka", "Terraform", "VMware ESXi"],
-      roles: ["General", "Cloud Security Engineer", "DevSecOps Engineer", "Backend Engineer", "Software Engineer", "Cybersecurity Engineer"],
+      name: "Network Security",
+      skills: ["Network Security", "Intrusion Detection Systems (IDS)", "Threat Modeling", "Security Architecture", "Zero Trust", "Firewall Configuration", "VPN setup", "DDoS Mitigation"],
     },
     {
-      name: "Programming & Scripting",
-      skills: ["Python (Advanced)", "Go (Golang)", "TypeScript & JavaScript", "SQL (PostgreSQL/MySQL)", "Bash/Shell Scripting", "C/C++ (Basic)"],
-      roles: ["General", "Software Engineer", "Backend Engineer", "Data Scientist", "AI / ML Engineer", "Application Security Engineer"],
-    },
-    {
-      name: "Defensive Security & Operations",
-      skills: ["Threat Modeling", "Intrusion Detection (Snort/Zeek)", "Splunk & SIEM Analytics", "EDR (CrowdStrike/SentinelOne)", "Incident Response Playbooks"],
-      roles: ["General", "SOC Analyst", "Threat Intelligence Analyst", "Cybersecurity Engineer"],
-    },
-    {
-      name: "Offensive Security & Pen-Testing",
-      skills: ["Burp Suite Pro", "Nmap & Network Scanning", "Metasploit Framework", "OWASP Top 10", "DAST / SAST", "Vulnerability Management"],
-      roles: ["General", "Application Security Engineer", "Cybersecurity Engineer", "Threat Intelligence Analyst"],
-    },
-    {
-      name: "AI & Data Engineering",
-      skills: ["PyTorch & TensorFlow", "XGBoost & Scikit-Learn", "Deep Q-Networks (DQN)", "Pandas & NumPy", "Time-Series Forecasting", "Data Visualization"],
-      roles: ["General", "AI / ML Engineer", "Data Scientist", "Data Analyst", "Business Intelligence Analyst", "AI Security Engineer"],
-    },
-    {
-      name: "Cryptography & Privacy",
-      skills: ["Zero-Knowledge Proofs (ZKPs)", "AES-256 & SHA-256", "Post-Quantum Cryptography (ML-KEM)", "Proactive Secret Sharing", "Crypto-Shredding"],
-      roles: ["General", "Application Security Engineer", "Cybersecurity Engineer", "Backend Engineer", "Software Engineer"],
-    },
-    {
-      name: "Digital Forensics & Incident Response",
-      skills: ["Memory Analysis (Volatility)", "Malware Reverse Engineering", "Network PCAP Analysis (Wireshark)", "Autopsy", "Kill-Chain Reconstruction"],
-      roles: ["General", "DFIR Analyst", "SOC Analyst", "Cybersecurity Engineer", "Threat Intelligence Analyst"],
+      name: "Web Security",
+      skills: ["Web Application Security", "Vulnerability Assessment", "Burp Suite", "OWASP ZAP", "SQL Injection", "XSS Mitigation", "API Security", "CSRF Protection", "DAST / SAST"],
     },
     {
       name: "Threat Intelligence",
-      skills: ["OSINT & Dark Web Intel", "MISP & Threat Intel Platforms", "Maltego", "YARA Rules", "IOC Enrichment", "C2 Infrastructure Analysis"],
-      roles: ["General", "Threat Intelligence Analyst", "SOC Analyst", "Cybersecurity Engineer", "DFIR Analyst"],
+      skills: ["Threat Intelligence", "Threat Detection", "Security Analytics", "Nmap", "Wireshark", "OSINT", "Maltego", "Dark Web Analysis", "YARA Rules", "MISP"],
     },
     {
-      name: "DevSecOps & CI/CD",
-      skills: ["GitHub Actions", "GitLab CI", "Jenkins", "SonarQube & Snyk", "Infrastructure as Code Security", "Trivy Container Scanning"],
-      roles: ["General", "DevSecOps Engineer", "Cloud Security Engineer", "Backend Engineer", "Software Engineer"],
+      name: "Cloud Security",
+      skills: ["Google Cloud Platform (GCP)", "Secure Access Control", "Cloud Architecture", "AWS IAM", "GuardDuty", "Container Security", "Kubernetes Hardening"],
     },
     {
-      name: "GRC & Business Intelligence",
-      skills: ["NIST & ISO27001 Frameworks", "GDPR Compliance", "Risk Assessments", "Tableau & Power BI", "Data Strategy", "Fraud Detection Analytics"],
-      roles: ["General", "GRC Analyst", "Business Intelligence Analyst", "Data Analyst", "Cybersecurity Engineer"],
+      name: "Programming",
+      skills: ["Python", "Java", "JavaScript", "SQL", "HTML", "CSS", "Go (Golang)", "TypeScript", "Bash/Shell Scripting", "C/C++"],
+    },
+    {
+      name: "Databases",
+      skills: ["MySQL", "MongoDB", "PostgreSQL", "Redis", "Database Sharding", "Secure DB Workflows"],
+    },
+    {
+      name: "Operating Systems",
+      skills: ["Linux", "Kali Linux", "Windows", "Debian/RHEL", "macOS", "Windows Server", "Active Directory"],
+    },
+    {
+      name: "Frameworks",
+      skills: ["Flask", "Node.js", "REST APIs", "Git", "React", "Next.js", "Express", "Django"],
+    },
+    {
+      name: "Research",
+      skills: ["Predictive Modeling", "Data Analytics", "Pandas", "NumPy", "Data Visualization", "AI Security", "Zero-Knowledge Proofs", "Cryptography"],
+    },
+    {
+      name: "Tools",
+      skills: ["Kali Linux", "Wireshark", "Nmap", "Burp Suite", "OWASP ZAP", "Metasploit", "Splunk", "CrowdStrike", "Docker"],
     },
   ],
 };
+
 
 export const certifications = [
   {
     id: "ibm-cyber",
     title: "IBM IT Fundamentals for Cybersecurity Specialization",
     issuer: "IBM",
-    year: "2024",
+    year: "2026",
     status: "Coursera",
-    url: "/certificates/introduction to cyber security.jpg",
-    roles: ["General", "Cybersecurity Engineer", "SOC Analyst", "GRC Analyst", "DFIR Analyst"],
+  },
+  {
+    id: "ibm-frontend",
+    title: "IBM Front-End Developer Specialization",
+    issuer: "IBM",
+    year: "2026",
+    status: "Coursera",
   },
   {
     id: "ceh-cisco",
     title: "Certified Ethical Hacker (CEH)",
     issuer: "Cisco",
-    year: "2024",
+    year: "2025",
     status: "Networking Academy",
-    url: "/certificates/cisco networking academy certified ethical hacker .jpg",
-    roles: ["General", "Cybersecurity Engineer", "Application Security Engineer", "Threat Intelligence Analyst"],
   },
   {
-    id: "google-cloud",
-    title: "Google Cloud Computing Foundations",
-    issuer: "Google",
-    year: "2024",
-    status: "NPTEL",
-    url: "/certificates/google cloud somputing.jpg",
-    roles: ["General", "Cloud Security Engineer", "DevSecOps Engineer", "Software Engineer"],
+    id: "ignou-cyber",
+    title: "Introduction to Cyber Security",
+    issuer: "IGNOU",
+    year: "2025",
+    status: "SWAYAM",
   },
   {
-    id: "systems-usable-sec",
+    id: "usable-security",
     title: "Systems and Usable Security",
-    issuer: "Coursera",
-    year: "2024",
-    status: "Verified Credential",
-    url: "/certificates/systems and usable security.jpg",
-    roles: ["General", "Application Security Engineer", "Cybersecurity Engineer", "Software Engineer"],
-  },
-  {
-    id: "business-intel",
-    title: "Business Intelligence and Analytics",
     issuer: "NPTEL",
-    year: "2024",
-    status: "Verified Credential",
-    url: "/certificates/buissness intelligence and analytics.jpg",
-    roles: ["General", "Business Intelligence Analyst", "Data Analyst", "Data Scientist"],
+    year: "2025",
+    status: "Elite Certification",
   },
   {
     id: "iot",
-    title: "Internet of Things (IoT)",
+    title: "Introduction to Internet of Things",
+    issuer: "NPTEL",
+    year: "2025",
+    status: "Silver Medal",
+  },
+  {
+    id: "bi-analytics",
+    title: "Business Intelligence and Analytics",
+    issuer: "NPTEL",
+    year: "2025",
+    status: "Completed",
+  },
+  {
+    id: "gcp-nptel",
+    title: "Google Cloud Computing",
     issuer: "NPTEL",
     year: "2024",
-    status: "Verified Credential",
-    url: "/certificates/iot.jpg",
-    roles: ["General", "Cybersecurity Engineer", "Cloud Security Engineer", "Software Engineer"],
-  }
+    status: "Completed",
+  },
 ];
+
 
 export const achievements = [
   { label: "Reliance Foundation Scholar", value: 1, suffix: "", roles: ["General", "Software Engineer", "Cybersecurity Engineer", "Data Scientist"] },

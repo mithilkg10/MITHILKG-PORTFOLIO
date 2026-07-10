@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { TiltCard } from "@/components/ui/TiltCard";
 import { cyberLab } from "@/lib/data/resume";
+
 export function CyberLab() {
   return (
     <section id="lab" className="section-padding relative overflow-hidden">

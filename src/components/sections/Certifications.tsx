@@ -10,8 +10,6 @@ const issuerColors: Record<string, string> = {
   Cisco: "from-green-500/20 to-emerald-500/10 border-emerald-500/20 text-emerald-400",
   IGNOU: "from-orange-500/20 to-red-500/10 border-orange-500/20 text-orange-400",
   NPTEL: "from-indigo-500/20 to-purple-500/10 border-indigo-500/20 text-indigo-400",
-  Google: "from-yellow-500/20 to-orange-500/10 border-yellow-500/20 text-yellow-400",
-  Coursera: "from-blue-500/20 to-indigo-500/10 border-blue-500/20 text-blue-400",
 };
 
 export function Certifications() {
@@ -27,15 +25,10 @@ export function Certifications() {
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {certifications.map((cert, index) => {
             const colorClass = issuerColors[cert.issuer] || "from-white/10 to-white/5 border-white/10 text-white/80";
-            const CardWrapper = cert.url ? motion.a : motion.div;
-            
             return (
-              <CardWrapper
+              <motion.div
                 key={cert.id}
-                href={cert.url}
-                target={cert.url ? "_blank" : undefined}
-                rel={cert.url ? "noopener noreferrer" : undefined}
-                className="group h-56 [perspective:1000px] block cursor-pointer"
+                className="group h-56 [perspective:1000px]"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -43,7 +36,7 @@ export function Certifications() {
               >
                 <div className="relative h-full w-full transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                   {/* Front */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center rounded-[2rem] border border-white/10 bg-black/40 p-6 [backface-visibility:hidden] [-webkit-backface-visibility:hidden]">
+                  <div className="glass-card absolute inset-0 flex flex-col items-center justify-center rounded-[2rem] p-6 [backface-visibility:hidden]">
                     <div
                       className={`mb-5 flex h-16 w-16 items-center justify-center rounded-2xl border bg-gradient-to-br ${colorClass} font-mono text-xl font-bold`}
                     >
@@ -54,7 +47,7 @@ export function Certifications() {
                   </div>
 
                   {/* Back */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center rounded-[2rem] border border-white/20 bg-black/60 p-6 [backface-visibility:hidden] [-webkit-backface-visibility:hidden] [transform:rotateY(180deg)]">
+                  <div className="glass-card absolute inset-0 flex flex-col items-center justify-center rounded-[2rem] border-white/20 bg-white/5 p-6 [backface-visibility:hidden] [transform:rotateY(180deg)]">
                     <p className="font-mono text-xs uppercase tracking-widest text-foreground/60">
                       {cert.issuer}
                     </p>
@@ -62,15 +55,13 @@ export function Certifications() {
                     <p className="mt-3 font-mono text-xs text-foreground/50">
                       Year: {cert.year} &middot; {cert.status}
                     </p>
-                    {cert.url && (
-                      <div className="mt-5 flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 font-mono text-xs text-foreground/80 transition-colors group-hover:bg-white/10 group-hover:text-foreground">
-                        <ExternalLink className="h-3.5 w-3.5" />
-                        Credential
-                      </div>
-                    )}
+                    <button suppressHydrationWarning className="mt-5 flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 font-mono text-xs text-foreground/80 transition-colors hover:bg-white/10 hover:text-foreground">
+                      <ExternalLink className="h-3.5 w-3.5" />
+                      Credential
+                    </button>
                   </div>
                 </div>
-              </CardWrapper>
+              </motion.div>
             );
           })}
         </div>
