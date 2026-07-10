@@ -5,6 +5,7 @@ import { Award, BookOpen, Rocket, Shield } from "lucide-react";
 import { achievements } from "@/lib/data/resume";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
+import { useRole } from "@/lib/data/roleContext";
 
 const badges = [
   { icon: Rocket, label: "ISRO LEOS Internship Selection" },
@@ -14,6 +15,7 @@ const badges = [
 ];
 
 export function Achievements() {
+  const { selectedRole } = useRole();
   return (
     <section id="achievements" className="section-padding relative">
       <div className="absolute inset-0 bg-gradient-to-t from-white/[0.02] to-transparent" />
@@ -26,7 +28,16 @@ export function Achievements() {
         />
 
         <div className="mb-12 grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-6">
-          {achievements.map((a) => (
+          {[...achievements]
+            .sort((a, b) => {
+              if (selectedRole === "General") return 0;
+              const aHas = a.roles.includes(selectedRole);
+              const bHas = b.roles.includes(selectedRole);
+              if (aHas && !bHas) return -1;
+              if (!aHas && bHas) return 1;
+              return 0;
+            })
+            .map((a) => (
             <AnimatedCounter
               key={a.label}
               value={a.value}

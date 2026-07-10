@@ -10,6 +10,8 @@ const issuerColors: Record<string, string> = {
   Cisco: "from-green-500/20 to-emerald-500/10 border-emerald-500/20 text-emerald-400",
   IGNOU: "from-orange-500/20 to-red-500/10 border-orange-500/20 text-orange-400",
   NPTEL: "from-indigo-500/20 to-purple-500/10 border-indigo-500/20 text-indigo-400",
+  Google: "from-yellow-500/20 to-orange-500/10 border-yellow-500/20 text-yellow-400",
+  Coursera: "from-blue-500/20 to-indigo-500/10 border-blue-500/20 text-blue-400",
 };
 
 export function Certifications() {

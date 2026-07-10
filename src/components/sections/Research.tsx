@@ -1,17 +1,34 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Layers, Zap, BookOpen, Cpu } from "lucide-react";
+import { ExternalLink, Layers, Zap, BookOpen, Cpu, Activity } from "lucide-react";
 import { GitHubIcon } from "@/components/ui/SocialIcons";
+import Link from "next/link";
 import { researchItems } from "@/lib/data/resume";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { TiltCard } from "@/components/ui/TiltCard";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { useRole } from "@/lib/data/roleContext";
 
 export function Research() {
   const [active, setActive] = useState(0);
-  const item = researchItems[active];
+  const { selectedRole } = useRole();
+
+  const sortedItems = [...researchItems].sort((a, b) => {
+    if (selectedRole === "General") return 0;
+    const aHas = a.roles.includes(selectedRole);
+    const bHas = b.roles.includes(selectedRole);
+    if (aHas && !bHas) return -1;
+    if (!aHas && bHas) return 1;
+    return 0;
+  });
+
+  useEffect(() => {
+    setActive(0);
+  }, [selectedRole]);
+
+  const item = sortedItems[active];
 
   return (
     <section id="research" className="section-padding relative">
@@ -26,7 +43,7 @@ export function Research() {
         />
 
         <div className="mb-12 flex flex-wrap justify-center gap-4">
-          {researchItems.map((r, i) => (
+          {sortedItems.map((r, i) => (
             <button
               suppressHydrationWarning
               key={r.id}
@@ -109,7 +126,7 @@ export function Research() {
                         </div>
                       </div>
 
-                      <div className="flex gap-4">
+                      <div className="flex gap-4 flex-wrap">
                         <MagneticButton href={item.github} variant="secondary" external>
                           <GitHubIcon className="h-4 w-4" />
                           Code

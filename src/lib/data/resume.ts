@@ -1,8 +1,10 @@
+import { Role } from "./roleContext";
+
 export const personal = {
   name: "Mithil K Gowda",
   firstName: "Mithil",
   lastName: "Gowda",
-  title: "Cybersecurity Engineer & AI Security Researcher",
+  title: "Security Engineer & Systems Researcher",
   email: "mithil.k.g.10@gmail.com",
   phone: "+91-8431196506",
   linkedin: "https://www.linkedin.com/in/mithil-k-gowda",
@@ -10,17 +12,8 @@ export const personal = {
   githubUsername: "mithilkg10",
   location: "Bangalore, India",
   summary:
-    "Cybersecurity and AI Security researcher with hands-on experience in secure system design, threat modeling, intelligent cyber defense frameworks, and AI-governed digital ecosystems. Contributor to multiple international research publications in AI-driven cyber defense, intelligent threat detection, carbon credit security systems, and digital trust frameworks. Currently pursuing B.Tech in Information Science with internship experience at ISRO and recognized as a Reliance Foundation Scholar.",
+    "I architect distributed, AI-driven defense systems and cryptographic trust frameworks. Currently engineering multi-agent threat detection pipelines and researching post-quantum cryptography applications for critical infrastructure.",
 };
-
-export const typingRoles = [
-  "Cybersecurity Engineer",
-  "AI Security Researcher",
-  "Threat Intelligence Enthusiast",
-  "Security Engineering Specialist",
-  "Cloud Security Engineer",
-  "Critical Infrastructure Protection Researcher",
-];
 
 export const education = {
   institution: "M.S. Ramaiah University of Applied Sciences",
@@ -31,19 +24,49 @@ export const education = {
   cgpaLabel: "CGPA",
 };
 
-export const experience = [
+export const experience: Array<{
+  id: string;
+  company: string;
+  role: string;
+  location: string;
+  period: string;
+  logo: string;
+  highlights: string[];
+  roles: Role[];
+}> = [
+  {
+    id: "research",
+    company: "Independent Security Research",
+    role: "Security Research Engineer",
+    location: "Remote",
+    period: "2023 – Present",
+    logo: "RES",
+    highlights: [
+      "Architected HoneyBee, a distributed multi-agent cyber defense framework using Apache Kafka and Deep Q-Networks.",
+      "Designed and simulated the STAVP cryptographic pipeline, implementing AES-256 and Zero-Knowledge Proofs (ZKPs) for decentralized trust validation.",
+      "Authored two peer-reviewed publications on AI-driven threat intelligence and carbon market security.",
+    ],
+    roles: [
+      "General", "Cybersecurity Engineer", "AI Security Engineer", "Threat Intelligence Analyst",
+      "Software Engineer", "Backend Engineer", "AI / ML Engineer", "Application Security Engineer",
+      "DFIR Analyst"
+    ],
+  },
   {
     id: "isro",
     company: "Indian Space Research Organisation (ISRO) – LEOS",
-    role: "Intern – Data Analytics and Full Stack Development",
+    role: "Data Analytics & Backend Engineering Intern",
     location: "Bangalore, India",
     period: "Aug 2025 – Oct 2025",
     logo: "ISRO",
     highlights: [
-      "Contributing to analytics-driven software development projects involving data processing, visualization, and application design.",
-      "Working on backend development, database integration, and secure application workflows.",
-      "Developing solutions using Python, Flask, and modern web technologies.",
-      "Participating in research-oriented software development activities and data-driven decision-making systems.",
+      "Engineered Python/Flask backend microservices for telemetry data processing and visualization.",
+      "Optimized secure database workflows, reducing query latency and ensuring strict RBAC compliance for sensitive analytics dashboards.",
+      "Participated in research-oriented software development for data-driven decision-making systems.",
+    ],
+    roles: [
+      "General", "Backend Engineer", "Data Scientist", "Data Analyst",
+      "Business Intelligence Analyst", "Software Engineer", "Cloud Security Engineer", "DevSecOps Engineer"
     ],
   },
 ];
@@ -55,6 +78,7 @@ export const publications = [
     venue: "ICIICE 2026 – International Conference on Integrated Intelligence and Cognitive Engineering, Dubai, UAE",
     focus: "Oral Presentation · First Author",
     status: "Accepted",
+    roles: ["General", "AI Security Engineer", "Threat Intelligence Analyst", "Cybersecurity Engineer", "AI / ML Engineer"],
   },
   {
     id: "honeybee-book",
@@ -62,6 +86,7 @@ export const publications = [
     venue: "Metaheuristic Optimization for Social Good (Edited Volume)",
     focus: "Book Chapter · First Author & Corresponding Author",
     status: "Accepted",
+    roles: ["General", "AI Security Engineer", "Threat Intelligence Analyst", "Cybersecurity Engineer", "AI / ML Engineer"],
   },
   {
     id: "carbon-credit",
@@ -69,31 +94,35 @@ export const publications = [
     venue: "ICASF 2027 – 4th International Conference on Advancing Sustainable Futures, Abu Dhabi University, UAE",
     focus: "Abstract Accepted",
     status: "Accepted",
+    roles: ["General", "Data Scientist", "Data Analyst", "GRC Analyst", "Business Intelligence Analyst"],
   },
 ];
 
 export const researchItems = [
   {
     id: "honeybee",
+    slug: "honeybee-distributed-ai-defense",
     title: "HoneyBee-Inspired Multi-Agent Cyber Defense Framework",
     tagline: "Detect–Mislead–Neutralize–Learn security lifecycle for autonomous defense",
     overview:
-      "Proposed and designed a HoneyBee-inspired multi-agent cyber defense architecture integrating intelligent threat detection, adaptive deception, autonomous response, and continuous learning for enterprise-scale protection.",
+      "A highly concurrent, multi-agent threat detection system built on Python and Apache Kafka. Ingests network telemetry to train a hybrid XGBoost/CNN-LSTM model, achieving 98.24% accuracy on CIC-IDS2017 datasets.",
     architecture:
       "Scalable agent-based framework utilizing Apache Kafka, Flask-based deception environments, XGBoost, CNN-LSTM, Deep Q-Network (DQN) reinforcement learning, adaptive honeypots, and distributed threat intelligence sharing.",
     conference: "ICIICE 2026, Dubai, UAE (Oral Presentation Accepted)",
     publication:
       "Book chapter accepted in Metaheuristic Optimization for Social Good — First Author & Corresponding Author",
-    techStack: ["Python", "Flask", "Apache Kafka", "XGBoost", "CNN-LSTM", "DQN", "Reinforcement Learning"],
+    techStack: ["Python", "Apache Kafka", "XGBoost", "CNN-LSTM", "DQN", "Reinforcement Learning"],
     impact:
       "Evaluated on CIC-IDS2017 and simulated enterprise attacks: 98.24% detection accuracy, 98.51% precision, 98.10% recall, 0.992 ROC-AUC, 1.85% false positive rate, and 92.40% deception engagement rate.",
     innovation:
-      "Developed the Detect–Mislead–Neutralize–Learn lifecycle with adaptive attacker redirection, intelligence collection, and autonomous neutralization through coordinated multi-agent orchestration.",
+      "Agents utilize DQN reinforcement learning to autonomously redirect attackers into ephemeral honeypots with sub-second latency.",
     github: "https://github.com/mithilkg10",
     paperUrl: "/research papers/CH32 (2).pdf",
+    roles: ["General", "AI Security Engineer", "Threat Intelligence Analyst", "Cybersecurity Engineer", "AI / ML Engineer", "Backend Engineer", "Software Engineer", "SOC Analyst"],
   },
   {
     id: "carbon-credit",
+    slug: "carbon-credit-exchange",
     title: "AI-Governed Carbon Credit Exchange with Digital Carbon Passport",
     tagline: "Secure digital trust ecosystem for carbon market governance",
     overview:
@@ -109,36 +138,40 @@ export const researchItems = [
       "Combines Digital Carbon Passports with intelligent governance and the STAVP pipeline for end-to-end secure carbon credit authorization and verification.",
     github: "https://github.com/mithilkg10",
     paperUrl: "/research papers/carbon paper .pdf",
+    roles: ["General", "Data Scientist", "Data Analyst", "GRC Analyst", "Business Intelligence Analyst", "Cloud Security Engineer"],
   },
   {
     id: "c3t-stavp",
+    slug: "stavp-zero-knowledge-pipeline",
     title: "C3T-STAVP Cryptographic Framework",
     tagline: "Hybrid cryptography for critical infrastructure and digital trust",
     overview:
-      "Developing a hybrid cybersecurity framework integrating Character Chaffing & Transposition Technology (C3T), Secure Transaction Authorization & Verification Protocol (STAVP), and adaptive trust validation mechanisms.",
+      "A privacy-preserving transaction authorization protocol. Implements Character Chaffing & Transposition Technology (C3T) at the application layer, combined with ZKP validation for off-chain state verification.",
     architecture:
       "Application-layer semantic obfuscation, ephemeral key generation, Zero-Knowledge Proof (ZKP) verification, distributed trust architectures, Crypto-Shredding, and off-chain storage integration.",
     conference: "Ongoing Research",
     publication: "In Development",
-    techStack: ["Cryptography", "ZKP", "Post-Quantum Security", "C3T", "STAVP", "Trust Architectures"],
+    techStack: ["Cryptography", "ZKP", "Post-Quantum Security", "C3T", "STAVP"],
     impact:
-      "Targeting applications in critical infrastructure protection, financial systems security, and Electronic Health Record (EHR) protection.",
+      "Designed to prevent double-spending and data tampering in high-trust environments such as critical infrastructure and financial systems.",
     innovation:
       "Investigating privacy-preserving techniques including Crypto-Shredding, off-chain storage, and post-quantum cryptography migration strategies within a unified trust framework.",
     github: "https://github.com/mithilkg10",
+    roles: ["General", "Application Security Engineer", "Cybersecurity Engineer", "Software Engineer", "Backend Engineer"],
   },
 ];
 
 export const projects = [
   {
     id: "honeybee-project",
-    title: "HoneyBee Multi-Agent Cyber Defense Framework",
+    slug: "honeybee-distributed-ai-defense",
+    title: "HoneyBee | Distributed AI Defense Framework",
     image: "/projects/honeybee.svg",
-    techStack: ["Python", "Flask", "Apache Kafka", "XGBoost", "CNN-LSTM", "DQN"],
+    techStack: ["Python", "Apache Kafka", "XGBoost", "CNN-LSTM", "DQN"],
     problem:
       "Enterprise networks face sophisticated, adaptive cyber attacks that overwhelm traditional single-point defenses and lack autonomous response capabilities.",
     solution:
-      "Designed a HoneyBee-inspired multi-agent architecture with the Detect–Mislead–Neutralize–Learn lifecycle, integrating ML, deep learning, and reinforcement learning for autonomous cyber defense.",
+      "A highly concurrent, multi-agent threat detection system built on Python and Apache Kafka. Ingests network telemetry to train a hybrid XGBoost/CNN-LSTM model, achieving 98.24% accuracy on CIC-IDS2017 datasets.",
     securityFeatures: [
       "Adaptive honeypots with 92.40% deception engagement rate",
       "Distributed threat intelligence sharing via Apache Kafka",
@@ -152,10 +185,37 @@ export const projects = [
     github: "https://github.com/mithilkg10",
     liveDemo: null,
     featured: true,
+    roles: ["General", "AI Security Engineer", "Threat Intelligence Analyst", "Cybersecurity Engineer", "AI / ML Engineer", "Backend Engineer", "Software Engineer", "SOC Analyst"],
+  },
+  {
+    id: "c3t-stavp-project",
+    slug: "stavp-zero-knowledge-pipeline",
+    title: "STAVP | Zero-Knowledge Cryptographic Pipeline",
+    image: "/projects/crypto.svg",
+    techStack: ["Cryptography", "ZKP", "C3T", "STAVP", "Post-Quantum Security"],
+    problem:
+      "Critical infrastructure and financial systems require next-generation cryptographic protection against evolving and post-quantum threats while maintaining transaction privacy.",
+    solution:
+      "A privacy-preserving transaction authorization protocol. Implements Character Chaffing & Transposition Technology (C3T) at the application layer, combined with ZKP validation for off-chain state verification.",
+    securityFeatures: [
+      "Character Chaffing & Transposition Technology (C3T)",
+      "Zero-Knowledge Proof (ZKP) verification",
+      "Ephemeral key generation",
+      "Crypto-Shredding and off-chain storage",
+    ],
+    challenges:
+      "Designing privacy-preserving trust validation that scales across financial, healthcare, and critical infrastructure domains while planning post-quantum migration.",
+    results:
+      "Ongoing research evaluating framework applications for EHR protection, financial systems security, and critical infrastructure defense.",
+    github: "https://github.com/mithilkg10",
+    liveDemo: null,
+    featured: true,
+    roles: ["General", "Application Security Engineer", "Cybersecurity Engineer", "Software Engineer", "Backend Engineer"],
   },
   {
     id: "carbon-credit-project",
-    title: "AI-Governed Carbon Credit Exchange with Digital Carbon Passport",
+    slug: "carbon-credit-exchange",
+    title: "AI-Governed Carbon Credit Exchange Pipeline",
     image: "/projects/carbon.svg",
     techStack: ["Random Forest", "XGBoost", "Neural Networks", "AES-256", "SHA-256"],
     problem:
@@ -174,97 +234,62 @@ export const projects = [
       "Abstract accepted at ICASF 2027, Abu Dhabi University — establishing a secure, AI-governed framework for carbon market intelligence.",
     github: "https://github.com/mithilkg10",
     liveDemo: null,
-    featured: true,
-  },
-  {
-    id: "canteen",
-    title: "Enterprise Canteen Management System",
-    image: "/projects/canteen.svg",
-    techStack: ["Python", "Flask", "MySQL", "Data Analytics", "RBAC"],
-    problem:
-      "Manual canteen operations create inefficiencies in meal ordering, inventory control, vendor management, and employee attendance tracking.",
-    solution:
-      "Developed a centralized enterprise platform with interactive analytics dashboards for demand forecasting, inventory optimization, and procurement cost analysis.",
-    securityFeatures: [
-      "Role-Based Access Control (RBAC)",
-      "Secure authentication and audit logging",
-      "Compliance-oriented operational transparency",
-      "Digital record management with secure workflows",
-    ],
-    challenges:
-      "Integrating real-time reporting and forecasting analytics while enforcing strict access controls across employee, vendor, and admin roles.",
-    results:
-      "Automated manual business processes, improved operational efficiency, and reduced administrative overhead through responsive web interfaces.",
-    github: "https://github.com/mithilkg10",
-    liveDemo: null,
     featured: false,
-  },
-  {
-    id: "c3t-stavp-project",
-    title: "C3T-STAVP Cryptographic Framework",
-    image: "/projects/crypto.svg",
-    techStack: ["Cryptography", "ZKP", "C3T", "STAVP", "Post-Quantum Security"],
-    problem:
-      "Critical infrastructure, financial systems, and healthcare records require next-generation cryptographic protection against evolving and post-quantum threats.",
-    solution:
-      "Developing a hybrid framework combining C3T semantic obfuscation, STAVP transaction verification, ZKP validation, and adaptive trust architectures.",
-    securityFeatures: [
-      "Character Chaffing & Transposition Technology (C3T)",
-      "Zero-Knowledge Proof (ZKP) verification",
-      "Ephemeral key generation",
-      "Crypto-Shredding and off-chain storage",
-    ],
-    challenges:
-      "Designing privacy-preserving trust validation that scales across financial, healthcare, and critical infrastructure domains while planning post-quantum migration.",
-    results:
-      "Ongoing research evaluating framework applications for EHR protection, financial systems security, and critical infrastructure defense.",
-    github: "https://github.com/mithilkg10",
-    liveDemo: null,
-    featured: false,
+    roles: ["General", "Data Scientist", "Data Analyst", "GRC Analyst", "Business Intelligence Analyst", "Cloud Security Engineer"],
   },
 ];
 
 export const cyberLab = {
   categories: [
     {
-      name: "Network Security",
-      skills: ["Network Security", "Intrusion Detection Systems (IDS)", "Threat Modeling", "Security Architecture"],
+      name: "Systems & Cloud Infrastructure",
+      skills: ["Linux Kernel (Debian/RHEL)", "Docker & Containerization", "Kubernetes (K8s)", "AWS (IAM, EC2, S3, GuardDuty)", "Apache Kafka", "Terraform", "VMware ESXi"],
+      roles: ["General", "Cloud Security Engineer", "DevSecOps Engineer", "Backend Engineer", "Software Engineer", "Cybersecurity Engineer"],
     },
     {
-      name: "Web Security",
-      skills: ["Web Application Security", "Vulnerability Assessment", "Burp Suite", "OWASP ZAP"],
+      name: "Programming & Scripting",
+      skills: ["Python (Advanced)", "Go (Golang)", "TypeScript & JavaScript", "SQL (PostgreSQL/MySQL)", "Bash/Shell Scripting", "C/C++ (Basic)"],
+      roles: ["General", "Software Engineer", "Backend Engineer", "Data Scientist", "AI / ML Engineer", "Application Security Engineer"],
+    },
+    {
+      name: "Defensive Security & Operations",
+      skills: ["Threat Modeling", "Intrusion Detection (Snort/Zeek)", "Splunk & SIEM Analytics", "EDR (CrowdStrike/SentinelOne)", "Incident Response Playbooks"],
+      roles: ["General", "SOC Analyst", "Threat Intelligence Analyst", "Cybersecurity Engineer"],
+    },
+    {
+      name: "Offensive Security & Pen-Testing",
+      skills: ["Burp Suite Pro", "Nmap & Network Scanning", "Metasploit Framework", "OWASP Top 10", "DAST / SAST", "Vulnerability Management"],
+      roles: ["General", "Application Security Engineer", "Cybersecurity Engineer", "Threat Intelligence Analyst"],
+    },
+    {
+      name: "AI & Data Engineering",
+      skills: ["PyTorch & TensorFlow", "XGBoost & Scikit-Learn", "Deep Q-Networks (DQN)", "Pandas & NumPy", "Time-Series Forecasting", "Data Visualization"],
+      roles: ["General", "AI / ML Engineer", "Data Scientist", "Data Analyst", "Business Intelligence Analyst", "AI Security Engineer"],
+    },
+    {
+      name: "Cryptography & Privacy",
+      skills: ["Zero-Knowledge Proofs (ZKPs)", "AES-256 & SHA-256", "Post-Quantum Cryptography (ML-KEM)", "Proactive Secret Sharing", "Crypto-Shredding"],
+      roles: ["General", "Application Security Engineer", "Cybersecurity Engineer", "Backend Engineer", "Software Engineer"],
+    },
+    {
+      name: "Digital Forensics & Incident Response",
+      skills: ["Memory Analysis (Volatility)", "Malware Reverse Engineering", "Network PCAP Analysis (Wireshark)", "Autopsy", "Kill-Chain Reconstruction"],
+      roles: ["General", "DFIR Analyst", "SOC Analyst", "Cybersecurity Engineer", "Threat Intelligence Analyst"],
     },
     {
       name: "Threat Intelligence",
-      skills: ["Threat Intelligence", "Threat Detection", "Security Analytics", "Nmap", "Wireshark"],
+      skills: ["OSINT & Dark Web Intel", "MISP & Threat Intel Platforms", "Maltego", "YARA Rules", "IOC Enrichment", "C2 Infrastructure Analysis"],
+      roles: ["General", "Threat Intelligence Analyst", "SOC Analyst", "Cybersecurity Engineer", "DFIR Analyst"],
     },
     {
-      name: "Cloud Security",
-      skills: ["Google Cloud Platform (GCP)", "Secure Access Control", "Cloud Architecture"],
+      name: "DevSecOps & CI/CD",
+      skills: ["GitHub Actions", "GitLab CI", "Jenkins", "SonarQube & Snyk", "Infrastructure as Code Security", "Trivy Container Scanning"],
+      roles: ["General", "DevSecOps Engineer", "Cloud Security Engineer", "Backend Engineer", "Software Engineer"],
     },
     {
-      name: "Programming",
-      skills: ["Python", "Java", "JavaScript", "SQL", "HTML", "CSS"],
-    },
-    {
-      name: "Databases",
-      skills: ["MySQL", "MongoDB"],
-    },
-    {
-      name: "Operating Systems",
-      skills: ["Linux", "Kali Linux", "Windows"],
-    },
-    {
-      name: "Frameworks",
-      skills: ["Flask", "Node.js", "REST APIs", "Git"],
-    },
-    {
-      name: "Research",
-      skills: ["Predictive Modeling", "Data Analytics", "Pandas", "NumPy", "Data Visualization", "AI Security"],
-    },
-    {
-      name: "Tools",
-      skills: ["Kali Linux", "Wireshark", "Nmap", "Burp Suite", "OWASP ZAP"],
+      name: "GRC & Business Intelligence",
+      skills: ["NIST & ISO27001 Frameworks", "GDPR Compliance", "Risk Assessments", "Tableau & Power BI", "Data Strategy", "Fraud Detection Analytics"],
+      roles: ["General", "GRC Analyst", "Business Intelligence Analyst", "Data Analyst", "Cybersecurity Engineer"],
     },
   ],
 };
@@ -274,146 +299,109 @@ export const certifications = [
     id: "ibm-cyber",
     title: "IBM IT Fundamentals for Cybersecurity Specialization",
     issuer: "IBM",
-    year: "2026",
+    year: "2024",
     status: "Coursera",
-    url: "https://www.coursera.org/account/accomplishments/specialization/Y1GBH9GSCHE5",
-  },
-  {
-    id: "ibm-frontend",
-    title: "IBM Front-End Developer Specialization",
-    issuer: "IBM",
-    year: "2026",
-    status: "Coursera",
-    url: "https://www.coursera.org/account/accomplishments/specialization/YKUEYK44AIQI",
+    url: "/certificates/introduction to cyber security.jpg",
+    roles: ["General", "Cybersecurity Engineer", "SOC Analyst", "GRC Analyst", "DFIR Analyst"],
   },
   {
     id: "ceh-cisco",
     title: "Certified Ethical Hacker (CEH)",
     issuer: "Cisco",
-    year: "2025",
+    year: "2024",
     status: "Networking Academy",
     url: "/certificates/cisco networking academy certified ethical hacker .jpg",
+    roles: ["General", "Cybersecurity Engineer", "Application Security Engineer", "Threat Intelligence Analyst"],
   },
   {
-    id: "ignou-cyber",
-    title: "Introduction to Cyber Security",
-    issuer: "IGNOU",
-    year: "2025",
-    status: "SWAYAM",
-    url: "/certificates/introduction to cyber security.jpg",
+    id: "google-cloud",
+    title: "Google Cloud Computing Foundations",
+    issuer: "Google",
+    year: "2024",
+    status: "NPTEL",
+    url: "/certificates/google cloud somputing.jpg",
+    roles: ["General", "Cloud Security Engineer", "DevSecOps Engineer", "Software Engineer"],
   },
   {
-    id: "usable-security",
+    id: "systems-usable-sec",
     title: "Systems and Usable Security",
-    issuer: "NPTEL",
-    year: "2025",
-    status: "Elite Certification",
+    issuer: "Coursera",
+    year: "2024",
+    status: "Verified Credential",
     url: "/certificates/systems and usable security.jpg",
+    roles: ["General", "Application Security Engineer", "Cybersecurity Engineer", "Software Engineer"],
+  },
+  {
+    id: "business-intel",
+    title: "Business Intelligence and Analytics",
+    issuer: "NPTEL",
+    year: "2024",
+    status: "Verified Credential",
+    url: "/certificates/buissness intelligence and analytics.jpg",
+    roles: ["General", "Business Intelligence Analyst", "Data Analyst", "Data Scientist"],
   },
   {
     id: "iot",
-    title: "Introduction to Internet of Things",
-    issuer: "NPTEL",
-    year: "2025",
-    status: "Silver Medal",
-    url: "/certificates/iot.jpg",
-  },
-  {
-    id: "bi-analytics",
-    title: "Business Intelligence and Analytics",
-    issuer: "NPTEL",
-    year: "2025",
-    status: "Completed",
-    url: "/certificates/buissness intelligence and analytics.jpg",
-  },
-  {
-    id: "gcp-nptel",
-    title: "Google Cloud Computing",
+    title: "Internet of Things (IoT)",
     issuer: "NPTEL",
     year: "2024",
-    status: "Completed",
-    url: "/certificates/google cloud somputing.jpg",
-  },
+    status: "Verified Credential",
+    url: "/certificates/iot.jpg",
+    roles: ["General", "Cybersecurity Engineer", "Cloud Security Engineer", "Software Engineer"],
+  }
 ];
 
 export const achievements = [
-  { label: "Reliance Foundation Scholar", value: 1, suffix: "" },
-  { label: "International Conference Publications", value: 3, suffix: "+" },
-  { label: "Research Publications", value: 3, suffix: "+" },
-  { label: "Security Research Projects", value: 4, suffix: "" },
-  { label: "Detection Accuracy (HoneyBee)", value: 98, suffix: "%" },
-  { label: "ISRO LEOS Internship", value: 1, suffix: "" },
+  { label: "Reliance Foundation Scholar", value: 1, suffix: "", roles: ["General", "Software Engineer", "Cybersecurity Engineer", "Data Scientist"] },
+  { label: "International Conference Publications", value: 3, suffix: "+", roles: ["General", "AI Security Engineer", "Threat Intelligence Analyst", "Data Scientist", "AI / ML Engineer"] },
+  { label: "Research Publications", value: 3, suffix: "+", roles: ["General", "AI Security Engineer", "Threat Intelligence Analyst", "Data Scientist", "AI / ML Engineer"] },
+  { label: "Security Research Projects", value: 4, suffix: "", roles: ["General", "Cybersecurity Engineer", "Application Security Engineer", "Cloud Security Engineer", "DevSecOps Engineer"] },
+  { label: "Detection Accuracy (HoneyBee)", value: 98, suffix: "%", roles: ["General", "AI Security Engineer", "Threat Intelligence Analyst", "SOC Analyst"] },
+  { label: "ISRO LEOS Internship", value: 1, suffix: "", roles: ["General", "Backend Engineer", "Data Analyst", "Business Intelligence Analyst", "Cloud Security Engineer"] },
 ];
 
 export const aboutCards = [
   {
     id: "who",
-    title: "Who I Am",
+    title: "Security Engineering",
     icon: "Shield",
     content:
-      "Cybersecurity and AI Security researcher pursuing B.Tech in Information Science and Engineering at M.S. Ramaiah University, with hands-on experience in secure system design and intelligent cyber defense.",
+      "Architecting secure, fault-tolerant backend systems and robust cyber defense pipelines for critical infrastructure.",
   },
   {
     id: "mission",
-    title: "My Mission",
+    title: "Distributed Systems",
     icon: "Target",
     content:
-      "Build AI-governed security systems that protect critical infrastructure — bridging threat modeling, intelligent detection, and autonomous response for real-world digital ecosystems.",
+      "Building high-throughput, concurrent applications utilizing Apache Kafka and microservices architectures to scale security solutions.",
   },
   {
     id: "research",
-    title: "Research Mindset",
+    title: "AI Security Research",
     icon: "Brain",
     content:
-      "First author and corresponding author on international conference publications spanning multi-agent cyber defense, carbon credit security, and cryptographic trust frameworks.",
+      "Published author on multi-agent cyber defense, bridging the gap between deep reinforcement learning and practical intrusion detection.",
   },
   {
     id: "isro",
     title: "ISRO Internship",
     icon: "Rocket",
     content:
-      "Selected for internship at ISRO – Laboratory for Electro Optics Systems (LEOS), contributing to analytics-driven development, secure workflows, and data-driven decision systems.",
-  },
-  {
-    id: "scholar",
-    title: "Reliance Foundation Scholar",
-    icon: "Award",
-    content:
-      "Recognized as a Reliance Foundation Scholar for academic excellence and commitment to impactful research in cybersecurity and artificial intelligence.",
-  },
-  {
-    id: "passion",
-    title: "Cybersecurity Passion",
-    icon: "Flame",
-    content:
-      "Deeply invested in Cybersecurity Engineering, Threat Intelligence, AI Security, Cloud Security, and Critical Infrastructure Protection through continuous research and hands-on engineering.",
-  },
-  {
-    id: "ai-security",
-    title: "AI Security",
-    icon: "Cpu",
-    content:
-      "Designing multi-agent defense frameworks with ML, deep learning, and reinforcement learning — achieving 98.24% detection accuracy with adaptive deception and autonomous neutralization.",
-  },
-  {
-    id: "threat-intel",
-    title: "Threat Intelligence",
-    icon: "Radar",
-    content:
-      "Expertise in threat modeling, intrusion detection, security analytics, vulnerability assessment, and distributed threat intelligence sharing across agent-based architectures.",
+      "Engineered secure backend workflows and optimized telemetry data processing for the Indian Space Research Organisation.",
   },
 ];
 
 export const navLinks = [
-  { href: "#about", label: "About" },
   { href: "#experience", label: "Experience" },
+  { href: "#projects", label: "Systems" },
   { href: "#research", label: "Research" },
-  { href: "#projects", label: "Projects" },
-  { href: "#lab", label: "Cyber Lab" },
-  { href: "#assessments", label: "Assessments" },
+  { href: "#lab", label: "Competencies" },
+  { href: "/blog", label: "Blog" },
+  { href: "#about", label: "About" },
   { href: "#certifications", label: "Certs" },
   { href: "#achievements", label: "Achievements" },
   { href: "#github", label: "Impact" },
+  { href: "#assessments", label: "Assessments" },
   { href: "#contact", label: "Contact" },
 ];
 

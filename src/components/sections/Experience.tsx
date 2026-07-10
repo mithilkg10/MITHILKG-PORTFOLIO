@@ -7,9 +7,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MapPin, Calendar, GitCommit } from "lucide-react";
 import { experience } from "@/lib/data/resume";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { useRole } from "@/lib/data/roleContext";
 
 export function Experience() {
   const sectionRef = useRef<HTMLElement>(null);
+  const { selectedRole } = useRole();
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -47,7 +49,16 @@ export function Experience() {
           {/* Clean Git-style commit line */}
           <div className="absolute left-[2.25rem] top-4 h-[calc(100%-2rem)] w-px bg-white/10 md:left-1/2 md:-translate-x-px" />
 
-          {experience.map((exp, index) => (
+          {[...experience]
+            .sort((a, b) => {
+              if (selectedRole === "General") return 0;
+              const aHas = a.roles.includes(selectedRole);
+              const bHas = b.roles.includes(selectedRole);
+              if (aHas && !bHas) return -1;
+              if (!aHas && bHas) return 1;
+              return 0;
+            })
+            .map((exp, index) => (
             <motion.div
               key={exp.id}
               className="timeline-item relative mb-12 md:mb-16"

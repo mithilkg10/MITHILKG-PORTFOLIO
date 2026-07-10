@@ -1,14 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Shield, AlertTriangle, CheckCircle, Wrench } from "lucide-react";
+import { Shield, AlertTriangle, CheckCircle, Wrench, Activity } from "lucide-react";
 import { GitHubIcon } from "@/components/ui/SocialIcons";
+import Link from "next/link";
 import { projects } from "@/lib/data/resume";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { TiltCard } from "@/components/ui/TiltCard";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { useRole } from "@/lib/data/roleContext";
 
 export function Projects() {
+  const { selectedRole } = useRole();
   return (
     <section id="projects" className="section-padding relative">
       <div className="mx-auto max-w-7xl">
@@ -19,7 +22,16 @@ export function Projects() {
         />
 
         <div className="space-y-12">
-          {projects.map((project, index) => (
+          {[...projects]
+            .sort((a, b) => {
+              if (selectedRole === "General") return 0;
+              const aHas = a.roles.includes(selectedRole);
+              const bHas = b.roles.includes(selectedRole);
+              if (aHas && !bHas) return -1;
+              if (!aHas && bHas) return 1;
+              return 0;
+            })
+            .map((project, index) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 40 }}

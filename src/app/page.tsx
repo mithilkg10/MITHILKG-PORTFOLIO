@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { ThreatMapBackground } from "@/components/ui/ThreatMapBackground";
 import { Hero } from "@/components/sections/Hero";
 import { Preloader } from "@/components/ui/Preloader";
+import { RoleCompetency } from "@/components/sections/RoleCompetency";
 
 // Dynamic imports for performance and Lighthouse code splitting
 const About = dynamic(() => import("@/components/sections/About").then((m) => m.About));
@@ -30,6 +31,9 @@ export default function Home() {
         <Education />
         <Experience />
         <Research />
+        <div className="my-20 relative z-20">
+          <RoleCompetency />
+        </div>
         <Projects />
         <CyberLab />
         <SecurityAssessments />
