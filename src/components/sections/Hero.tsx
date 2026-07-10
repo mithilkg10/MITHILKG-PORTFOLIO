@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, FileText } from "lucide-react";
+import { FileText } from "lucide-react";
 import { GitHubIcon } from "@/components/ui/SocialIcons";
 import { personal } from "@/lib/data/resume";
 import { ScrambleText } from "@/components/ui/ScrambleText";

@@ -3,9 +3,9 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRole, Role } from "@/lib/data/roleContext";
-import { ChevronDown, ShieldCheck, Zap, Database, Terminal, FileCode2, Network } from "lucide-react";
+import { ChevronDown, ShieldCheck, Zap, Database, Terminal, FileCode2, Network, type LucideIcon } from "lucide-react";
 
-const roleDetails: Record<Role, { description: string; competencies: string[]; tools: string[]; icon: any }> = {
+const roleDetails: Record<Role, { description: string; competencies: string[]; tools: string[]; icon: LucideIcon }> = {
   "General": {
     description: "I am a versatile Security Engineer & Systems Researcher combining deep backend engineering with advanced cryptographic trust frameworks.",
     competencies: ["Full-Stack Engineering", "Cryptography (STAVP/ZKPs)", "Multi-Agent Systems", "Network Architecture", "Zero-Trust Deployment"],

@@ -16,8 +16,16 @@ export function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const subject = encodeURIComponent(`Portfolio Contact from ${formState.name}`);
-    const body = encodeURIComponent(formState.message);
-    window.location.href = `mailto:${personal.email}?subject=${subject}&body=${body}`;
+    const body = encodeURIComponent(`Name: ${formState.name}\nEmail: ${formState.email}\n\nMessage:\n${formState.message}`);
+    const mailtoUrl = `mailto:${personal.email}?subject=${subject}&body=${body}`;
+    
+    // Reliably trigger mailto using an anchor tag
+    const link = document.createElement('a');
+    link.href = mailtoUrl;
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
     setSent(true);
   };
 

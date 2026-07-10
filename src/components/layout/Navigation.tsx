@@ -3,9 +3,8 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Shield } from "lucide-react";
-import { navLinks, personal, resumePath } from "@/lib/data/resume";
+import { navLinks, personal } from "@/lib/data/resume";
 import { cn } from "@/lib/utils";
-import { MagneticButton } from "@/components/ui/MagneticButton";
 
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false);

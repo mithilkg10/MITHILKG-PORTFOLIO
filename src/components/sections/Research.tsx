@@ -2,9 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Layers, Zap, BookOpen, Cpu, Activity } from "lucide-react";
+import { ExternalLink, Layers, Zap, BookOpen, Cpu } from "lucide-react";
 import { GitHubIcon } from "@/components/ui/SocialIcons";
-import Link from "next/link";
 import { researchItems } from "@/lib/data/resume";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { TiltCard } from "@/components/ui/TiltCard";
