@@ -6,6 +6,7 @@ import { FileText } from "lucide-react";
 import { GitHubIcon } from "@/components/ui/SocialIcons";
 import { personal } from "@/lib/data/resume";
 import { ScrambleText } from "@/components/ui/ScrambleText";
+import { TypeWriter } from "@/components/ui/TypeWriter";
 
 export function Hero() {
   return (
@@ -36,11 +37,12 @@ export function Hero() {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-neutral-500">K GOWDA</span>
             </h1>
 
-            {/* Static Role */}
+            {/* Dynamic Role */}
             <div className="mt-6 flex h-10 items-center justify-center lg:justify-start">
-                <p className="font-mono text-lg font-medium tracking-wide text-neutral-400 md:text-xl">
-                  Security Engineer & Systems Researcher.
-                </p>
+                <TypeWriter 
+                  words={["Security Engineer.", "Systems Researcher.", "Threat Intelligence Analyst.", "Cybersecurity Engineer.", "AI Security Engineer."]}
+                  className="font-mono text-lg font-medium tracking-wide text-neutral-400 md:text-xl"
+                />
             </div>
 
             {/* Value Proposition */}
