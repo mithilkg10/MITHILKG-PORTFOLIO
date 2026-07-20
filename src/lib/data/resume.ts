@@ -317,7 +317,7 @@ export const certifications = [
     issuer: "Google",
     year: "2026",
     status: "Coursera",
-    url: "https://www.coursera.org/account/accomplishments/professional-cert/GOOGLE-CYBER",
+    url: "/certificates/Google Cyber Security Porfessional Certificates.png",
   },
   {
     id: "ibm-cyber",
