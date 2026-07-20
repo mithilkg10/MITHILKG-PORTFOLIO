@@ -182,7 +182,7 @@ export const projects = [
       "Achieving sub-second autonomous response while coordinating distributed agents across deception, detection, and neutralization layers without increasing false positives.",
     results:
       "98.24% detection accuracy, 0.992 ROC-AUC, and 1.85% false positive rate on CIC-IDS2017 and simulated enterprise attack scenarios.",
-    github: "https://github.com/mithilkg10",
+    github: "https://github.com/mithilkg10/Multi-Agent-AI-Cyber-Defense-Framework",
     liveDemo: null,
     featured: true,
     roles: ["General", "AI Security Engineer", "Threat Intelligence Analyst", "Cybersecurity Engineer", "AI / ML Engineer", "Backend Engineer", "Software Engineer", "SOC Analyst"],
@@ -207,7 +207,7 @@ export const projects = [
       "Designing privacy-preserving trust validation that scales across financial, healthcare, and critical infrastructure domains while planning post-quantum migration.",
     results:
       "Ongoing research evaluating framework applications for EHR protection, financial systems security, and critical infrastructure defense.",
-    github: "https://github.com/mithilkg10",
+    github: "https://github.com/mithilkg10/C3T-STAVP-Cryptographic-Framework",
     liveDemo: null,
     featured: true,
     roles: ["General", "Application Security Engineer", "Cybersecurity Engineer", "Software Engineer", "Backend Engineer"],
@@ -232,10 +232,35 @@ export const projects = [
       "Balancing transparent market governance with privacy-preserving transaction validation across distributed carbon credit stakeholders.",
     results:
       "Abstract accepted at ICASF 2027, Abu Dhabi University — establishing a secure, AI-governed framework for carbon market intelligence.",
-    github: "https://github.com/mithilkg10",
+    github: "https://github.com/mithilkg10/CARBON-EX-PLATFORM",
     liveDemo: null,
     featured: false,
     roles: ["General", "Data Scientist", "Data Analyst", "GRC Analyst", "Business Intelligence Analyst", "Cloud Security Engineer"],
+  },
+  {
+    id: "canteen-management-system",
+    slug: "canteen-management-system",
+    title: "Enterprise Canteen Management System",
+    image: "/projects/honeybee.svg",
+    techStack: ["Full Stack", "Data Analytics", "RBAC", "Access Control"],
+    problem:
+      "Manual canteen management processes lead to inefficient meal ordering, poor inventory control, and lack of transparency in employee attendance tracking.",
+    solution:
+      "Developed a centralized enterprise canteen management platform with interactive analytics dashboards and role-based access control.",
+    securityFeatures: [
+      "Role-Based Access Control (RBAC)",
+      "Secure authentication mechanisms",
+      "Audit logging for operational transparency",
+      "Digital record management",
+    ],
+    challenges:
+      "Integrating meal demand forecasting and inventory optimization while maintaining strict access controls and compliance reporting.",
+    results:
+      "Automated manual business processes, improved efficiency, and reduced administrative overhead.",
+    github: "https://github.com/mithilkg10/Canteen-management-system",
+    liveDemo: null,
+    featured: false,
+    roles: ["General", "Software Engineer", "Backend Engineer"],
   },
 ];
 
@@ -292,6 +317,7 @@ export const certifications = [
     issuer: "Google",
     year: "2026",
     status: "Coursera",
+    url: "https://www.coursera.org/account/accomplishments/professional-cert/GOOGLE-CYBER",
   },
   {
     id: "ibm-cyber",
@@ -299,6 +325,7 @@ export const certifications = [
     issuer: "IBM",
     year: "2026",
     status: "Coursera",
+    url: "https://www.coursera.org/account/accomplishments/specialization/Y1GBH9GSCHE5",
   },
   {
     id: "ibm-frontend",
@@ -306,6 +333,7 @@ export const certifications = [
     issuer: "IBM",
     year: "2026",
     status: "Coursera",
+    url: "https://www.coursera.org/account/accomplishments/specialization/YKUEYK44AIQI",
   },
   {
     id: "ceh-cisco",
@@ -313,6 +341,7 @@ export const certifications = [
     issuer: "Cisco",
     year: "2025",
     status: "Networking Academy",
+    url: "/certificates/cisco networking academy certified ethical hacker .jpg",
   },
   {
     id: "ignou-cyber",
@@ -320,6 +349,7 @@ export const certifications = [
     issuer: "IGNOU",
     year: "2025",
     status: "SWAYAM",
+    url: "/certificates/introduction to cyber security.jpg",
   },
   {
     id: "usable-security",
@@ -327,6 +357,7 @@ export const certifications = [
     issuer: "NPTEL",
     year: "2025",
     status: "Elite Certification",
+    url: "/certificates/systems and usable security.jpg",
   },
   {
     id: "iot",
@@ -334,6 +365,7 @@ export const certifications = [
     issuer: "NPTEL",
     year: "2025",
     status: "Silver Medal",
+    url: "/certificates/iot.jpg",
   },
   {
     id: "bi-analytics",
@@ -341,6 +373,7 @@ export const certifications = [
     issuer: "NPTEL",
     year: "2025",
     status: "Completed",
+    url: "/certificates/buissness intelligence and analytics.jpg",
   },
   {
     id: "gcp-nptel",
@@ -348,6 +381,7 @@ export const certifications = [
     issuer: "NPTEL",
     year: "2024",
     status: "Completed",
+    url: "/certificates/google cloud somputing.jpg",
   },
 ];
 
