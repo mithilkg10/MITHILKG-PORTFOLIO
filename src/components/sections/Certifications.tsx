@@ -6,6 +6,7 @@ import { certifications } from "@/lib/data/resume";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 
 const issuerColors: Record<string, string> = {
+  Google: "from-blue-500/20 via-red-500/10 to-yellow-500/10 border-blue-500/30 text-white",
   IBM: "from-blue-600/20 to-cyan-500/10 border-blue-500/20 text-blue-400",
   Cisco: "from-green-500/20 to-emerald-500/10 border-emerald-500/20 text-emerald-400",
   IGNOU: "from-orange-500/20 to-red-500/10 border-orange-500/20 text-orange-400",
@@ -40,7 +41,13 @@ export function Certifications() {
                     <div
                       className={`mb-5 flex h-16 w-16 items-center justify-center rounded-2xl border bg-gradient-to-br ${colorClass} font-mono text-xl font-bold`}
                     >
-                      {cert.issuer.slice(0, 2).toUpperCase()}
+                      {cert.issuer === "Google" ? (
+                        <span className="bg-gradient-to-r from-[#4285F4] via-[#EA4335] to-[#FBBC05] bg-clip-text text-transparent drop-shadow-sm filter">
+                          G
+                        </span>
+                      ) : (
+                        cert.issuer.slice(0, 2).toUpperCase()
+                      )}
                     </div>
                     <h3 className="text-center font-heading text-sm font-semibold leading-relaxed text-foreground/90">{cert.title}</h3>
                     <p className="mt-2 font-mono text-xs text-foreground/50">{cert.issuer}</p>

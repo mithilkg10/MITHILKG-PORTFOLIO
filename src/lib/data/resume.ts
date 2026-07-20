@@ -287,6 +287,13 @@ export const cyberLab = {
 
 export const certifications = [
   {
+    id: "google-cyber",
+    title: "Google Cybersecurity",
+    issuer: "Google",
+    year: "2026",
+    status: "Coursera",
+  },
+  {
     id: "ibm-cyber",
     title: "IBM IT Fundamentals for Cybersecurity Specialization",
     issuer: "IBM",
