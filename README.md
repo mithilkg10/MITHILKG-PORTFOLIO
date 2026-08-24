@@ -1,42 +1,80 @@
-# Mithil K Gowda — Cybersecurity Portfolio
+# Mithil K Gowda Cybersecurity Portfolio
 
-Premium cybersecurity portfolio built with Next.js 15, React, TypeScript, TailwindCSS, Framer Motion, GSAP, and Three.js.
+Personal cybersecurity engineering and research portfolio built with Next.js, React, TypeScript, Tailwind CSS, Framer Motion, GSAP, Three.js, and Mermaid.
 
-## Quick Start
+The site presents security projects, research work, professional experience, certifications, technical assessments, and selected engineering evidence in one recruiter friendly interface.
+
+## Technology
+
+* Next.js 15
+* React 19
+* TypeScript
+* Tailwind CSS
+* Framer Motion
+* GSAP
+* Three.js
+* React Three Fiber
+* Mermaid
+* Playwright tooling
+* GitHub Actions
+* Trivy filesystem scanning
+
+## Local development
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open:
 
-## Before Deploying
-
-1. **Profile photo** — Add your professional photo to `public/profile.jpg`
-2. **Resume PDF** — Already at `public/resume.pdf` (sourced from your uploaded resume)
-3. **Reference video** — Stored in `reference/` (not deployed; UI inspiration only)
-4. **GitHub token** (optional) — Set `GITHUB_TOKEN` in `.env.local` for higher API rate limits
-
-## Tech Stack
-
-- Next.js 15 · React 19 · TypeScript
-- TailwindCSS v4
-- Framer Motion · GSAP ScrollTrigger
-- Three.js / React Three Fiber
-- Lucide Icons
-
-## Project Structure
-
+```text
+http://localhost:3000
 ```
+
+## Validation
+
+The repository CI performs:
+
+* Dependency installation
+* ESLint validation
+* TypeScript type checking
+* Production build validation
+* Trivy scanning for high and critical findings
+
+## Content structure
+
+```text
 src/
-├── app/              # Next.js app router
-├── components/
-│   ├── layout/       # Navigation, Footer
-│   ├── sections/     # Page sections
-│   ├── three/        # Three.js components
-│   └── ui/           # Reusable UI components
-└── lib/data/         # Resume content (single source of truth)
+  app/
+  components/
+    layout/
+    sections/
+    three/
+    ui/
+  lib/data/
+public/
 ```
 
-All portfolio content is sourced from `src/lib/data/resume.ts` — edit that file to update text.
+Portfolio content is maintained primarily through the project data layer so information can be updated consistently.
+
+## Public assets
+
+Public portfolio assets should use descriptive filenames and should contain only material intentionally published for recruiters or visitors.
+
+Recommended naming examples:
+
+```text
+mithil_k_gowda_resume.pdf
+google_cybersecurity_certificate.pdf
+incident_response_analysis.pdf
+stavp_one_page.pdf
+```
+
+## Deployment
+
+The GitHub repository homepage points to the deployed portfolio.
+
+## Repository purpose
+
+This repository is a presentation layer for cybersecurity engineering work. The deeper technical implementation for major projects is maintained in their respective repositories, particularly ABHEDYA and VYOMRIX.
