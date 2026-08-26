@@ -1,3 +1,5 @@
+import { recentBlogPosts } from "./recentBlogData";
+
 export interface BlogPost {
   id: string;
   slug: string;
@@ -163,3 +165,5 @@ pub fn generate_proof(
     ]
   }
 ];
+
+blogPosts.push(...recentBlogPosts);
