@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Shield, AlertTriangle, CheckCircle, Wrench } from "lucide-react";
 import { GitHubIcon } from "@/components/ui/SocialIcons";
-import { projects } from "@/lib/data/resume";
+import { projects } from "@/lib/data/portfolioOverrides";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { TiltCard } from "@/components/ui/TiltCard";
 import { MagneticButton } from "@/components/ui/MagneticButton";
