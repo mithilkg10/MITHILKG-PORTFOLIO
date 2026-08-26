@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MapPin, Calendar, GitCommit } from "lucide-react";
-import { experience } from "@/lib/data/resume";
+import { experience } from "@/lib/data/portfolioOverrides";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { useRole } from "@/lib/data/roleContext";
 
@@ -42,11 +42,10 @@ export function Experience() {
         <SectionHeader
           label="Experience"
           title="Building Security at Scale"
-          description="Real-world experience securing data and building analytics platforms for India's space research organization."
+          description="Security research, freelance SOC operations, vulnerability analysis, and backend engineering experience across independent work and ISRO LEOS."
         />
 
         <div className="relative">
-          {/* Clean Git-style commit line */}
           <div className="absolute left-[2.25rem] top-4 h-[calc(100%-2rem)] w-px bg-white/10 md:left-1/2 md:-translate-x-px" />
 
           {[...experience]
@@ -68,7 +67,6 @@ export function Experience() {
               <div className={`flex flex-col md:flex-row ${index % 2 === 0 ? "md:flex-row-reverse" : ""} gap-8`}>
                 <div className="hidden md:block md:w-1/2" />
 
-                {/* Commit node */}
                 <div className="absolute left-[2.25rem] z-10 flex h-6 w-6 -translate-x-1/2 items-center justify-center rounded-full border-4 border-background bg-white/20 shadow-[0_0_0_1px_rgba(255,255,255,0.1)] md:left-1/2">
                   <div className="h-1.5 w-1.5 rounded-full bg-foreground" />
                 </div>
@@ -78,10 +76,10 @@ export function Experience() {
                     <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1">
                       <span className="font-mono text-xs font-semibold text-foreground/80">{exp.logo}</span>
                     </div>
-                    
+
                     <h3 className="font-heading text-xl font-bold text-foreground">{exp.company}</h3>
                     <p className="mt-2 text-sm font-medium text-foreground/80">{exp.role}</p>
-                    
+
                     <div className="mt-4 flex flex-wrap gap-4 font-mono text-xs text-foreground/50">
                       <span className="flex items-center gap-1.5">
                         <Calendar className="h-3.5 w-3.5" />
@@ -92,7 +90,7 @@ export function Experience() {
                         {exp.location}
                       </span>
                     </div>
-                    
+
                     <ul className="mt-6 space-y-3">
                       {exp.highlights.map((h, i) => (
                         <li key={i} className="flex gap-3 text-sm leading-relaxed text-foreground/60">
