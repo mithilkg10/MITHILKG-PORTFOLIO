@@ -9,5 +9,11 @@
     "vyomrix_incident": "EVIDENCE CAPTURE PENDING",
     "timeline_report": "EVIDENCE CAPTURE PENDING"
   },
-  "claim_boundary": "8 built-in Wazuh IDs plus custom 100201; no fake screenshots or new telemetry"
+  "claim_boundary": "8 built-in Wazuh IDs plus custom 100201; no fake screenshots or new telemetry",
+  "replay": {
+    "data": "Generated from preserved incident JSON, case documentation and authored rule files. Source SHA256s included in every practice report.",
+    "timing": "8-second presentation stages are not original event chronology.",
+    "decisions": "Browser-only practice. Historical outcomes remain unchanged.",
+    "offline": "Existing self-contained evidence edition remains available; interactive range requires the local or hosted app."
+  }
 }

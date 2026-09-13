@@ -1,0 +1,622 @@
+[
+  {
+    "id": "INC-001",
+    "slug": "authentication-attack",
+    "title": "Authentication",
+    "status": "PASS",
+    "proof": "Six failures. One correlation.",
+    "detail": "Six unique Security 4625 records crossed a five-event, same-account, five-minute threshold.",
+    "telemetry": "Security 4625",
+    "detection": "Sigma + custom Wazuh 100201",
+    "mitre": "T1110",
+    "incident": "INC-B4FBF410",
+    "limit": "One nonexistent synthetic account; no successful login.",
+    "visual": "01  02  03  04  05  06 → 100201",
+    "raw": {
+      "synthetic_account": "CyberLab_Ph3_NoUser",
+      "wazuh_4625_alerts": 6,
+      "unique_event_records": 6,
+      "threshold": "5 events per target account within 5 minutes",
+      "threshold_satisfied": true,
+      "custom_rule_id": "100201",
+      "custom_correlation_alerts": 1,
+      "correlation_alert_ids": [
+        "1789280470.5309068"
+      ],
+      "first_timestamp": "2026-09-13T11:51:06.143+05:30",
+      "last_timestamp": "2026-09-13T11:51:11.336+05:30"
+    },
+    "rawPath": "incidents/INC-001-authentication-attack/evidence/correlation-observation.json",
+    "alert": {
+      "alert_id": "1789280470.5309068",
+      "timestamp": "2026-09-13T06:21:10.316+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "100201",
+        "description": "Five Windows failed logons for the same account within five minutes: CyberLab_Ph3_NoUser",
+        "level": 10,
+        "mitre": {
+          "id": [
+            "T1110"
+          ],
+          "tactic": [
+            "Credential Access"
+          ],
+          "technique": [
+            "Brute Force"
+          ]
+        }
+      },
+      "windows": {
+        "eventID": "4625",
+        "eventRecordID": "5596",
+        "targetUserName": "CyberLab_Ph3_NoUser",
+        "status": "0xc000006d",
+        "subStatus": "0xc0000064",
+        "logonType": "2",
+        "ipAddress": "::1"
+      }
+    },
+    "severity": "High",
+    "origin": "Controlled Windows process on WIN-LAB-01",
+    "method": "Six failed secondary-logon attempts targeted `CyberLab_Ph3_NoUser`. The account does not exist and the credential string was synthetic and redacted from evidence.",
+    "observables": "Synthetic target `CyberLab_Ph3_NoUser`; Windows event 4625; Wazuh rules 60122 and 100201; six unique record IDs.",
+    "investigation": "Confirmed a single target account, six unique event records, a five-second observed window, no successful authentication, and no real identity impact.",
+    "containment": "Stopped the test after six failures. The synthetic account did not exist, so no account disablement was required.",
+    "remediation": "Use MFA, account lockout or smart throttling, stale-credential hygiene, and alert enrichment with source and success/failure context.",
+    "retest": "PASS: six unique 4625 events generated one custom rule 100201 alert at the configured threshold.",
+    "rules": [
+      {
+        "file": "failed_logon.yml",
+        "source": "detections/sigma/failed_logon.yml",
+        "text": "title: Windows Failed Logon Signal\nid: 43253844-7a7b-5f19-b5b1-5d1d4e521ccf\nstatus: test\ndescription: Base signal for Windows failed logons. Validated by six controlled 4625\n  records in INC-001 and used by the separate five-event correlation rule.\nauthor: CyberLab\ndate: '2026-09-10'\nlogsource:\n  product: windows\n  service: security\ndetection:\n  selection:\n    EventID: 4625\n  condition: selection\nfalsepositives:\n- Single-event signal; correlate five events per target account in five minutes in\n  the deployed platform. Incorrect saved credentials are common.\nreferences:\n- incidents/INC-001-authentication-attack/evidence/correlation-observation.json\nlevel: medium\ntags:\n- attack.credential_access\n- attack.t1110\n",
+        "validation": "VALIDATED"
+      },
+      {
+        "file": "failed_logon_burst.yml",
+        "source": "detections/sigma/failed_logon_burst.yml",
+        "text": "title: Windows Failed Logon Burst by Target Account\nid: 5f52aa30-6b9c-4c44-b209-6919e30842de\nstatus: test\ndescription: Correlates five Windows failed-logon base signals for the same target\n  account within five minutes. Validated by INC-001 and custom Wazuh rule 100201.\nauthor: CyberLab\ndate: '2026-09-13'\ncorrelation:\n  type: event_count\n  rules:\n  - 43253844-7a7b-5f19-b5b1-5d1d4e521ccf\n  group-by:\n  - TargetUserName\n  timespan: 5m\n  condition:\n    gte: 5\nfalsepositives:\n- Stale saved credentials, mistyped service passwords, or legitimate user error.\nlevel: high\ntags:\n- attack.credential_access\n- attack.t1110\nreferences:\n- incidents/INC-001-authentication-attack/evidence/correlation-observation.json\n",
+        "validation": "VALIDATED"
+      }
+    ],
+    "customRule": "<group name=\"windows,authentication_failures,\">\n  <rule id=\"100201\" level=\"10\" frequency=\"5\" timeframe=\"300\">\n    <if_matched_sid>60122</if_matched_sid>\n    <same_field>win.eventdata.targetUserName</same_field>\n    <description>Five Windows failed logons for the same account within five minutes: $(win.eventdata.targetUserName)</description>\n    <mitre>\n      <id>T1110</id>\n    </mitre>\n    <group>authentication_failed,correlation,</group>\n  </rule>\n</group>\n",
+    "sources": [
+      {
+        "file": "incidents/INC-001-authentication-attack/evidence/correlation-observation.json",
+        "sha256": "12f444e88303ea41ec65a37f85ca1e60bfeb53273760adc36b16fea77c48aa74"
+      },
+      {
+        "file": "incidents/INC-001-authentication-attack/README.md",
+        "sha256": "6b5b6b8cf2c92d38bd50522beb846de10f84f03c116e11ef512e2857ca27657a"
+      },
+      {
+        "file": "incidents/INC-001-authentication-attack/CONTAINMENT.md",
+        "sha256": "f9ef41d945cf636193f847bec32c392cb93abb0d31254393a41e1dc5cfec2351"
+      },
+      {
+        "file": "incidents/INC-001-authentication-attack/REMEDIATION.md",
+        "sha256": "6e08bf8bc2194693b9ddbdcf716a1e41b499304f4f80b622a294ebd4a20baa1e"
+      },
+      {
+        "file": "incidents/INC-001-authentication-attack/RETEST.md",
+        "sha256": "a51390d319021c7031c756f464a8f432fdfbd22ebef8afb3b459d9194f6b7e58"
+      },
+      {
+        "file": "detections/sigma/failed_logon.yml",
+        "sha256": "2d3ed1d6ff728d54d21044db2d6add848e432b0039a2cfbe11c728fea128036a"
+      },
+      {
+        "file": "detections/sigma/failed_logon_burst.yml",
+        "sha256": "8514fbb499915cfa3d758f1a7212a95c2b21eff4efcfd37150b4a45865ee7257"
+      },
+      {
+        "file": "detections/wazuh/phase3_auth_rules.xml",
+        "sha256": "dc6c3943782e599fcbcb89a3f3c2e6149202c7341d614c9ba37884b41f6443ac"
+      },
+      {
+        "file": "incidents/INC-001-authentication-attack/evidence/wazuh-alerts.json",
+        "sha256": "1450ed45046132b4eb68371487d3e0d83ea82166ad83e24012b99b6415a1157a"
+      }
+    ]
+  },
+  {
+    "id": "INC-002",
+    "slug": "powershell",
+    "title": "Encoded PowerShell",
+    "status": "PASS",
+    "proof": "One command. A complete evidence chain.",
+    "detail": "A benign encoded command appeared in PowerShell 4104 and Wazuh 92057, then in a documented VYOMRIX investigation.",
+    "telemetry": "PowerShell 4104 / Sysmon 1",
+    "detection": "Authored Sigma / built-in Wazuh 92057",
+    "mitre": "T1059.001",
+    "incident": "INC-3DBE1D32",
+    "limit": "Benign marker only; no download or network action.",
+    "visual": "4104 → SIGMA → 92057 → DECISION",
+    "raw": {
+      "scenario": "benign encoded PowerShell",
+      "decoded_command": "Write-Output 'CyberLab-Phase3-Encoded-Benign'",
+      "network_activity": "none generated",
+      "sysmon_process_events": [],
+      "powershell_4104_events": [
+        {
+          "event_id": 4104,
+          "record_id": 2285,
+          "timestamp_utc": "2026-09-13T06:12:17.1839479Z",
+          "script_block_text": "Write-Output 'CyberLab-Phase3-Encoded-Benign'"
+        }
+      ]
+    },
+    "rawPath": "incidents/INC-002-powershell/evidence/windows-events.json",
+    "alert": {
+      "alert_id": "1789279933.4126869",
+      "timestamp": "2026-09-13T06:12:13.439+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "92057",
+        "description": "Powershell.exe spawned a powershell process which executed a base64 encoded command",
+        "level": 12,
+        "mitre": {
+          "id": [
+            "T1059.001"
+          ],
+          "tactic": [
+            "Execution"
+          ],
+          "technique": [
+            "PowerShell"
+          ]
+        }
+      },
+      "windows": {
+        "eventID": "1",
+        "eventRecordID": "2128",
+        "image": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+        "commandLine": "\\\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\\\" -NoProfile -EncodedCommand VwByAGkAdABlAC0ATwB1AHQAcAB1AHQAIAAnAEMAeQBiAGUAcgBMAGEAYgAtAFAAaABhAHMAZQAzAC0ARQBuAGMAbwBkAGUAZAAtAEIAZQBuAGkAZwBuACcA",
+        "user": "WIN-LAB-01\\\\labadmin",
+        "parentImage": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe"
+      }
+    },
+    "severity": "Medium",
+    "origin": "Controlled Windows process on WIN-LAB-01",
+    "method": "A child PowerShell process decoded and ran only `Write-Output 'CyberLab-Phase3-Encoded-Benign'`.",
+    "observables": "`powershell.exe`, `-EncodedCommand`, parent process, benign decoded marker, Wazuh alert ID.",
+    "investigation": "Decoded the command, reviewed parent/child context, confirmed the user and timestamp, and verified no network action.",
+    "containment": "The process exited normally and made no network connection. No endpoint protection was disabled.",
+    "remediation": "Constrain PowerShell where appropriate, retain script-block logging, use signed administrative scripts, and investigate encoded content in context.",
+    "retest": "PASS: new 4104 and Wazuh 92057 evidence matched the existing Sigma selection.",
+    "rules": [
+      {
+        "file": "encoded_powershell.yml",
+        "source": "detections/sigma/encoded_powershell.yml",
+        "text": "title: PowerShell Encoded Command\nid: af941452-06ae-5d0f-99e5-57f667d75887\nstatus: test\ndescription: Detects encoded PowerShell process creation. Validated against controlled\n  INC-002 telemetry and Wazuh rule 92057; the benign payload performed no network action.\nauthor: CyberLab\ndate: '2026-09-10'\nlogsource:\n  product: windows\n  service: sysmon\ndetection:\n  selection:\n    EventID: 1\n    Image|endswith: \\powershell.exe\n    CommandLine|contains: -EncodedCommand\n  condition: selection\nfalsepositives:\n- Administration and this lab guestcontrol helper legitimately use encoded commands.\nreferences:\n- incidents/INC-002-powershell/evidence/wazuh-alerts.json\nlevel: medium\ntags:\n- attack.execution\n- attack.t1059.001\n",
+        "validation": "VALIDATED"
+      }
+    ],
+    "customRule": null,
+    "sources": [
+      {
+        "file": "incidents/INC-002-powershell/evidence/windows-events.json",
+        "sha256": "cbb922b62f65ee1bb3ef95d7923b14043daa7f9c7586d44c56fce2d795eae1d9"
+      },
+      {
+        "file": "incidents/INC-002-powershell/README.md",
+        "sha256": "fefc2eaad8c25cd93477191bb0aaf10818b453d834b92586e984fc90fc10b6b9"
+      },
+      {
+        "file": "incidents/INC-002-powershell/CONTAINMENT.md",
+        "sha256": "96f6785d30c57033368edc04e244aa9791a1a4950146ea719fe8323075ed3747"
+      },
+      {
+        "file": "incidents/INC-002-powershell/REMEDIATION.md",
+        "sha256": "b8999c84b7d6a7d94ce186773970aaddcd39dfcb69dbc6b90911a2e0b127426b"
+      },
+      {
+        "file": "incidents/INC-002-powershell/RETEST.md",
+        "sha256": "5841eb8570ad8a210580bbdb991a8e43bd9b8fe6dd3264d4c9d0fc64acc9d0b0"
+      },
+      {
+        "file": "detections/sigma/encoded_powershell.yml",
+        "sha256": "b0ec1da8c1cf7159a8b63504258714047fbd8913bf421c6a6a2a521400c0c46b"
+      },
+      {
+        "file": "incidents/INC-002-powershell/evidence/wazuh-alerts.json",
+        "sha256": "a539c5e652eb052843b783e73b8f2e5025a2073bd67a68c1b59157e9a5ebc278"
+      }
+    ]
+  },
+  {
+    "id": "INC-003",
+    "slug": "scheduled-task",
+    "title": "Scheduled task",
+    "status": "PASS",
+    "proof": "Creation observed. Cleanup verified.",
+    "detail": "Security 4698 and Wazuh 60228 recorded the visible task registration; the task was removed.",
+    "telemetry": "Security 4698 / PowerShell",
+    "detection": "Sigma / built-in Wazuh 60228",
+    "mitre": "T1053.005",
+    "incident": "INC-CCEDCE5A",
+    "limit": "Task payload execution was not observed.",
+    "visual": "+ REGISTERED     − REMOVED",
+    "raw": {
+      "scenario": "harmless scheduled task creation and execution",
+      "task_name": "CyberLab-Phase3-Benign",
+      "output_created": false,
+      "task_removed": true,
+      "security_4698": [],
+      "sysmon_process_events": []
+    },
+    "rawPath": "incidents/INC-003-scheduled-task/evidence/windows-events.json",
+    "alert": {
+      "alert_id": "1789279945.4271639",
+      "timestamp": "2026-09-13T06:12:25.834+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "60228",
+        "description": "A scheduled task was created",
+        "level": 4,
+        "mitre": {
+          "id": [
+            "T1053"
+          ],
+          "tactic": [
+            "Execution",
+            "Persistence",
+            "Privilege Escalation"
+          ],
+          "technique": [
+            "Scheduled Task/Job"
+          ]
+        }
+      },
+      "windows": {
+        "eventID": "4698",
+        "eventRecordID": "4616",
+        "taskName": "\\\\CyberLab-Phase3-Benign"
+      }
+    },
+    "severity": "Medium",
+    "origin": "Controlled Windows process on WIN-LAB-01",
+    "method": "Registered a one-time task with a benign file-writing action, requested execution, then removed it. The payload file was not produced before cleanup, so execution is not claimed.",
+    "observables": "Task `CyberLab-Phase3-Benign`; Security 4698; Wazuh rule 60228; task XML in sanitized alert evidence.",
+    "investigation": "Reviewed task name, task content, creator, timestamp, intended action, and post-test absence of the task.",
+    "containment": "Unregistered the task and verified it no longer exists. No stealth or startup trigger was used.",
+    "remediation": "Restrict task creation, audit task registration, monitor unusual actions and user-writable paths, and inventory approved task baselines.",
+    "retest": "PASS for creation detection and cleanup. Payload execution was not observed and remains explicitly outside the claim.",
+    "rules": [
+      {
+        "file": "scheduled_task.yml",
+        "source": "detections/sigma/scheduled_task.yml",
+        "text": "title: Windows Scheduled Task Created\nid: 3e5ae344-ccd6-541b-a25d-68209f41d49a\nstatus: test\ndescription: Detects Windows scheduled-task creation. Validated by INC-003 Security\n  event 4698 and Wazuh rule 60228; task execution must be investigated separately.\nauthor: CyberLab\ndate: '2026-09-10'\nlogsource:\n  product: windows\n  service: security\ndetection:\n  selection:\n    EventID: 4698\n  condition: selection\nfalsepositives:\n- Software deployment and legitimate maintenance tasks.\nreferences:\n- incidents/INC-003-scheduled-task/evidence/wazuh-alerts.json\nlevel: medium\ntags:\n- attack.persistence\n- attack.t1053.005\n",
+        "validation": "VALIDATED"
+      }
+    ],
+    "customRule": null,
+    "sources": [
+      {
+        "file": "incidents/INC-003-scheduled-task/evidence/windows-events.json",
+        "sha256": "f8e6f37747bd1032db5dfe3b47e62737e17e04f689aef7faf0e3937d8a09e1f2"
+      },
+      {
+        "file": "incidents/INC-003-scheduled-task/README.md",
+        "sha256": "1257d38f0f51e7505df37c419e5fc62cb91d00aa0bc606ca05201f06cc54e3f5"
+      },
+      {
+        "file": "incidents/INC-003-scheduled-task/CONTAINMENT.md",
+        "sha256": "ff6a2d2e801763923a950c4c72a341530a230ea339dfab6889d3779255c92663"
+      },
+      {
+        "file": "incidents/INC-003-scheduled-task/REMEDIATION.md",
+        "sha256": "387b4ce333754bc4bf6364b0bac8ef96c2bfb7ca40744a816938f978c55a790f"
+      },
+      {
+        "file": "incidents/INC-003-scheduled-task/RETEST.md",
+        "sha256": "83134fdb11ab6647d606ee7fd108d0eb12170d85fecfc920dd414d526e9c290b"
+      },
+      {
+        "file": "detections/sigma/scheduled_task.yml",
+        "sha256": "bfe38899fd33f66a939be4129706adca2ab6735fdcf64e0d92a8dffb7173d6ee"
+      },
+      {
+        "file": "incidents/INC-003-scheduled-task/evidence/wazuh-alerts.json",
+        "sha256": "4a3d0829b2819f72b0dffabbd690c1b22caeeae224830d88f4c5619617c5472f"
+      }
+    ]
+  },
+  {
+    "id": "INC-004",
+    "slug": "credential-access",
+    "title": "Credential-access simulation",
+    "status": "PARTIAL",
+    "proof": "The denied request is the finding.",
+    "detail": "Windows denied a query-only LSASS handle request. Wazuh recorded discovery; Sysmon Event 10 was absent.",
+    "telemetry": "PowerShell 4104",
+    "detection": "Wazuh 91815 discovery only",
+    "mitre": "T1003 · context only, not counted",
+    "incident": "INC-C8A3C71C",
+    "limit": "No credential read, memory dump, or Event 10. LSASS Sigma NOT_TRIGGERED.",
+    "visual": "QUERY DENIED    ◇    EVENT 10: 0",
+    "raw": {
+      "scenario": "credential-access behavioural simulation using process query only",
+      "requested_access": "PROCESS_QUERY_LIMITED_INFORMATION (0x1000)",
+      "process_handle_opened": false,
+      "credentials_read": false,
+      "credentials_harvested": false,
+      "sysmon_event_10": [],
+      "conclusion": "Credential-access behaviour was emulated. No real credentials were harvested."
+    },
+    "rawPath": "incidents/INC-004-credential-access/evidence/windows-events.json",
+    "alert": {
+      "alert_id": "1789279957.4351342",
+      "timestamp": "2026-09-13T06:12:37.050+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "91815",
+        "description": "Powershell executing process discovery",
+        "level": 4,
+        "mitre": {
+          "id": [
+            "T1057"
+          ],
+          "tactic": [
+            "Discovery"
+          ],
+          "technique": [
+            "Process Discovery"
+          ]
+        }
+      },
+      "windows": {
+        "eventID": "4104",
+        "eventRecordID": "2377",
+        "scriptBlockText": "$ErrorActionPreference = 'Stop' $start = Get-Date Add-Type -TypeDefinition @' using System; using System.Runtime.InteropServices; public static class Phase3ProcessQuery {   [DllImport(\\\"kernel32.dll\\\", SetLastError=true)] public static extern IntPtr OpenProcess(uint access, bool inherit, int pid);   [DllImport(\\\"kernel32.dll\\\")] public static extern bool CloseHandle(IntPtr handle); } '@ $lsass = Get-Process -Name lsass $queryLimitedInformation = 0x1000 $handle = [Phase3ProcessQuery]::OpenProcess($queryLimitedInformation, $false, $lsass.Id) $opened = $handle -ne [IntPtr]::Zero if ($opened) { [Phase3ProcessQuery]::CloseHandle($handle) | Out-Null } Start-Sleep -Seconds 3 $events = foreach ($event in Get-WinEvent -FilterHashtable @{ LogName='Microsoft-Windows-Sysmon/Operational'; Id=10; StartTime=$start } -ErrorAction SilentlyContinue) {   [xml]$xml = $event.ToXml(); $fields = @{}   foreach ($item in $xml.Event.EventData.Data) { $fields[$item.Name] = [string]$item.'#text' }   if ($fields.TargetImage -like '*\\\\lsass.exe' -and $fields.SourceImage -like '*\\\\powershell.exe') {     [ordered]@{ event_id=10; record_id=$event.RecordId; timestamp_utc=$event.TimeCreated.ToUniversalTime().ToStrin"
+      }
+    },
+    "severity": "Low",
+    "origin": "Controlled Windows process on WIN-LAB-01",
+    "method": "Requested only `PROCESS_QUERY_LIMITED_INFORMATION (0x1000)` against LSASS and immediately closed any handle. Windows denied the request.",
+    "observables": "PowerShell process discovery; target `lsass.exe`; requested access 0x1000; handle-open result false; Event 10 count zero.",
+    "investigation": "Confirmed the handle was not opened, no memory-read API was used, no artifact containing credentials existed, and no Event 10 was emitted.",
+    "containment": "No handle opened and no credential material existed. The one-shot process ended immediately.",
+    "remediation": "Protect LSASS, enable Credential Guard where compatible, retain Event 10 telemetry, and baseline approved security products.",
+    "retest": "PARTIAL: safe access was denied and no Event 10 resulted. Riskier tooling was deliberately not used.",
+    "rules": [
+      {
+        "file": "lsass_process_access.yml",
+        "source": "detections/sigma/lsass_process_access.yml",
+        "text": "title: Suspicious Process Access to LSASS\nid: 3d9a5f68-355d-4eef-8cdd-5fc7d4ec1549\nstatus: experimental\ndescription: Detects selected process-access rights against LSASS. INC-004 attempted\n  query-only access but Windows denied it and produced no Event 10, so this rule is not validated.\nauthor: CyberLab\ndate: '2026-09-13'\nlogsource:\n  product: windows\n  service: sysmon\ndetection:\n  selection:\n    EventID: 10\n    TargetImage|endswith: \\lsass.exe\n    GrantedAccess|contains:\n    - '0x1010'\n    - '0x1410'\n    - '0x1438'\n    - '0x1fffff'\n  condition: selection\nfalsepositives:\n- Endpoint security, identity protection, backup, and diagnostic products may inspect LSASS.\nlevel: high\ntags:\n- attack.credential_access\n- attack.t1003\nreferences:\n- incidents/INC-004-credential-access/evidence/windows-events.json\n",
+        "validation": "NOT_TRIGGERED"
+      }
+    ],
+    "customRule": null,
+    "sources": [
+      {
+        "file": "incidents/INC-004-credential-access/evidence/windows-events.json",
+        "sha256": "d9609ee0d86c13d21146ce76f49c63084eb38fda26d313302a2b1f3ea2e02b3c"
+      },
+      {
+        "file": "incidents/INC-004-credential-access/README.md",
+        "sha256": "0c33048b25d58adceda0d10ba1203bde4811f2e9a557db1e55fc71ee2fc45e50"
+      },
+      {
+        "file": "incidents/INC-004-credential-access/CONTAINMENT.md",
+        "sha256": "26389ca7345ccdb86a858c9ed175266097ce8f2c2abbc0f424fbb6f6a07d463d"
+      },
+      {
+        "file": "incidents/INC-004-credential-access/REMEDIATION.md",
+        "sha256": "237b408faed35289e0ac3b43ec075886a5c100279800acf715a0172e3c64e69f"
+      },
+      {
+        "file": "incidents/INC-004-credential-access/RETEST.md",
+        "sha256": "55743023e0fd312a757345b67744e67b88210c2aacd4f9a4bf461b8f1dd88a61"
+      },
+      {
+        "file": "detections/sigma/lsass_process_access.yml",
+        "sha256": "e4a66008db1c84acaba7d5554c258ba44ca3cb1ee55f37e00fddee4d6ae83fec"
+      },
+      {
+        "file": "incidents/INC-004-credential-access/evidence/wazuh-alerts.json",
+        "sha256": "3e210e1305749f2778988915133baa3a14db76c4f0ee742e5ca03b7f71d2a7ad"
+      }
+    ]
+  },
+  {
+    "id": "INC-005",
+    "slug": "web-attack",
+    "title": "Host-only web findings",
+    "status": "PASS",
+    "proof": "Application outcomes establish impact.",
+    "detail": "An isolated purpose-built app recorded SQL injection bypass and traversal constrained to synthetic lab files.",
+    "telemetry": "Application JSON / PowerShell",
+    "detection": "Two application-log Sigma rules",
+    "mitre": "AppSec · no Enterprise mapping",
+    "incident": "INC-7890B5F0",
+    "limit": "No Wazuh alert. A fixed-application remediation retest was not performed.",
+    "visual": "REQUEST → sql-injection-bypass / path-traversal",
+    "raw": [
+      {
+        "timestamp_utc": "2026-09-13T11:44:42.412039+05:30",
+        "source": "192.168.56.1",
+        "method": "GET",
+        "path": "/health",
+        "status": 200,
+        "finding": "health",
+        "response_bytes": 44
+      },
+      {
+        "timestamp_utc": "2026-09-13T11:44:47.772731+05:30",
+        "source": "192.168.56.20",
+        "method": "GET",
+        "path": "/login?username=viewer&password=wrong",
+        "status": 200,
+        "finding": "login",
+        "response_bytes": 47
+      },
+      {
+        "timestamp_utc": "2026-09-13T11:44:48.04335+05:30",
+        "source": "192.168.56.20",
+        "method": "GET",
+        "path": "/login?username=admin'%20--&password=wrong",
+        "status": 200,
+        "finding": "sql-injection-bypass",
+        "response_bytes": 52
+      },
+      {
+        "timestamp_utc": "2026-09-13T11:44:48.047736+05:30",
+        "source": "192.168.56.20",
+        "method": "GET",
+        "path": "/files?name=..%2Fsecrets%2Fdemo-secret.txt",
+        "status": 200,
+        "finding": "path-traversal",
+        "response_bytes": 88
+      }
+    ],
+    "rawPath": "incidents/INC-005-web-attack/evidence/application-requests.json",
+    "alert": null,
+    "severity": "High",
+    "origin": "WIN-LAB-01 → host-only application",
+    "method": "Sent one failed normal login, one crafted username that altered the SQL query, and one traversal path escaping the intended public directory while remaining inside the lab app root.",
+    "observables": "Destination 192.168.56.1:8085; HTTP GET; explicit application findings; synthetic path `../secrets/demo-secret.txt`.",
+    "investigation": "Confirmed normal authentication failed, injection returned the synthetic admin role, traversal returned only the synthetic marker, source was WIN-LAB-01, and the listener was host-only.",
+    "containment": "Stopped the temporary server and verified port 8085 no longer listened. The vulnerable root remained inside CyberLab evidence storage.",
+    "remediation": "Use parameterized queries; resolve and enforce an allowlisted content root; return generic errors; add structured security logging and tests.",
+    "retest": "PASS as a vulnerability demonstration. A fixed application was not deployed, so remediation retest remains a documented next engineering step.",
+    "rules": [
+      {
+        "file": "web_sql_injection.yml",
+        "source": "detections/sigma/web_sql_injection.yml",
+        "text": "title: CyberLab Web Authentication SQL Injection Result\nid: a90e9972-0ad8-4739-81b3-09e60397c94f\nstatus: test\ndescription: Detects the purpose-built lab application's explicit SQL-injection bypass\n  result. Validated by INC-005 request metadata; this log source is lab-specific.\nauthor: CyberLab\ndate: '2026-09-13'\nlogsource:\n  category: webserver\n  product: cyberlab_vulnerable_app\ndetection:\n  selection:\n    finding: sql-injection-bypass\n    status: 200\n  condition: selection\nfalsepositives:\n- None expected for this explicit lab finding field; production applications require different instrumentation.\nlevel: high\nreferences:\n- incidents/INC-005-web-attack/evidence/application-requests.json\n",
+        "validation": "VALIDATED"
+      },
+      {
+        "file": "web_path_traversal.yml",
+        "source": "detections/sigma/web_path_traversal.yml",
+        "text": "title: CyberLab Web Path Traversal Result\nid: 97a279a7-992e-4f44-a1d6-dd61f403925f\nstatus: test\ndescription: Detects a request that escaped the app's intended public directory while\n  remaining inside its synthetic lab root. Validated by INC-005 request metadata.\nauthor: CyberLab\ndate: '2026-09-13'\nlogsource:\n  category: webserver\n  product: cyberlab_vulnerable_app\ndetection:\n  selection:\n    finding: path-traversal\n    status: 200\n  condition: selection\nfalsepositives:\n- None expected for this explicit lab finding field; normalize and validate paths in production.\nlevel: high\nreferences:\n- incidents/INC-005-web-attack/evidence/application-requests.json\n",
+        "validation": "VALIDATED"
+      }
+    ],
+    "customRule": null,
+    "sources": [
+      {
+        "file": "incidents/INC-005-web-attack/evidence/application-requests.json",
+        "sha256": "3410cf2f1d998bcffa542085b7a7e0c8be76d89bfebfc629f90410d8a7dcd3de"
+      },
+      {
+        "file": "incidents/INC-005-web-attack/README.md",
+        "sha256": "f27a97c12af6e6268d086e5d49f25a41a45dca09d072ae0e909c0ed242ac33b5"
+      },
+      {
+        "file": "incidents/INC-005-web-attack/CONTAINMENT.md",
+        "sha256": "172228ba4ceda7b48a6c3c2cf2d898c7a6d4b6b9c67461e5c04d0b3070b000ee"
+      },
+      {
+        "file": "incidents/INC-005-web-attack/REMEDIATION.md",
+        "sha256": "2806e2405364dc7a04f882b6819893ad044a820475f73e7cacb1db9356dfaa13"
+      },
+      {
+        "file": "incidents/INC-005-web-attack/RETEST.md",
+        "sha256": "b04574b210939467d990c0ef7bc7f4b647ad2f43dec0e3d7e4b3961853006738"
+      },
+      {
+        "file": "detections/sigma/web_sql_injection.yml",
+        "sha256": "2f26bf301370ba8e2fe7aeef0b47f795580a5297d758d9c56ef8aa7a01ba2074"
+      },
+      {
+        "file": "detections/sigma/web_path_traversal.yml",
+        "sha256": "db5e249f7aa60c4e997209fbd1a65d4ed26a2223c5d51efc1d0867dfe312e4ce"
+      }
+    ]
+  },
+  {
+    "id": "INC-006",
+    "slug": "exfiltration",
+    "title": "Synthetic data transfer",
+    "status": "PASS",
+    "proof": "508 bytes. Matching hashes.",
+    "detail": "Three synthetic files were archived and transferred by HTTP to the host-only collector. Source staging was removed.",
+    "telemetry": "PowerShell 4104 / collector JSON",
+    "detection": "Archive-staging Sigma",
+    "mitre": "T1560.001 / T1048.003",
+    "incident": "INC-4C4C2C05",
+    "limit": "No Internet egress, C2, real data, or Wazuh transfer alert.",
+    "visual": "SOURCE SHA-256 = COLLECTOR SHA-256",
+    "raw": {
+      "scenario": "synthetic archive staging and isolated transfer",
+      "source": "WIN-LAB-01",
+      "destination": "192.168.56.1:8085",
+      "filenames": [
+        "finance_demo.csv",
+        "employees_demo.csv",
+        "research_demo.txt"
+      ],
+      "bytes": 508,
+      "sha256": "7f9416decf11f483c93b76f60ecc956e2763af7debbf90eeefffd95d73b978a7",
+      "collector_bytes": 508,
+      "collector_sha256": "7f9416decf11f483c93b76f60ecc956e2763af7debbf90eeefffd95d73b978a7",
+      "hash_match": true,
+      "cleanup_complete": true,
+      "sysmon_network_events": [],
+      "sysmon_file_events": []
+    },
+    "rawPath": "incidents/INC-006-exfiltration/evidence/windows-client.json",
+    "alert": null,
+    "severity": "Medium",
+    "origin": "WIN-LAB-01 → host-only collector",
+    "method": "Created three clearly labeled synthetic files, used PowerShell `Compress-Archive`, uploaded the archive to the temporary host-only collector, compared hashes, and deleted Windows staging.",
+    "observables": "Files `finance_demo.csv`, `employees_demo.csv`, `research_demo.txt`; 508 bytes; destination 192.168.56.1:8085; matching SHA-256.",
+    "investigation": "Confirmed three synthetic filenames, 508 transferred bytes, matching hashes, destination 192.168.56.1:8085, no default guest route, and successful source cleanup.",
+    "containment": "Deleted Windows staging and the archive, stopped the collector, and retained only the synthetic evidence copy inside CyberLab.",
+    "remediation": "Apply data classification, DLP, destination allowlists, proxy logging, archive monitoring, and least-privilege controls.",
+    "retest": "PASS: bytes and SHA-256 matched, transfer stayed host-only, source cleanup completed, and no Internet route existed.",
+    "rules": [
+      {
+        "file": "powershell_archive_staging.yml",
+        "source": "detections/sigma/powershell_archive_staging.yml",
+        "text": "title: PowerShell Archive Staging\nid: bd5f04d1-347b-4852-af1b-d0c4de8cd009\nstatus: test\ndescription: Detects PowerShell Compress-Archive use as a staging signal. Validated by\n  INC-006 PowerShell 4104 telemetry; archive creation alone is not proof of exfiltration.\nauthor: CyberLab\ndate: '2026-09-13'\nlogsource:\n  product: windows\n  service: powershell\ndetection:\n  selection:\n    EventID: 4104\n    ScriptBlockText|contains: Compress-Archive\n  condition: selection\nfalsepositives:\n- Administrative packaging, software deployment, backup, and user archiving are common.\nlevel: medium\ntags:\n- attack.collection\n- attack.t1560.001\nreferences:\n- incidents/INC-006-exfiltration/evidence/powershell-4104.json\n",
+        "validation": "VALIDATED"
+      }
+    ],
+    "customRule": null,
+    "sources": [
+      {
+        "file": "incidents/INC-006-exfiltration/evidence/windows-client.json",
+        "sha256": "fac7a57a4391105cbd196ee0ae3dcd5154b633a8cc17c0885976df2798c549fa"
+      },
+      {
+        "file": "incidents/INC-006-exfiltration/README.md",
+        "sha256": "6129e36fb0e66f979cd41b10a03322930b49ce6e4016b0c06356d81182105e4b"
+      },
+      {
+        "file": "incidents/INC-006-exfiltration/CONTAINMENT.md",
+        "sha256": "8f93fb833807d13fa5eba5e1ee6e8bb0b48675a934187441d2c2c1e53fcfd35a"
+      },
+      {
+        "file": "incidents/INC-006-exfiltration/REMEDIATION.md",
+        "sha256": "933e5e9cb08ca37ba852701ef28f1d6da84a0ddadba369e0453735350b8a8100"
+      },
+      {
+        "file": "incidents/INC-006-exfiltration/RETEST.md",
+        "sha256": "54152415840b73fff4b5c7c3e21fce4cbb1e15c6fb9d52017c6ebac6dc517104"
+      },
+      {
+        "file": "detections/sigma/powershell_archive_staging.yml",
+        "sha256": "2ec366632b1ecbe114bdc92a74eb24669ecdb4395ef2baaf9e5f08432d3669a6"
+      }
+    ]
+  }
+]
