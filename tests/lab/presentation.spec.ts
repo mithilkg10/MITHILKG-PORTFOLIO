@@ -9,7 +9,7 @@ for(const [name,width,height] of [['desktop',1440,1000],['laptop',1280,900],['ta
   await page.getByRole('button',{name:'04 Wazuh',exact:true}).click();await expect(page.locator('pre')).toContainText('1789279933.4126869');
   await page.getByRole('button',{name:'Not triggered',exact:true}).click();await expect(page.getByRole('status')).toContainText('3 Sigma');
   await page.locator('.case-4 summary').click();await expect(page.locator('.case-4')).toContainText('No credential read');
-  await page.screenshot({path:`lab-test-results/lab-${name}.png`,fullPage:true});expect(errors).toEqual([]);
+  await page.locator('h1').scrollIntoViewIfNeeded();await page.evaluate(()=>scrollTo(0,0));await page.screenshot({path:`lab-test-results/lab-${name}.png`,fullPage:false});expect(errors).toEqual([]);
   await page.goto('/lab/demo');await page.getByRole('button',{name:'90 seconds',exact:true}).click();await page.locator('h1').click();await page.keyboard.press('ArrowRight');await expect(page.locator('pre')).toContainText('2285');
   await page.getByRole('button',{name:'5 minutes',exact:true}).click();await expect(page.locator('#limitations')).toContainText('ABHEDYA');expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
  });
@@ -30,3 +30,8 @@ test('reduced motion, focus and source links',async({page,request})=>{
  const links=await page.locator('a[href^="/lab/evidence/"]').evaluateAll(nodes=>nodes.map(n=>n.getAttribute('href')!));for(const href of new Set(links)){expect((await request.get(href)).status()).toBe(200);}
 });
 
+
+test('career-fair first screen keeps the proof chain within laptop height',async({page})=>{
+ await page.setViewportSize({width:1280,height:900});await page.goto('/lab/demo');await expect(page.locator('.lab-signal-route')).toContainText('VYOMRIX');expect(await page.locator('#flagship').evaluate(e=>e.getBoundingClientRect().bottom)).toBeLessThanOrEqual(900);await page.screenshot({path:'lab-test-results/final-demo.png'});
+ await page.goto('/lab');await expect(page.locator('.lab-hero')).toContainText('Built by Mithil');await expect(page.locator('.lab-taxonomy')).toContainText('Provided by Wazuh');await expect(page.locator('.lab-record')).toContainText('1789279933.4126869');
+});
