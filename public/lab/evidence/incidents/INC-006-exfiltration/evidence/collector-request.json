@@ -1,0 +1,9 @@
+{
+  "timestamp_utc": "2026-09-13T11:44:54.179886+05:30",
+  "source": "192.168.56.20",
+  "method": "POST",
+  "path": "/collect",
+  "status": 201,
+  "finding": "synthetic-isolated-transfer",
+  "response_bytes": 127
+}

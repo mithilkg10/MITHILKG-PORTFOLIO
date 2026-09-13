@@ -12,6 +12,10 @@
 
 # testing
 /coverage
+/lab-test-results/
+/test-results/lab-*.png
+/test-results/offline.html
+/test-results/.last-run.json
 
 # next.js
 /.next/

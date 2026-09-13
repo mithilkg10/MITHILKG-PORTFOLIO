@@ -1,0 +1,28 @@
+title: Suspicious Process Access to LSASS
+id: 3d9a5f68-355d-4eef-8cdd-5fc7d4ec1549
+status: experimental
+description: Detects selected process-access rights against LSASS. INC-004 attempted
+  query-only access but Windows denied it and produced no Event 10, so this rule is not validated.
+author: CyberLab
+date: '2026-09-13'
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection:
+    EventID: 10
+    TargetImage|endswith: \lsass.exe
+    GrantedAccess|contains:
+    - '0x1010'
+    - '0x1410'
+    - '0x1438'
+    - '0x1fffff'
+  condition: selection
+falsepositives:
+- Endpoint security, identity protection, backup, and diagnostic products may inspect LSASS.
+level: high
+tags:
+- attack.credential_access
+- attack.t1003
+references:
+- incidents/INC-004-credential-access/evidence/windows-events.json

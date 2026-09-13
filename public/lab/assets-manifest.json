@@ -1,0 +1,13 @@
+{
+  "source": "MKG-Cyber-Defense-Lab public package c9c08655c273ea6e344af708ef7888432908ee78",
+  "evidence": "evidence/incidents and evidence/detections: preserved public-safe text, JSON and detection sources",
+  "offline": "offline.html: generated self-contained presentation, with no network requests",
+  "screenshots": {
+    "provider_health": "EVIDENCE CAPTURE PENDING",
+    "agent_visibility": "EVIDENCE CAPTURE PENDING",
+    "wazuh_92057": "EVIDENCE CAPTURE PENDING",
+    "vyomrix_incident": "EVIDENCE CAPTURE PENDING",
+    "timeline_report": "EVIDENCE CAPTURE PENDING"
+  },
+  "claim_boundary": "8 built-in Wazuh IDs plus custom 100201; no fake screenshots or new telemetry"
+}

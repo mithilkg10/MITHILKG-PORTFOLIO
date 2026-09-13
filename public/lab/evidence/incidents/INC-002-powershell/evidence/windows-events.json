@@ -1,0 +1,16 @@
+{
+    "scenario":  "benign encoded PowerShell",
+    "decoded_command":  "Write-Output \u0027CyberLab-Phase3-Encoded-Benign\u0027",
+    "network_activity":  "none generated",
+    "sysmon_process_events":  [
+
+                              ],
+    "powershell_4104_events":  [
+                                   {
+                                       "event_id":  4104,
+                                       "record_id":  2285,
+                                       "timestamp_utc":  "2026-09-13T06:12:17.1839479Z",
+                                       "script_block_text":  "Write-Output \u0027CyberLab-Phase3-Encoded-Benign\u0027"
+                                   }
+                               ]
+}

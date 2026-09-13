@@ -1,0 +1,29 @@
+title: Office Application Spawning Command Interpreter
+id: f181aad8-0070-52b8-80a9-e147918e856c
+status: experimental
+description: Phase 2 starter signal. Syntax checked; not detection-validated without
+  real matching test evidence.
+author: CyberLab
+date: '2026-09-10'
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection:
+    EventID: 1
+    ParentImage|endswith:
+    - \WINWORD.EXE
+    - \EXCEL.EXE
+    - \POWERPNT.EXE
+    Image|endswith:
+    - \cmd.exe
+    - \powershell.exe
+  condition: selection
+falsepositives:
+- Authorized Office automation. No Office process chain simulated.
+references:
+- incidents/INC-002-powershell/DETECTION.md
+level: medium
+tags:
+- attack.execution
+- attack.t1059

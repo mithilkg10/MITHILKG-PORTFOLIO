@@ -1,0 +1,11 @@
+{
+    "scenario":  "controlled repeated authentication failures",
+    "synthetic_account":  "CyberLab_Ph3_NoUser",
+    "intended_attempts":  6,
+    "observed_4625":  0,
+    "window_start_utc":  "2026-09-13T06:21:05.6046550Z",
+    "window_end_utc":  "2026-09-13T06:21:14.3915932Z",
+    "events":  [
+
+               ]
+}

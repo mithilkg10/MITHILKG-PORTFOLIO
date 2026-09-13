@@ -1,0 +1,11 @@
+{
+    "scenario":  "controlled attacks against purpose-built host-only application",
+    "target":  "192.168.56.1:8085",
+    "normal_login_authenticated":  false,
+    "injection_authenticated":  true,
+    "injection_role":  "admin",
+    "traversal_returned_synthetic_marker":  true,
+    "sysmon_network_events":  [
+
+                              ]
+}

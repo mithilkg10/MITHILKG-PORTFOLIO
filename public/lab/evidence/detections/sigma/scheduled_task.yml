@@ -1,0 +1,22 @@
+title: Windows Scheduled Task Created
+id: 3e5ae344-ccd6-541b-a25d-68209f41d49a
+status: test
+description: Detects Windows scheduled-task creation. Validated by INC-003 Security
+  event 4698 and Wazuh rule 60228; task execution must be investigated separately.
+author: CyberLab
+date: '2026-09-10'
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 4698
+  condition: selection
+falsepositives:
+- Software deployment and legitimate maintenance tasks.
+references:
+- incidents/INC-003-scheduled-task/evidence/wazuh-alerts.json
+level: medium
+tags:
+- attack.persistence
+- attack.t1053.005

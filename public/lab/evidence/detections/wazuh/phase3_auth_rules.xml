@@ -1,0 +1,11 @@
+<group name="windows,authentication_failures,">
+  <rule id="100201" level="10" frequency="5" timeframe="300">
+    <if_matched_sid>60122</if_matched_sid>
+    <same_field>win.eventdata.targetUserName</same_field>
+    <description>Five Windows failed logons for the same account within five minutes: $(win.eventdata.targetUserName)</description>
+    <mitre>
+      <id>T1110</id>
+    </mitre>
+    <group>authentication_failed,correlation,</group>
+  </rule>
+</group>

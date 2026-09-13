@@ -1,0 +1,875 @@
+{
+  "markers": [
+    "CyberLab_Ph3_NoUser"
+  ],
+  "match_count": 43,
+  "alerts": [
+    {
+      "alert_id": "1789279878.3775137",
+      "timestamp": "2026-09-13T06:11:18.229+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "67027",
+        "description": "A process was created.",
+        "level": 3,
+        "mitre": null
+      },
+      "windows": {
+        "eventID": "4688",
+        "eventRecordID": "4553",
+        "commandLine": "\\\"C:\\\\WINDOWS\\\\system32\\\\cmd.exe\\\" /d /c \\\"net use \\\\\\\\\\\\\\\\192.168.56.20\\\\IPC$ <synthetic-redacted> /user:WIN-LAB-01\\\\CyberLab_Ph3_NoUser &gt;nul 2&gt;&amp;1\\\""
+      }
+    },
+    {
+      "alert_id": "1789279878.3781445",
+      "timestamp": "2026-09-13T06:11:18.237+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "92036",
+        "description": "A C:\\\\Windows\\\\System32\\\\net.exe binary was started by a Windows cmd shell",
+        "level": 3,
+        "mitre": {
+          "id": [
+            "T1059.003",
+            "T1574.001"
+          ],
+          "tactic": [
+            "Execution",
+            "Persistence",
+            "Privilege Escalation",
+            "Defense Evasion"
+          ],
+          "technique": [
+            "Windows Command Shell",
+            "DLL Search Order Hijacking"
+          ]
+        }
+      },
+      "windows": {
+        "eventID": "1",
+        "eventRecordID": "1977",
+        "image": "C:\\\\Windows\\\\System32\\\\net.exe",
+        "commandLine": "net  use \\\\\\\\\\\\\\\\192.168.56.20\\\\IPC$ <synthetic-redacted> /user:WIN-LAB-01\\\\CyberLab_Ph3_NoUser",
+        "user": "WIN-LAB-01\\\\labadmin",
+        "parentImage": "C:\\\\Windows\\\\System32\\\\cmd.exe"
+      }
+    },
+    {
+      "alert_id": "1789279878.3787655",
+      "timestamp": "2026-09-13T06:11:18.253+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "92004",
+        "description": "Powershell process spawned Windows command shell instance",
+        "level": 4,
+        "mitre": {
+          "id": [
+            "T1059.003"
+          ],
+          "tactic": [
+            "Execution"
+          ],
+          "technique": [
+            "Windows Command Shell"
+          ]
+        }
+      },
+      "windows": {
+        "eventID": "1",
+        "eventRecordID": "1978",
+        "image": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+        "commandLine": "\\\"C:\\\\WINDOWS\\\\system32\\\\cmd.exe\\\" /d /c \\\"net use \\\\\\\\\\\\\\\\192.168.56.20\\\\IPC$ <synthetic-redacted> /user:WIN-LAB-01\\\\CyberLab_Ph3_NoUser &gt;nul 2&gt;&amp;1\\\"",
+        "user": "WIN-LAB-01\\\\labadmin",
+        "parentImage": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe"
+      }
+    },
+    {
+      "alert_id": "1789279878.3810247",
+      "timestamp": "2026-09-13T06:11:18.268+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "92036",
+        "description": "A C:\\\\Windows\\\\System32\\\\net.exe binary was started by a Windows cmd shell",
+        "level": 3,
+        "mitre": {
+          "id": [
+            "T1059.003",
+            "T1574.001"
+          ],
+          "tactic": [
+            "Execution",
+            "Persistence",
+            "Privilege Escalation",
+            "Defense Evasion"
+          ],
+          "technique": [
+            "Windows Command Shell",
+            "DLL Search Order Hijacking"
+          ]
+        }
+      },
+      "windows": {
+        "eventID": "1",
+        "eventRecordID": "1979",
+        "image": "C:\\\\Windows\\\\System32\\\\net.exe",
+        "commandLine": "net  use \\\\\\\\\\\\\\\\192.168.56.20\\\\IPC$ <synthetic-redacted> /user:WIN-LAB-01\\\\CyberLab_Ph3_NoUser",
+        "user": "WIN-LAB-01\\\\labadmin",
+        "parentImage": "C:\\\\Windows\\\\System32\\\\cmd.exe"
+      }
+    },
+    {
+      "alert_id": "1789279878.3816457",
+      "timestamp": "2026-09-13T06:11:18.285+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "67027",
+        "description": "A process was created.",
+        "level": 3,
+        "mitre": null
+      },
+      "windows": {
+        "eventID": "4688",
+        "eventRecordID": "4554",
+        "commandLine": "net  use \\\\\\\\\\\\\\\\192.168.56.20\\\\IPC$ <synthetic-redacted> /user:WIN-LAB-01\\\\CyberLab_Ph3_NoUser"
+      }
+    },
+    {
+      "alert_id": "1789279878.3822400",
+      "timestamp": "2026-09-13T06:11:18.301+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "67027",
+        "description": "A process was created.",
+        "level": 3,
+        "mitre": null
+      },
+      "windows": {
+        "eventID": "4688",
+        "eventRecordID": "4555",
+        "commandLine": "\\\"C:\\\\WINDOWS\\\\system32\\\\cmd.exe\\\" /d /c \\\"net use \\\\\\\\\\\\\\\\192.168.56.20\\\\IPC$ <synthetic-redacted> /user:WIN-LAB-01\\\\CyberLab_Ph3_NoUser &gt;nul 2&gt;&amp;1\\\""
+      }
+    },
+    {
+      "alert_id": "1789279878.3828710",
+      "timestamp": "2026-09-13T06:11:18.317+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "67027",
+        "description": "A process was created.",
+        "level": 3,
+        "mitre": null
+      },
+      "windows": {
+        "eventID": "4688",
+        "eventRecordID": "4556",
+        "commandLine": "net  use \\\\\\\\\\\\\\\\192.168.56.20\\\\IPC$ <synthetic-redacted> /user:WIN-LAB-01\\\\CyberLab_Ph3_NoUser"
+      }
+    },
+    {
+      "alert_id": "1789279879.3834651",
+      "timestamp": "2026-09-13T06:11:19.420+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "67027",
+        "description": "A process was created.",
+        "level": 3,
+        "mitre": null
+      },
+      "windows": {
+        "eventID": "4688",
+        "eventRecordID": "4557",
+        "commandLine": "\\\"C:\\\\WINDOWS\\\\system32\\\\cmd.exe\\\" /d /c \\\"net use \\\\\\\\\\\\\\\\192.168.56.20\\\\IPC$ <synthetic-redacted> /user:WIN-LAB-01\\\\CyberLab_Ph3_NoUser &gt;nul 2&gt;&amp;1\\\""
+      }
+    },
+    {
+      "alert_id": "1789279879.3840959",
+      "timestamp": "2026-09-13T06:11:19.424+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "67027",
+        "description": "A process was created.",
+        "level": 3,
+        "mitre": null
+      },
+      "windows": {
+        "eventID": "4688",
+        "eventRecordID": "4558",
+        "commandLine": "net  use \\\\\\\\\\\\\\\\192.168.56.20\\\\IPC$ <synthetic-redacted> /user:WIN-LAB-01\\\\CyberLab_Ph3_NoUser"
+      }
+    },
+    {
+      "alert_id": "1789279879.3846896",
+      "timestamp": "2026-09-13T06:11:19.428+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "67027",
+        "description": "A process was created.",
+        "level": 3,
+        "mitre": null
+      },
+      "windows": {
+        "eventID": "4688",
+        "eventRecordID": "4559",
+        "commandLine": "\\\"C:\\\\WINDOWS\\\\system32\\\\cmd.exe\\\" /d /c \\\"net use \\\\\\\\\\\\\\\\192.168.56.20\\\\IPC$ <synthetic-redacted> /user:WIN-LAB-01\\\\CyberLab_Ph3_NoUser &gt;nul 2&gt;&amp;1\\\""
+      }
+    },
+    {
+      "alert_id": "1789279879.3853204",
+      "timestamp": "2026-09-13T06:11:19.433+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "67027",
+        "description": "A process was created.",
+        "level": 3,
+        "mitre": null
+      },
+      "windows": {
+        "eventID": "4688",
+        "eventRecordID": "4560",
+        "commandLine": "net  use \\\\\\\\\\\\\\\\192.168.56.20\\\\IPC$ <synthetic-redacted> /user:WIN-LAB-01\\\\CyberLab_Ph3_NoUser"
+      }
+    },
+    {
+      "alert_id": "1789279879.3859145",
+      "timestamp": "2026-09-13T06:11:19.436+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "92004",
+        "description": "Powershell process spawned Windows command shell instance",
+        "level": 4,
+        "mitre": {
+          "id": [
+            "T1059.003"
+          ],
+          "tactic": [
+            "Execution"
+          ],
+          "technique": [
+            "Windows Command Shell"
+          ]
+        }
+      },
+      "windows": {
+        "eventID": "1",
+        "eventRecordID": "1980",
+        "image": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+        "commandLine": "\\\"C:\\\\WINDOWS\\\\system32\\\\cmd.exe\\\" /d /c \\\"net use \\\\\\\\\\\\\\\\192.168.56.20\\\\IPC$ <synthetic-redacted> /user:WIN-LAB-01\\\\CyberLab_Ph3_NoUser &gt;nul 2&gt;&amp;1\\\"",
+        "user": "WIN-LAB-01\\\\labadmin",
+        "parentImage": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe"
+      }
+    },
+    {
+      "alert_id": "1789279879.3881737",
+      "timestamp": "2026-09-13T06:11:19.437+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "92036",
+        "description": "A C:\\\\Windows\\\\System32\\\\net.exe binary was started by a Windows cmd shell",
+        "level": 3,
+        "mitre": {
+          "id": [
+            "T1059.003",
+            "T1574.001"
+          ],
+          "tactic": [
+            "Execution",
+            "Persistence",
+            "Privilege Escalation",
+            "Defense Evasion"
+          ],
+          "technique": [
+            "Windows Command Shell",
+            "DLL Search Order Hijacking"
+          ]
+        }
+      },
+      "windows": {
+        "eventID": "1",
+        "eventRecordID": "1981",
+        "image": "C:\\\\Windows\\\\System32\\\\net.exe",
+        "commandLine": "net  use \\\\\\\\\\\\\\\\192.168.56.20\\\\IPC$ <synthetic-redacted> /user:WIN-LAB-01\\\\CyberLab_Ph3_NoUser",
+        "user": "WIN-LAB-01\\\\labadmin",
+        "parentImage": "C:\\\\Windows\\\\System32\\\\cmd.exe"
+      }
+    },
+    {
+      "alert_id": "1789279879.3887947",
+      "timestamp": "2026-09-13T06:11:19.438+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "92004",
+        "description": "Powershell process spawned Windows command shell instance",
+        "level": 4,
+        "mitre": {
+          "id": [
+            "T1059.003"
+          ],
+          "tactic": [
+            "Execution"
+          ],
+          "technique": [
+            "Windows Command Shell"
+          ]
+        }
+      },
+      "windows": {
+        "eventID": "1",
+        "eventRecordID": "1982",
+        "image": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+        "commandLine": "\\\"C:\\\\WINDOWS\\\\system32\\\\cmd.exe\\\" /d /c \\\"net use \\\\\\\\\\\\\\\\192.168.56.20\\\\IPC$ <synthetic-redacted> /user:WIN-LAB-01\\\\CyberLab_Ph3_NoUser &gt;nul 2&gt;&amp;1\\\"",
+        "user": "WIN-LAB-01\\\\labadmin",
+        "parentImage": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe"
+      }
+    },
+    {
+      "alert_id": "1789279879.3910539",
+      "timestamp": "2026-09-13T06:11:19.447+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "92036",
+        "description": "A C:\\\\Windows\\\\System32\\\\net.exe binary was started by a Windows cmd shell",
+        "level": 3,
+        "mitre": {
+          "id": [
+            "T1059.003",
+            "T1574.001"
+          ],
+          "tactic": [
+            "Execution",
+            "Persistence",
+            "Privilege Escalation",
+            "Defense Evasion"
+          ],
+          "technique": [
+            "Windows Command Shell",
+            "DLL Search Order Hijacking"
+          ]
+        }
+      },
+      "windows": {
+        "eventID": "1",
+        "eventRecordID": "1983",
+        "image": "C:\\\\Windows\\\\System32\\\\net.exe",
+        "commandLine": "net  use \\\\\\\\\\\\\\\\192.168.56.20\\\\IPC$ <synthetic-redacted> /user:WIN-LAB-01\\\\CyberLab_Ph3_NoUser",
+        "user": "WIN-LAB-01\\\\labadmin",
+        "parentImage": "C:\\\\Windows\\\\System32\\\\cmd.exe"
+      }
+    },
+    {
+      "alert_id": "1789279880.3916749",
+      "timestamp": "2026-09-13T06:11:20.558+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "67027",
+        "description": "A process was created.",
+        "level": 3,
+        "mitre": null
+      },
+      "windows": {
+        "eventID": "4688",
+        "eventRecordID": "4561",
+        "commandLine": "\\\"C:\\\\WINDOWS\\\\system32\\\\cmd.exe\\\" /d /c \\\"net use \\\\\\\\\\\\\\\\192.168.56.20\\\\IPC$ <synthetic-redacted> /user:WIN-LAB-01\\\\CyberLab_Ph3_NoUser &gt;nul 2&gt;&amp;1\\\""
+      }
+    },
+    {
+      "alert_id": "1789279880.3923061",
+      "timestamp": "2026-09-13T06:11:20.566+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "67027",
+        "description": "A process was created.",
+        "level": 3,
+        "mitre": null
+      },
+      "windows": {
+        "eventID": "4688",
+        "eventRecordID": "4562",
+        "commandLine": "net  use \\\\\\\\\\\\\\\\192.168.56.20\\\\IPC$ <synthetic-redacted> /user:WIN-LAB-01\\\\CyberLab_Ph3_NoUser"
+      }
+    },
+    {
+      "alert_id": "1789279880.3929006",
+      "timestamp": "2026-09-13T06:11:20.567+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "67027",
+        "description": "A process was created.",
+        "level": 3,
+        "mitre": null
+      },
+      "windows": {
+        "eventID": "4688",
+        "eventRecordID": "4563",
+        "commandLine": "\\\"C:\\\\WINDOWS\\\\system32\\\\cmd.exe\\\" /d /c \\\"net use \\\\\\\\\\\\\\\\192.168.56.20\\\\IPC$ <synthetic-redacted> /user:WIN-LAB-01\\\\CyberLab_Ph3_NoUser &gt;nul 2&gt;&amp;1\\\""
+      }
+    },
+    {
+      "alert_id": "1789279880.3935314",
+      "timestamp": "2026-09-13T06:11:20.568+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "92004",
+        "description": "Powershell process spawned Windows command shell instance",
+        "level": 4,
+        "mitre": {
+          "id": [
+            "T1059.003"
+          ],
+          "tactic": [
+            "Execution"
+          ],
+          "technique": [
+            "Windows Command Shell"
+          ]
+        }
+      },
+      "windows": {
+        "eventID": "1",
+        "eventRecordID": "1984",
+        "image": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+        "commandLine": "\\\"C:\\\\WINDOWS\\\\system32\\\\cmd.exe\\\" /d /c \\\"net use \\\\\\\\\\\\\\\\192.168.56.20\\\\IPC$ <synthetic-redacted> /user:WIN-LAB-01\\\\CyberLab_Ph3_NoUser &gt;nul 2&gt;&amp;1\\\"",
+        "user": "WIN-LAB-01\\\\labadmin",
+        "parentImage": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe"
+      }
+    },
+    {
+      "alert_id": "1789279880.3957906",
+      "timestamp": "2026-09-13T06:11:20.575+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "67027",
+        "description": "A process was created.",
+        "level": 3,
+        "mitre": null
+      },
+      "windows": {
+        "eventID": "4688",
+        "eventRecordID": "4564",
+        "commandLine": "net  use \\\\\\\\\\\\\\\\192.168.56.20\\\\IPC$ <synthetic-redacted> /user:WIN-LAB-01\\\\CyberLab_Ph3_NoUser"
+      }
+    },
+    {
+      "alert_id": "1789279880.3963847",
+      "timestamp": "2026-09-13T06:11:20.608+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "92036",
+        "description": "A C:\\\\Windows\\\\System32\\\\net.exe binary was started by a Windows cmd shell",
+        "level": 3,
+        "mitre": {
+          "id": [
+            "T1059.003",
+            "T1574.001"
+          ],
+          "tactic": [
+            "Execution",
+            "Persistence",
+            "Privilege Escalation",
+            "Defense Evasion"
+          ],
+          "technique": [
+            "Windows Command Shell",
+            "DLL Search Order Hijacking"
+          ]
+        }
+      },
+      "windows": {
+        "eventID": "1",
+        "eventRecordID": "1985",
+        "image": "C:\\\\Windows\\\\System32\\\\net.exe",
+        "commandLine": "net  use \\\\\\\\\\\\\\\\192.168.56.20\\\\IPC$ <synthetic-redacted> /user:WIN-LAB-01\\\\CyberLab_Ph3_NoUser",
+        "user": "WIN-LAB-01\\\\labadmin",
+        "parentImage": "C:\\\\Windows\\\\System32\\\\cmd.exe"
+      }
+    },
+    {
+      "alert_id": "1789279880.3970057",
+      "timestamp": "2026-09-13T06:11:20.608+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "92004",
+        "description": "Powershell process spawned Windows command shell instance",
+        "level": 4,
+        "mitre": {
+          "id": [
+            "T1059.003"
+          ],
+          "tactic": [
+            "Execution"
+          ],
+          "technique": [
+            "Windows Command Shell"
+          ]
+        }
+      },
+      "windows": {
+        "eventID": "1",
+        "eventRecordID": "1986",
+        "image": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+        "commandLine": "\\\"C:\\\\WINDOWS\\\\system32\\\\cmd.exe\\\" /d /c \\\"net use \\\\\\\\\\\\\\\\192.168.56.20\\\\IPC$ <synthetic-redacted> /user:WIN-LAB-01\\\\CyberLab_Ph3_NoUser &gt;nul 2&gt;&amp;1\\\"",
+        "user": "WIN-LAB-01\\\\labadmin",
+        "parentImage": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe"
+      }
+    },
+    {
+      "alert_id": "1789279880.3992649",
+      "timestamp": "2026-09-13T06:11:20.621+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "92036",
+        "description": "A C:\\\\Windows\\\\System32\\\\net.exe binary was started by a Windows cmd shell",
+        "level": 3,
+        "mitre": {
+          "id": [
+            "T1059.003",
+            "T1574.001"
+          ],
+          "tactic": [
+            "Execution",
+            "Persistence",
+            "Privilege Escalation",
+            "Defense Evasion"
+          ],
+          "technique": [
+            "Windows Command Shell",
+            "DLL Search Order Hijacking"
+          ]
+        }
+      },
+      "windows": {
+        "eventID": "1",
+        "eventRecordID": "1987",
+        "image": "C:\\\\Windows\\\\System32\\\\net.exe",
+        "commandLine": "net  use \\\\\\\\\\\\\\\\192.168.56.20\\\\IPC$ <synthetic-redacted> /user:WIN-LAB-01\\\\CyberLab_Ph3_NoUser",
+        "user": "WIN-LAB-01\\\\labadmin",
+        "parentImage": "C:\\\\Windows\\\\System32\\\\cmd.exe"
+      }
+    },
+    {
+      "alert_id": "1789280465.5267329",
+      "timestamp": "2026-09-13T06:21:05.248+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "91816",
+        "description": "Powershell script querying system environment variables",
+        "level": 4,
+        "mitre": {
+          "id": [
+            "T1082"
+          ],
+          "tactic": [
+            "Discovery"
+          ],
+          "technique": [
+            "System Information Discovery"
+          ]
+        }
+      },
+      "windows": {
+        "eventID": "4104",
+        "eventRecordID": "2493",
+        "scriptBlockText": "$ErrorActionPreference = 'Stop' $start = Get-Date $account = 'CyberLab_Ph3_NoUser' $attempts = 6 $secure = ConvertTo-SecureString '<synthetic-redacted>' -AsPlainText -Force $credential = [pscredential]::new(\\\"$env:COMPUTERNAME\\\\$account\\\", $secure) for ($i = 1; $i -le $attempts; $i++) {   try {     $process = Start-Process cmd.exe -ArgumentList '/c','exit 0' -Credential $credential -LoadUserProfile -PassThru -ErrorAction Stop     $process.WaitForExit()     throw 'Synthetic nonexistent account unexpectedly authenticated'   } catch {     if ($_.Exception.Message -eq 'Synthetic nonexistent account unexpectedly authenticated') { throw }   }   Start-Sleep -Seconds 1 } Start-Sleep -Seconds 2 $events = foreach ($event in Get-WinEvent -FilterHashtable @{ LogName='Security'; Id=4625; StartTime=$start } -ErrorAction SilentlyContinue) {   [xml]$xml = $event.ToXml()   $fields = @{}   foreach ($item in $xml.Event.EventData.Data) { $fields[$item.Name] = [string]$item.'#text' }   if ($fields.TargetUserName -eq $account) {     [ordered]@{       event_id = 4625       record_id = $event.RecordId       timestamp_utc = $event.TimeCreated.ToUniversalTime().ToString('o')       target_account = $fields.T"
+      }
+    },
+    {
+      "alert_id": "1789280466.5275894",
+      "timestamp": "2026-09-13T06:21:06.143+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "60122",
+        "description": "Logon Failure - Unknown user or bad password",
+        "level": 5,
+        "mitre": {
+          "id": [
+            "T1531"
+          ],
+          "tactic": [
+            "Impact"
+          ],
+          "technique": [
+            "Account Access Removal"
+          ]
+        }
+      },
+      "windows": {
+        "eventID": "4625",
+        "eventRecordID": "5591",
+        "targetUserName": "CyberLab_Ph3_NoUser",
+        "status": "0xc000006d",
+        "subStatus": "0xc0000064",
+        "logonType": "2",
+        "ipAddress": "::1"
+      }
+    },
+    {
+      "alert_id": "1789280467.5288842",
+      "timestamp": "2026-09-13T06:21:07.258+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "60122",
+        "description": "Logon Failure - Unknown user or bad password",
+        "level": 5,
+        "mitre": {
+          "id": [
+            "T1531"
+          ],
+          "tactic": [
+            "Impact"
+          ],
+          "technique": [
+            "Account Access Removal"
+          ]
+        }
+      },
+      "windows": {
+        "eventID": "4625",
+        "eventRecordID": "5593",
+        "targetUserName": "CyberLab_Ph3_NoUser",
+        "status": "0xc000006d",
+        "subStatus": "0xc0000064",
+        "logonType": "2",
+        "ipAddress": "::1"
+      }
+    },
+    {
+      "alert_id": "1789280468.5295584",
+      "timestamp": "2026-09-13T06:21:08.277+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "60122",
+        "description": "Logon Failure - Unknown user or bad password",
+        "level": 5,
+        "mitre": {
+          "id": [
+            "T1531"
+          ],
+          "tactic": [
+            "Impact"
+          ],
+          "technique": [
+            "Account Access Removal"
+          ]
+        }
+      },
+      "windows": {
+        "eventID": "4625",
+        "eventRecordID": "5594",
+        "targetUserName": "CyberLab_Ph3_NoUser",
+        "status": "0xc000006d",
+        "subStatus": "0xc0000064",
+        "logonType": "2",
+        "ipAddress": "::1"
+      }
+    },
+    {
+      "alert_id": "1789280469.5302326",
+      "timestamp": "2026-09-13T06:21:09.310+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "60122",
+        "description": "Logon Failure - Unknown user or bad password",
+        "level": 5,
+        "mitre": {
+          "id": [
+            "T1531"
+          ],
+          "tactic": [
+            "Impact"
+          ],
+          "technique": [
+            "Account Access Removal"
+          ]
+        }
+      },
+      "windows": {
+        "eventID": "4625",
+        "eventRecordID": "5595",
+        "targetUserName": "CyberLab_Ph3_NoUser",
+        "status": "0xc000006d",
+        "subStatus": "0xc0000064",
+        "logonType": "2",
+        "ipAddress": "::1"
+      }
+    },
+    {
+      "alert_id": "1789280470.5309068",
+      "timestamp": "2026-09-13T06:21:10.316+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "100201",
+        "description": "Five Windows failed logons for the same account within five minutes: CyberLab_Ph3_NoUser",
+        "level": 10,
+        "mitre": {
+          "id": [
+            "T1110"
+          ],
+          "tactic": [
+            "Credential Access"
+          ],
+          "technique": [
+            "Brute Force"
+          ]
+        }
+      },
+      "windows": {
+        "eventID": "4625",
+        "eventRecordID": "5596",
+        "targetUserName": "CyberLab_Ph3_NoUser",
+        "status": "0xc000006d",
+        "subStatus": "0xc0000064",
+        "logonType": "2",
+        "ipAddress": "::1"
+      }
+    },
+    {
+      "alert_id": "1789280471.5328208",
+      "timestamp": "2026-09-13T06:21:11.336+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "60122",
+        "description": "Logon Failure - Unknown user or bad password",
+        "level": 5,
+        "mitre": {
+          "id": [
+            "T1531"
+          ],
+          "tactic": [
+            "Impact"
+          ],
+          "technique": [
+            "Account Access Removal"
+          ]
+        }
+      },
+      "windows": {
+        "eventID": "4625",
+        "eventRecordID": "5597",
+        "targetUserName": "CyberLab_Ph3_NoUser",
+        "status": "0xc000006d",
+        "subStatus": "0xc0000064",
+        "logonType": "2",
+        "ipAddress": "::1"
+      }
+    }
+  ]
+}

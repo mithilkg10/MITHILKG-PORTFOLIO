@@ -1,0 +1,62 @@
+{
+  "markers": [
+    "CyberLab-Phase3-Encoded-Benign",
+    "VwByAGkAdABlAC0ATwB1AHQAcAB1AHQAIAAnAEMAeQBiAGUAcgBMAGEAYgAtAFAAaABhAHMAZQAzAC0ARQBuAGMAbwBkAGUAZAAtAEIAZQBuAGkAZwBuACcA"
+  ],
+  "match_count": 2,
+  "alerts": [
+    {
+      "alert_id": "1789279933.4126869",
+      "timestamp": "2026-09-13T06:12:13.439+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "92057",
+        "description": "Powershell.exe spawned a powershell process which executed a base64 encoded command",
+        "level": 12,
+        "mitre": {
+          "id": [
+            "T1059.001"
+          ],
+          "tactic": [
+            "Execution"
+          ],
+          "technique": [
+            "PowerShell"
+          ]
+        }
+      },
+      "windows": {
+        "eventID": "1",
+        "eventRecordID": "2128",
+        "image": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+        "commandLine": "\\\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\\\" -NoProfile -EncodedCommand VwByAGkAdABlAC0ATwB1AHQAcAB1AHQAIAAnAEMAeQBiAGUAcgBMAGEAYgAtAFAAaABhAHMAZQAzAC0ARQBuAGMAbwBkAGUAZAAtAEIAZQBuAGkAZwBuACcA",
+        "user": "WIN-LAB-01\\\\labadmin",
+        "parentImage": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe"
+      }
+    },
+    {
+      "alert_id": "1789279933.4151792",
+      "timestamp": "2026-09-13T06:12:13.443+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "67027",
+        "description": "A process was created.",
+        "level": 3,
+        "mitre": null
+      },
+      "windows": {
+        "eventID": "4688",
+        "eventRecordID": "4600",
+        "commandLine": "\\\"C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\\\" -NoProfile -EncodedCommand VwByAGkAdABlAC0ATwB1AHQAcAB1AHQAIAAnAEMAeQBiAGUAcgBMAGEAYgAtAFAAaABhAHMAZQAzAC0ARQBuAGMAbwBkAGUAZAAtAEIAZQBuAGkAZwBuACcA"
+      }
+    }
+  ]
+}

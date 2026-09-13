@@ -1,0 +1,170 @@
+{
+  "total": 10,
+  "validated": 7,
+  "rules": [
+    {
+      "file": "defender_change.yml",
+      "id": "95fd07fa-0d42-55b7-a776-c24bef05a809",
+      "title": "Defender Configuration Change",
+      "syntax": "PASS",
+      "validation": "NOT_TRIGGERED",
+      "evidence": null,
+      "references": [
+        "incidents/INC-004-credential-access/DETECTION.md"
+      ],
+      "false_positive_notes": true,
+      "mitre_tags": [
+        "attack.defense_evasion",
+        "attack.t1562.001"
+      ],
+      "logic_type": "Sigma selection"
+    },
+    {
+      "file": "encoded_powershell.yml",
+      "id": "af941452-06ae-5d0f-99e5-57f667d75887",
+      "title": "PowerShell Encoded Command",
+      "syntax": "PASS",
+      "validation": "VALIDATED",
+      "evidence": "INC-002 real Sysmon/Wazuh rule 92057",
+      "references": [
+        "incidents/INC-002-powershell/evidence/wazuh-alerts.json"
+      ],
+      "false_positive_notes": true,
+      "mitre_tags": [
+        "attack.execution",
+        "attack.t1059.001"
+      ],
+      "logic_type": "Sigma selection"
+    },
+    {
+      "file": "failed_logon.yml",
+      "id": "43253844-7a7b-5f19-b5b1-5d1d4e521ccf",
+      "title": "Windows Failed Logon Signal",
+      "syntax": "PASS",
+      "validation": "VALIDATED",
+      "evidence": "INC-001 six real Security 4625/Wazuh rule 60122 alerts",
+      "references": [
+        "incidents/INC-001-authentication-attack/evidence/correlation-observation.json"
+      ],
+      "false_positive_notes": true,
+      "mitre_tags": [
+        "attack.credential_access",
+        "attack.t1110"
+      ],
+      "logic_type": "Sigma selection"
+    },
+    {
+      "file": "failed_logon_burst.yml",
+      "id": "5f52aa30-6b9c-4c44-b209-6919e30842de",
+      "title": "Windows Failed Logon Burst by Target Account",
+      "syntax": "PASS",
+      "validation": "VALIDATED",
+      "evidence": "INC-001 custom Wazuh rule 100201 threshold alert",
+      "references": [
+        "incidents/INC-001-authentication-attack/evidence/correlation-observation.json"
+      ],
+      "false_positive_notes": true,
+      "mitre_tags": [
+        "attack.credential_access",
+        "attack.t1110"
+      ],
+      "logic_type": "Sigma correlation"
+    },
+    {
+      "file": "lsass_process_access.yml",
+      "id": "3d9a5f68-355d-4eef-8cdd-5fc7d4ec1549",
+      "title": "Suspicious Process Access to LSASS",
+      "syntax": "PASS",
+      "validation": "NOT_TRIGGERED",
+      "evidence": null,
+      "references": [
+        "incidents/INC-004-credential-access/evidence/windows-events.json"
+      ],
+      "false_positive_notes": true,
+      "mitre_tags": [
+        "attack.credential_access",
+        "attack.t1003"
+      ],
+      "logic_type": "Sigma selection"
+    },
+    {
+      "file": "office_shell.yml",
+      "id": "f181aad8-0070-52b8-80a9-e147918e856c",
+      "title": "Office Application Spawning Command Interpreter",
+      "syntax": "PASS",
+      "validation": "NOT_TRIGGERED",
+      "evidence": null,
+      "references": [
+        "incidents/INC-002-powershell/DETECTION.md"
+      ],
+      "false_positive_notes": true,
+      "mitre_tags": [
+        "attack.execution",
+        "attack.t1059"
+      ],
+      "logic_type": "Sigma selection"
+    },
+    {
+      "file": "powershell_archive_staging.yml",
+      "id": "bd5f04d1-347b-4852-af1b-d0c4de8cd009",
+      "title": "PowerShell Archive Staging",
+      "syntax": "PASS",
+      "validation": "VALIDATED",
+      "evidence": "INC-006 real PowerShell 4104 record",
+      "references": [
+        "incidents/INC-006-exfiltration/evidence/powershell-4104.json"
+      ],
+      "false_positive_notes": true,
+      "mitre_tags": [
+        "attack.collection",
+        "attack.t1560.001"
+      ],
+      "logic_type": "Sigma selection"
+    },
+    {
+      "file": "scheduled_task.yml",
+      "id": "3e5ae344-ccd6-541b-a25d-68209f41d49a",
+      "title": "Windows Scheduled Task Created",
+      "syntax": "PASS",
+      "validation": "VALIDATED",
+      "evidence": "INC-003 real Security 4698/Wazuh rule 60228",
+      "references": [
+        "incidents/INC-003-scheduled-task/evidence/wazuh-alerts.json"
+      ],
+      "false_positive_notes": true,
+      "mitre_tags": [
+        "attack.persistence",
+        "attack.t1053.005"
+      ],
+      "logic_type": "Sigma selection"
+    },
+    {
+      "file": "web_path_traversal.yml",
+      "id": "97a279a7-992e-4f44-a1d6-dd61f403925f",
+      "title": "CyberLab Web Path Traversal Result",
+      "syntax": "PASS",
+      "validation": "VALIDATED",
+      "evidence": "INC-005 real application request/result",
+      "references": [
+        "incidents/INC-005-web-attack/evidence/application-requests.json"
+      ],
+      "false_positive_notes": true,
+      "mitre_tags": [],
+      "logic_type": "Sigma selection"
+    },
+    {
+      "file": "web_sql_injection.yml",
+      "id": "a90e9972-0ad8-4739-81b3-09e60397c94f",
+      "title": "CyberLab Web Authentication SQL Injection Result",
+      "syntax": "PASS",
+      "validation": "VALIDATED",
+      "evidence": "INC-005 real application request/result",
+      "references": [
+        "incidents/INC-005-web-attack/evidence/application-requests.json"
+      ],
+      "false_positive_notes": true,
+      "mitre_tags": [],
+      "logic_type": "Sigma selection"
+    }
+  ]
+}

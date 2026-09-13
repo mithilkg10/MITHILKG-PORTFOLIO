@@ -1,0 +1,12 @@
+{
+    "scenario":  "harmless scheduled task creation and execution",
+    "task_name":  "CyberLab-Phase3-Benign",
+    "output_created":  false,
+    "task_removed":  true,
+    "security_4698":  [
+
+                      ],
+    "sysmon_process_events":  [
+
+                              ]
+}

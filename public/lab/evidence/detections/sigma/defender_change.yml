@@ -1,0 +1,23 @@
+title: Defender Configuration Change
+id: 95fd07fa-0d42-55b7-a776-c24bef05a809
+status: experimental
+description: Phase 2 starter signal. Syntax checked; not detection-validated without
+  real matching test evidence.
+author: CyberLab
+date: '2026-09-10'
+logsource:
+  product: windows
+  service: windefend
+detection:
+  selection:
+    EventID: 5007
+  condition: selection
+falsepositives:
+- Normal Defender updates and policy refresh. A change event is not proof of a successful
+  malicious attempt; correlate context. No protection changed.
+references:
+- incidents/INC-004-credential-access/DETECTION.md
+level: medium
+tags:
+- attack.defense_evasion
+- attack.t1562.001

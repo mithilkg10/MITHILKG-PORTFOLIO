@@ -1,0 +1,24 @@
+title: Windows Failed Logon Burst by Target Account
+id: 5f52aa30-6b9c-4c44-b209-6919e30842de
+status: test
+description: Correlates five Windows failed-logon base signals for the same target
+  account within five minutes. Validated by INC-001 and custom Wazuh rule 100201.
+author: CyberLab
+date: '2026-09-13'
+correlation:
+  type: event_count
+  rules:
+  - 43253844-7a7b-5f19-b5b1-5d1d4e521ccf
+  group-by:
+  - TargetUserName
+  timespan: 5m
+  condition:
+    gte: 5
+falsepositives:
+- Stale saved credentials, mistyped service passwords, or legitimate user error.
+level: high
+tags:
+- attack.credential_access
+- attack.t1110
+references:
+- incidents/INC-001-authentication-attack/evidence/correlation-observation.json

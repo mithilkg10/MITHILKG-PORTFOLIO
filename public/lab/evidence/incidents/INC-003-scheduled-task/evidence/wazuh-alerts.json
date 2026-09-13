@@ -1,0 +1,71 @@
+{
+  "markers": [
+    "CyberLab-Phase3-Benign",
+    "scheduled-task-output.txt"
+  ],
+  "match_count": 2,
+  "alerts": [
+    {
+      "alert_id": "1789279943.4260792",
+      "timestamp": "2026-09-13T06:12:23.487+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "91816",
+        "description": "Powershell script querying system environment variables",
+        "level": 4,
+        "mitre": {
+          "id": [
+            "T1082"
+          ],
+          "tactic": [
+            "Discovery"
+          ],
+          "technique": [
+            "System Information Discovery"
+          ]
+        }
+      },
+      "windows": {
+        "eventID": "4104",
+        "eventRecordID": "2299",
+        "scriptBlockText": "$ErrorActionPreference = 'Stop' $start = Get-Date $taskName = 'CyberLab-Phase3-Benign' $output = 'C:\\\\CyberLab\\\\Phase3\\\\scheduled-task-output.txt' New-Item -ItemType Directory -Path (Split-Path $output) -Force | Out-Null $action = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument \\\"-NoProfile -Command Set-Content -LiteralPath '$output' -Value 'Synthetic scheduled-task validation'\\\" $trigger = New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(10) Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger -User $env:USERNAME -RunLevel Limited -Force | Out-Null Start-ScheduledTask -TaskName $taskName Start-Sleep -Seconds 4 $outputCreated = Test-Path -LiteralPath $output Unregister-ScheduledTask -TaskName $taskName -Confirm:$false Start-Sleep -Seconds 2 $creation = foreach ($event in Get-WinEvent -FilterHashtable @{ LogName='Security'; Id=4698; StartTime=$start } -ErrorAction SilentlyContinue) {   [xml]$xml = $event.ToXml(); $fields = @{}   foreach ($item in $xml.Event.EventData.Data) { $fields[$item.Name] = [string]$item.'#text' }   if ($fields.TaskName -like \\\"*$taskName*\\\") {     [ordered]@{ event_id=4698; record_id=$event.RecordId; timestamp_utc=$"
+      }
+    },
+    {
+      "alert_id": "1789279945.4271639",
+      "timestamp": "2026-09-13T06:12:25.834+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "60228",
+        "description": "A scheduled task was created",
+        "level": 4,
+        "mitre": {
+          "id": [
+            "T1053"
+          ],
+          "tactic": [
+            "Execution",
+            "Persistence",
+            "Privilege Escalation"
+          ],
+          "technique": [
+            "Scheduled Task/Job"
+          ]
+        }
+      },
+      "windows": {
+        "eventID": "4698",
+        "eventRecordID": "4616",
+        "taskName": "\\\\CyberLab-Phase3-Benign"
+      }
+    }
+  ]
+}

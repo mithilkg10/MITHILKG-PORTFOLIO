@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { TiltCard } from "@/components/ui/TiltCard";
 import { cyberLab } from "@/lib/data/resume";
+import Link from "next/link";
 
 export function CyberLab() {
   return (
@@ -17,6 +18,7 @@ export function CyberLab() {
           description="A living laboratory of offensive and defensive security skills, tools, and research capabilities."
         />
 
+        <Link href="/lab" className="mb-8 inline-flex rounded-lg border border-white/20 px-5 py-3 text-sm focus-visible:outline-2 focus-visible:outline-offset-4">Explore the evidence-backed Cyber Defense Lab →</Link>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {cyberLab.categories.map((cat, catIndex) => (
             <motion.div

@@ -1,0 +1,22 @@
+VirtualBox: 7.2.16r174877
+Name:            VirtualBox Host-Only Ethernet Adapter
+GUID: [REDACTED: host interface identifier]
+DHCP:            Disabled
+IPAddress:       192.168.56.1
+NetworkMask:     255.255.255.0
+IPV6Address: [REDACTED: host interface identifier]
+IPV6NetworkMaskPrefixLength: [REDACTED: host interface identifier]
+HardwareAddress: [REDACTED: host interface identifier]
+MediumType:      Ethernet
+Wireless:        No
+Status:          Up
+VBoxNetworkName: HostInterfaceNetworking-VirtualBox Host-Only Ethernet Adapter
+
+KALI-ATTACK state=poweroff; CPU=2; RAM=2496 MiB; LAB=VirtualBox Host-Only Ethernet Adapter; expectedIP=192.168.56.10; secondaryNICs=; bridged=False; BASELINE-CLEAN=True
+KALI-ATTACK reachability: skipped (guest stopped or -Connectivity not selected)
+WIN-LAB-01 state=running; CPU=3; RAM=1536 MiB; LAB=VirtualBox Host-Only Ethernet Adapter; expectedIP=192.168.56.20; secondaryNICs=; bridged=False; BASELINE-CLEAN=True
+WIN-LAB-01 reachability: skipped (guest stopped or -Connectivity not selected)
+ICS: disabled in saved administrator audit; re-audit after any host networking changes.
+Guest route verification: 09/10/2026 12:18:06
+Host available RAM: 3018 MiB; D: free: 205.71 GiB
+Isolation: PASS for current adapters/forwarding and saved guest-route/ICS evidence. No external network probe was performed.

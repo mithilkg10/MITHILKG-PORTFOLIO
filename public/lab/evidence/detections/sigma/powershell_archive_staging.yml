@@ -1,0 +1,23 @@
+title: PowerShell Archive Staging
+id: bd5f04d1-347b-4852-af1b-d0c4de8cd009
+status: test
+description: Detects PowerShell Compress-Archive use as a staging signal. Validated by
+  INC-006 PowerShell 4104 telemetry; archive creation alone is not proof of exfiltration.
+author: CyberLab
+date: '2026-09-13'
+logsource:
+  product: windows
+  service: powershell
+detection:
+  selection:
+    EventID: 4104
+    ScriptBlockText|contains: Compress-Archive
+  condition: selection
+falsepositives:
+- Administrative packaging, software deployment, backup, and user archiving are common.
+level: medium
+tags:
+- attack.collection
+- attack.t1560.001
+references:
+- incidents/INC-006-exfiltration/evidence/powershell-4104.json

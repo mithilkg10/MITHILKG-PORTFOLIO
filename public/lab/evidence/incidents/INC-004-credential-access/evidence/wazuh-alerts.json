@@ -1,0 +1,39 @@
+{
+  "markers": [
+    "Phase3ProcessQuery",
+    "PROCESS_QUERY_LIMITED_INFORMATION"
+  ],
+  "match_count": 1,
+  "alerts": [
+    {
+      "alert_id": "1789279957.4351342",
+      "timestamp": "2026-09-13T06:12:37.050+0000",
+      "agent": {
+        "id": "001",
+        "name": "WIN-LAB-01",
+        "ip": "192.168.56.20"
+      },
+      "rule": {
+        "id": "91815",
+        "description": "Powershell executing process discovery",
+        "level": 4,
+        "mitre": {
+          "id": [
+            "T1057"
+          ],
+          "tactic": [
+            "Discovery"
+          ],
+          "technique": [
+            "Process Discovery"
+          ]
+        }
+      },
+      "windows": {
+        "eventID": "4104",
+        "eventRecordID": "2377",
+        "scriptBlockText": "$ErrorActionPreference = 'Stop' $start = Get-Date Add-Type -TypeDefinition @' using System; using System.Runtime.InteropServices; public static class Phase3ProcessQuery {   [DllImport(\\\"kernel32.dll\\\", SetLastError=true)] public static extern IntPtr OpenProcess(uint access, bool inherit, int pid);   [DllImport(\\\"kernel32.dll\\\")] public static extern bool CloseHandle(IntPtr handle); } '@ $lsass = Get-Process -Name lsass $queryLimitedInformation = 0x1000 $handle = [Phase3ProcessQuery]::OpenProcess($queryLimitedInformation, $false, $lsass.Id) $opened = $handle -ne [IntPtr]::Zero if ($opened) { [Phase3ProcessQuery]::CloseHandle($handle) | Out-Null } Start-Sleep -Seconds 3 $events = foreach ($event in Get-WinEvent -FilterHashtable @{ LogName='Microsoft-Windows-Sysmon/Operational'; Id=10; StartTime=$start } -ErrorAction SilentlyContinue) {   [xml]$xml = $event.ToXml(); $fields = @{}   foreach ($item in $xml.Event.EventData.Data) { $fields[$item.Name] = [string]$item.'#text' }   if ($fields.TargetImage -like '*\\\\lsass.exe' -and $fields.SourceImage -like '*\\\\powershell.exe') {     [ordered]@{ event_id=10; record_id=$event.RecordId; timestamp_utc=$event.TimeCreated.ToUniversalTime().ToStrin"
+      }
+    }
+  ]
+}

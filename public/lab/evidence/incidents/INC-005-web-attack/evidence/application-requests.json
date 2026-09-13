@@ -1,0 +1,38 @@
+[
+  {
+    "timestamp_utc": "2026-09-13T11:44:42.412039+05:30",
+    "source": "192.168.56.1",
+    "method": "GET",
+    "path": "/health",
+    "status": 200,
+    "finding": "health",
+    "response_bytes": 44
+  },
+  {
+    "timestamp_utc": "2026-09-13T11:44:47.772731+05:30",
+    "source": "192.168.56.20",
+    "method": "GET",
+    "path": "/login?username=viewer&password=wrong",
+    "status": 200,
+    "finding": "login",
+    "response_bytes": 47
+  },
+  {
+    "timestamp_utc": "2026-09-13T11:44:48.04335+05:30",
+    "source": "192.168.56.20",
+    "method": "GET",
+    "path": "/login?username=admin'%20--&password=wrong",
+    "status": 200,
+    "finding": "sql-injection-bypass",
+    "response_bytes": 52
+  },
+  {
+    "timestamp_utc": "2026-09-13T11:44:48.047736+05:30",
+    "source": "192.168.56.20",
+    "method": "GET",
+    "path": "/files?name=..%2Fsecrets%2Fdemo-secret.txt",
+    "status": 200,
+    "finding": "path-traversal",
+    "response_bytes": 88
+  }
+]

@@ -1,0 +1,23 @@
+title: Windows Failed Logon Signal
+id: 43253844-7a7b-5f19-b5b1-5d1d4e521ccf
+status: test
+description: Base signal for Windows failed logons. Validated by six controlled 4625
+  records in INC-001 and used by the separate five-event correlation rule.
+author: CyberLab
+date: '2026-09-10'
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 4625
+  condition: selection
+falsepositives:
+- Single-event signal; correlate five events per target account in five minutes in
+  the deployed platform. Incorrect saved credentials are common.
+references:
+- incidents/INC-001-authentication-attack/evidence/correlation-observation.json
+level: medium
+tags:
+- attack.credential_access
+- attack.t1110

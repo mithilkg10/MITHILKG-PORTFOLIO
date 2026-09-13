@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/build-lab-offline.mjs && next build",
+    "typecheck": "tsc --noEmit",
+    "test:lab": "playwright test --config playwright.lab.config.ts",
     "start": "next start",
     "lint": "eslint"
   },

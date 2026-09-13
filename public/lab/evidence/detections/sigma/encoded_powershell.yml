@@ -1,0 +1,24 @@
+title: PowerShell Encoded Command
+id: af941452-06ae-5d0f-99e5-57f667d75887
+status: test
+description: Detects encoded PowerShell process creation. Validated against controlled
+  INC-002 telemetry and Wazuh rule 92057; the benign payload performed no network action.
+author: CyberLab
+date: '2026-09-10'
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection:
+    EventID: 1
+    Image|endswith: \powershell.exe
+    CommandLine|contains: -EncodedCommand
+  condition: selection
+falsepositives:
+- Administration and this lab guestcontrol helper legitimately use encoded commands.
+references:
+- incidents/INC-002-powershell/evidence/wazuh-alerts.json
+level: medium
+tags:
+- attack.execution
+- attack.t1059.001

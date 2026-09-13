@@ -1,0 +1,22 @@
+{
+    "scenario":  "synthetic archive staging and isolated transfer",
+    "source":  "WIN-LAB-01",
+    "destination":  "192.168.56.1:8085",
+    "filenames":  [
+                      "finance_demo.csv",
+                      "employees_demo.csv",
+                      "research_demo.txt"
+                  ],
+    "bytes":  508,
+    "sha256":  "7f9416decf11f483c93b76f60ecc956e2763af7debbf90eeefffd95d73b978a7",
+    "collector_bytes":  508,
+    "collector_sha256":  "7f9416decf11f483c93b76f60ecc956e2763af7debbf90eeefffd95d73b978a7",
+    "hash_match":  true,
+    "cleanup_complete":  true,
+    "sysmon_network_events":  [
+
+                              ],
+    "sysmon_file_events":  [
+
+                           ]
+}

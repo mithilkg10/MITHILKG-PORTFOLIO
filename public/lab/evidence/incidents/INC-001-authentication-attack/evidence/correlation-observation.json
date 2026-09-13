@@ -1,0 +1,14 @@
+{
+  "synthetic_account": "CyberLab_Ph3_NoUser",
+  "wazuh_4625_alerts": 6,
+  "unique_event_records": 6,
+  "threshold": "5 events per target account within 5 minutes",
+  "threshold_satisfied": true,
+  "custom_rule_id": "100201",
+  "custom_correlation_alerts": 1,
+  "correlation_alert_ids": [
+    "1789280470.5309068"
+  ],
+  "first_timestamp": "2026-09-13T11:51:06.143+05:30",
+  "last_timestamp": "2026-09-13T11:51:11.336+05:30"
+}

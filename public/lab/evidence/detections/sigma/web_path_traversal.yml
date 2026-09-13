@@ -1,0 +1,20 @@
+title: CyberLab Web Path Traversal Result
+id: 97a279a7-992e-4f44-a1d6-dd61f403925f
+status: test
+description: Detects a request that escaped the app's intended public directory while
+  remaining inside its synthetic lab root. Validated by INC-005 request metadata.
+author: CyberLab
+date: '2026-09-13'
+logsource:
+  category: webserver
+  product: cyberlab_vulnerable_app
+detection:
+  selection:
+    finding: path-traversal
+    status: 200
+  condition: selection
+falsepositives:
+- None expected for this explicit lab finding field; normalize and validate paths in production.
+level: high
+references:
+- incidents/INC-005-web-attack/evidence/application-requests.json

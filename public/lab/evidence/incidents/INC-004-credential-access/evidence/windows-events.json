@@ -1,0 +1,11 @@
+{
+    "scenario":  "credential-access behavioural simulation using process query only",
+    "requested_access":  "PROCESS_QUERY_LIMITED_INFORMATION (0x1000)",
+    "process_handle_opened":  false,
+    "credentials_read":  false,
+    "credentials_harvested":  false,
+    "sysmon_event_10":  [
+
+                        ],
+    "conclusion":  "Credential-access behaviour was emulated. No real credentials were harvested."
+}
