@@ -1,5 +1,3 @@
 # Analysis
 
-Confirmed normal authentication failed, injection returned the synthetic admin role, traversal returned only the synthetic marker, source was WIN-LAB-01, and the listener was host-only.
-
-Observables: Destination 192.168.56.1:8085; HTTP GET; explicit application findings; synthetic path `../secrets/demo-secret.txt`.
+The application log identifies 192.168.56.10 as the request source. The SQL injection request returned the synthetic admin row. The traversal request returned only `SYNTHETIC-LAB-DATA-NOT-A-REAL-SECRET`. The normal login retest returned unauthenticated. This establishes Kali as the real request source without claiming access to a public target or real data.

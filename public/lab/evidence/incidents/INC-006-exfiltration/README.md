@@ -1,80 +1,32 @@
-# INC-006 — Synthetic Isolated Data Transfer
+# INC-006: Synthetic Isolated Data Transfer
 
 Status: PASS
+
 Severity: Medium
+
 VYOMRIX incident: INC-4C4C2C05
 
-## 1. Executive Summary
+## Executive Summary
 
-Three synthetic files were archived and transferred over HTTP inside 192.168.56.0/24. The 508-byte source and collector archives had the same SHA-256.
+WIN-LAB-01 created a 489 byte archive from three synthetic files and transferred it only to KALI-ATTACK at 192.168.56.10:8090. Source and collector SHA256 values matched.
 
-## 2. Scenario
+## Origin and target
 
-Demonstrate staging and observable transfer without real data, Internet egress, or an attacker-controlled public service.
-
-## 3. Attack/Emulation Method
-
-Created three clearly labeled synthetic files, used PowerShell `Compress-Archive`, uploaded the archive to the temporary host-only collector, compared hashes, and deleted Windows staging.
-
-## 4. Detection Sources
-
-PowerShell 4104, collector request log, source/collector byte count and SHA-256, VYOMRIX case workflow.
-
-## 5. Initial Alert
-
-No Wazuh alert was produced for the transfer. PowerShell 4104 supports archive staging; the collector log proves network receipt.
-
-## 6. Investigation
-
-Confirmed three synthetic filenames, 508 transferred bytes, matching hashes, destination 192.168.56.1:8085, no default guest route, and successful source cleanup.
-
-## 7. Timeline
-
-| Time | Event |
+| Field | Value |
 |---|---|
-| 2026-09-13T11:44:54.179886+05:30 | Synthetic archive received by host-only collector |
-| 2026-09-13T11:44:54.179886+05:30 | Source and collector SHA-256 matched |
-| 2026-09-13T11:44:54.179886+05:30 | Windows staging deleted and collector stopped |
+| Source | WIN-LAB-01 192.168.56.20 |
+| Destination | KALI-ATTACK 192.168.56.10:8090 |
+| Network | VirtualBox host only 192.168.56.0/24 |
+| Internet route | None |
 
-## 8. MITRE ATT&CK
+## Detection and investigation
 
-| Technique | Name | Evidence |
-|---|---|---|
-| T1560.001 | Archive Collected Data: Archive via Utility | Compress-Archive in real 4104 telemetry |
-| T1048.003 | Exfiltration Over Unencrypted Non-C2 Protocol | HTTP transfer to an isolated collector; no C2 or Internet involved |
+PowerShell 4104 record 3406 preserved the archive and transfer script. Wazuh alert 1789381207.5448611 under built in rule 91819 supplied supporting endpoint evidence. Collector metadata proved receipt and hash equality. VYOMRIX incident INC-4C4C2C05 contains both references.
 
-## 9. Indicators / Observables
+## Containment and retest
 
-Files `finance_demo.csv`, `employees_demo.csv`, `research_demo.txt`; 508 bytes; destination 192.168.56.1:8085; matching SHA-256.
+Windows staging was removed. The Kali receiver was stopped. Port 8090 was closed. The received archive was deleted after hash verification. The transfer remained inside 192.168.56.0/24.
 
-## 10. Detection Logic
+## Evidence
 
-Sigma `powershell_archive_staging.yml` validated against 4104. Collector metadata is evidence, while no Wazuh transfer alert is claimed.
-
-## 11. False Positives
-
-Backup, packaging, software delivery, and normal uploads. Correlate archive creation, file sensitivity, destination, volume, user, and time.
-
-## 12. Containment
-
-Deleted Windows staging and the archive, stopped the collector, and retained only the synthetic evidence copy inside CyberLab.
-
-## 13. Remediation
-
-Apply data classification, DLP, destination allowlists, proxy logging, archive monitoring, and least-privilege controls.
-
-## 14. Retest
-
-PASS: bytes and SHA-256 matched, transfer stayed host-only, source cleanup completed, and no Internet route existed.
-
-## 15. Evidence
-
-Sanitized evidence is in [`evidence/`](evidence/). Secrets, private keys, raw logs, VM files, and real personal data are excluded.
-
-## 16. Lessons Learned
-
-Hash and byte-count verification establish transfer integrity without exposing file contents or relying on a screenshot.
-
-## 17. Limitations
-
-The transfer contained only 508 bytes of synthetic data and stayed inside the host-only network. No Wazuh transfer alert, Internet egress, C2 channel, or large-volume behavior is claimed.
+The evidence directory contains the Windows transfer result, Kali collector record, matching hashes, PowerShell event, Wazuh alert, receiver state, and containment result. No real data or secret is included.

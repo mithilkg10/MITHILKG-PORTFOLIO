@@ -1,0 +1,5 @@
+timestamp=2026-09-14T10:00:42Z
+controlled_sql_injection_corrected
+{"authenticated":true,"user":"admin","role":"admin"}
+negative_retest
+{"authenticated":false,"user":null,"role":null}

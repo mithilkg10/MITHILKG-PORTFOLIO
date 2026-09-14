@@ -1,0 +1,6 @@
+timestamp=2026-09-14T09:57:56Z
+source=kali
+2: eth0    inet 192.168.56.10/24 brd 192.168.56.255 scope global noprefixroute eth0\       valid_lft forever preferred_lft forever
+route=192.168.56.0/24 dev eth0 proto kernel scope link src 192.168.56.10 metric 100 
+smbclient=/usr/bin/smbclient
+port445=unavailable

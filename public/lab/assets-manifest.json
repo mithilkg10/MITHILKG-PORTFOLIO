@@ -1,5 +1,5 @@
 {
-  "source": "MKG-Cyber-Defense-Lab public package c9c08655c273ea6e344af708ef7888432908ee78",
+  "source": "MKG-Cyber-Defense-Lab public package 523a3f760db2bdce4d487e87c4109a66e901abea",
   "evidence": "evidence/incidents and evidence/detections: preserved public-safe text, JSON and detection sources",
   "offline": "offline.html: generated self-contained presentation, with no network requests",
   "screenshots": {
@@ -9,7 +9,7 @@
     "vyomrix_incident": "EVIDENCE CAPTURE PENDING",
     "timeline_report": "EVIDENCE CAPTURE PENDING"
   },
-  "claim_boundary": "8 built-in Wazuh IDs plus custom 100201; no fake screenshots or new telemetry",
+  "claim_boundary": "9 built in Wazuh IDs plus custom 100201; no fake screenshots or new telemetry",
   "replay": {
     "data": "Generated from preserved incident JSON, case documentation and authored rule files. Source SHA256s included in every practice report.",
     "timing": "8-second presentation stages are not original event chronology.",

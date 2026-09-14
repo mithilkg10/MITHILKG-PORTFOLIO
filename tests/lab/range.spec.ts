@@ -16,7 +16,8 @@ for(const demo of [false,true])for(const [i,c] of records.entries())test(`${demo
   await page.goto(demo?'/lab/demo':'/lab');const range=page.locator('#range-console');await range.getByRole('combobox',{name:'Scenario',exact:true}).selectOption(String(i));
   await expect(range).toContainText(c.proof);await expect(range.getByRole('button',{name:'Open analyst workspace'})).toBeDisabled();
   await range.getByRole('button',{name:demo?'Start demo':'Start safe simulation',exact:true}).click();await expect(range.locator('[data-testid=range-status]')).toHaveText('RUNNING');
-  await expect(range.locator('.range-node').nth(0)).toContainText('IDLE');await expect(range.locator('.range-node').nth(1)).toHaveAttribute('data-active','true');
+  const kaliActive=c.id==='INC-005'||c.id==='INC-006';
+  await expect(range.locator('.range-node').nth(0)).toContainText(kaliActive?'ACTIVE':c.id==='INC-001'?'PREFLIGHT EVIDENCED':'NOT APPLICABLE');await expect(range.locator('.range-node').nth(0)).toHaveAttribute('data-active',String(kaliActive));await expect(range.locator('.range-node').nth(1)).toHaveAttribute('data-active','true');
   for(let step=1;step<=6;step++){await range.getByRole('button',{name:'Next',exact:true}).click();await expect(range.locator('.range-stream li')).toHaveCount(step+1);await expect(range.locator('.range-stage-track [data-current=true]')).toContainText(String(step+1).padStart(2,'0'));}
   await expect(range.locator('.range-node').nth(3)).toHaveAttribute('data-active','true');
   for(const name of ['Raw event','Normalized','Detection','Wazuh','Incident']){

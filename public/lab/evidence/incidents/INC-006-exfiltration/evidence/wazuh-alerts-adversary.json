@@ -1,0 +1,10 @@
+{
+  "timestamp": "2026-09-14T15:50:07.339+05:30",
+  "alert_id": "1789381207.5448611",
+  "rule_id": "91819",
+  "level": 4,
+  "description": "Powershell script searching filesystem",
+  "agent": "WIN-LAB-01",
+  "event_id": "4104",
+  "record_id": "3406"
+}

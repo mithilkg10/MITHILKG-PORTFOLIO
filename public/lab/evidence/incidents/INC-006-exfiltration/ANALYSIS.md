@@ -1,5 +1,3 @@
 # Analysis
 
-Confirmed three synthetic filenames, 508 transferred bytes, matching hashes, destination 192.168.56.1:8085, no default guest route, and successful source cleanup.
-
-Observables: Files `finance_demo.csv`, `employees_demo.csv`, `research_demo.txt`; 508 bytes; destination 192.168.56.1:8085; matching SHA-256.
+WIN-LAB-01 created three clearly synthetic files and compressed them into a 489 byte archive. KALI-ATTACK received the archive at 192.168.56.10:8090. Both systems calculated SHA256 69755c314f43aef1f88ec80e2ec6f3e3fb78fcac8b1b15dc4ff7812b7478b936. PowerShell 4104 record 3406 and Wazuh alert 1789381207.5448611 provide endpoint context. The collector record proves network receipt.

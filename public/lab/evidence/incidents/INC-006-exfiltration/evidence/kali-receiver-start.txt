@@ -1,0 +1,2 @@
+receiver_pid=1394
+receiver_ready=true

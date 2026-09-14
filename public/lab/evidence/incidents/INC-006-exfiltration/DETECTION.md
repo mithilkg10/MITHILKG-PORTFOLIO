@@ -1,5 +1,3 @@
 # Detection
 
-Sigma `powershell_archive_staging.yml` validated against 4104. Collector metadata is evidence, while no Wazuh transfer alert is claimed.
-
-Initial alert: No Wazuh alert was produced for the transfer. PowerShell 4104 supports archive staging; the collector log proves network receipt.
+Sigma `powershell_archive_staging.yml` remains validated against PowerShell 4104. Built in Wazuh rule 91819 produced alert 1789381207.5448611 for the PowerShell script. This is supporting filesystem activity evidence. It is not described as a direct transfer detector. Kali collector metadata proves the transfer.

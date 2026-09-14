@@ -1,7 +1,9 @@
 # Timeline
 
-| Time | Event |
+| Time in UTC | Event |
 |---|---|
-| 2026-09-13T11:44:42.412039+05:30 | Host-only service health/normal request sequence began |
-| 2026-09-13T11:44:48.04335+05:30 | SQL injection bypass confirmed |
-| 2026-09-13T11:44:48.047736+05:30 | Constrained path traversal confirmed; service stopped after evidence |
+| 2026-09-14T09:57:56Z | Kali host only address, route, client, and target service checked |
+| 2026-09-14T10:00:14Z | Path traversal returned only the synthetic marker |
+| 2026-09-14T10:00:42Z | Corrected controlled SQL injection returned the synthetic admin row |
+| 2026-09-14T10:00:42Z | Normal synthetic login retest remained unauthenticated |
+| 2026-09-14 | Port 8085 closed and request log hash preserved |

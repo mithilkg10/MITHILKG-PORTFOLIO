@@ -18,3 +18,5 @@
 .range-enabled.demo-short .lab-nav{height:48px}.range-enabled.demo-short .lab-demo-controls{padding-block:10px}.range-demo .range-inspector-body{height:148px}@media(max-width:900px){.range-demo .range-inspector-body{height:240px}}
 
 .range-demo[data-workspace=true] .range-status,.range-demo[data-workspace=true] .range-origin,.range-demo[data-workspace=true] .range-workspace-bar{display:none}.range-demo[data-workspace=true] .range-node small{display:none}.range-demo[data-workspace=true] .range-toolbar label{display:none}.range-demo[data-workspace=true] .range-topology{margin-top:8px}
+
+.lab-wazuh code{overflow-wrap:anywhere;word-break:break-word}

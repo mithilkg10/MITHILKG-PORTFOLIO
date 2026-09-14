@@ -1,3 +1,3 @@
 # Retest
 
-PASS: bytes and SHA-256 matched, transfer stayed host-only, source cleanup completed, and no Internet route existed.
+The corrected transfer returned HTTP 201. Source and collector hashes matched. Windows cleanup completed. Kali port 8090 closed after containment. No default route or non host only adapter was present.

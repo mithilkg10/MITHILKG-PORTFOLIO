@@ -1,0 +1,5 @@
+expected_sha256=69755c314f43aef1f88ec80e2ec6f3e3fb78fcac8b1b15dc4ff7812b7478b936
+received_sha256=69755c314f43aef1f88ec80e2ec6f3e3fb78fcac8b1b15dc4ff7812b7478b936
+receiver_stopped=true
+port8090_listening=false
+kali_payload_cleanup=true

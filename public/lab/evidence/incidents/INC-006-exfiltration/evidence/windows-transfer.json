@@ -1,0 +1,13 @@
+{
+    "StartUtc":  "2026-09-14T10:19:17.4114999Z",
+    "EndUtc":  "2026-09-14T10:19:17.9764677Z",
+    "Source":  "WIN-LAB-01 192.168.56.20",
+    "Destination":  "KALI-ATTACK 192.168.56.10:8090",
+    "HttpStatus":  201,
+    "Bytes":  489,
+    "SourceSHA256":  "69755c314f43aef1f88ec80e2ec6f3e3fb78fcac8b1b15dc4ff7812b7478b936",
+    "CollectorSHA256":  "69755c314f43aef1f88ec80e2ec6f3e3fb78fcac8b1b15dc4ff7812b7478b936",
+    "HashesMatch":  true,
+    "SyntheticOnly":  true,
+    "CleanupComplete":  true
+}

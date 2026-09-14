@@ -1,0 +1,7 @@
+{"timestamp_utc":"2026-09-14T10:00:17.619722+00:00","source":"192.168.56.10","method":"GET","path":"/health","status":200,"finding":"health","response_bytes":44}
+{"timestamp_utc":"2026-09-14T10:00:17.634804+00:00","source":"192.168.56.10","method":"GET","path":"/login?username=%27+OR+%271%27%3D%271&password=synthetic-invalid","status":200,"finding":"login","response_bytes":47}
+{"timestamp_utc":"2026-09-14T10:00:17.644711+00:00","source":"192.168.56.10","method":"GET","path":"/files?name=..%2Fsecrets%2Fdemo-secret.txt","status":200,"finding":"path-traversal","response_bytes":88}
+{"timestamp_utc":"2026-09-14T10:00:17.652480+00:00","source":"192.168.56.10","method":"GET","path":"/login?username=synthetic-invalid&password=synthetic-invalid","status":200,"finding":"login","response_bytes":47}
+{"timestamp_utc":"2026-09-14T10:00:17.660420+00:00","source":"192.168.56.10","method":"GET","path":"/files?name=welcome.txt","status":200,"finding":"file-read","response_bytes":60}
+{"timestamp_utc":"2026-09-14T10:00:44.741772+00:00","source":"192.168.56.10","method":"GET","path":"/login?username=%27%20OR%20%271%27%3D%271%27%20--%20&password=synthetic-invalid","status":200,"finding":"sql-injection-bypass","response_bytes":52}
+{"timestamp_utc":"2026-09-14T10:00:44.749566+00:00","source":"192.168.56.10","method":"GET","path":"/login?username=synthetic-invalid&password=synthetic-invalid","status":200,"finding":"login","response_bytes":47}

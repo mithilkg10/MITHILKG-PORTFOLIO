@@ -1,0 +1,13 @@
+timestamp=2026-09-14T10:00:14Z
+source=kali 192.168.56.10
+target=192.168.56.1:8085
+health
+{"status":"ok","scope":"CyberLab host-only"}
+controlled_sql_injection
+{"authenticated":false,"user":null,"role":null}
+controlled_path_traversal
+{"name":"../secrets/demo-secret.txt","content":"SYNTHETIC-LAB-DATA-NOT-A-REAL-SECRET\n"}
+negative_retest
+{"authenticated":false,"user":null,"role":null}
+safe_file_retest
+{"name":"welcome.txt","content":"CyberLab public content\n"}

@@ -61,8 +61,10 @@
         "ipAddress": "::1"
       }
     },
+    "alertPath": "incidents/INC-001-authentication-attack/evidence/wazuh-alerts.json",
     "severity": "High",
-    "origin": "Controlled Windows process on WIN-LAB-01",
+    "origin": "KALI-ATTACK preflight to WIN-LAB-01; authentication evidence remained endpoint local",
+    "kaliRole": "Authentication surface preflight only. No authentication attempt was sent.",
     "method": "Six failed secondary-logon attempts targeted `CyberLab_Ph3_NoUser`. The account does not exist and the credential string was synthetic and redacted from evidence.",
     "observables": "Synthetic target `CyberLab_Ph3_NoUser`; Windows event 4625; Wazuh rules 60122 and 100201; six unique record IDs.",
     "investigation": "Confirmed a single target account, six unique event records, a five-second observed window, no successful authentication, and no real identity impact.",
@@ -184,8 +186,10 @@
         "parentImage": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe"
       }
     },
+    "alertPath": "incidents/INC-002-powershell/evidence/wazuh-alerts.json",
     "severity": "Medium",
     "origin": "Controlled Windows process on WIN-LAB-01",
+    "kaliRole": "Not applicable for endpoint local execution.",
     "method": "A child PowerShell process decoded and ran only `Write-Output 'CyberLab-Phase3-Encoded-Benign'`.",
     "observables": "`powershell.exe`, `-EncodedCommand`, parent process, benign decoded marker, Wazuh alert ID.",
     "investigation": "Decoded the command, reviewed parent/child context, confirmed the user and timestamp, and verified no network action.",
@@ -286,8 +290,10 @@
         "taskName": "\\\\CyberLab-Phase3-Benign"
       }
     },
+    "alertPath": "incidents/INC-003-scheduled-task/evidence/wazuh-alerts.json",
     "severity": "Medium",
     "origin": "Controlled Windows process on WIN-LAB-01",
+    "kaliRole": "Not applicable for endpoint local task creation.",
     "method": "Registered a one-time task with a benign file-writing action, requested execution, then removed it. The payload file was not produced before cleanup, so execution is not claimed.",
     "observables": "Task `CyberLab-Phase3-Benign`; Security 4698; Wazuh rule 60228; task XML in sanitized alert evidence.",
     "investigation": "Reviewed task name, task content, creator, timestamp, intended action, and post-test absence of the task.",
@@ -387,8 +393,10 @@
         "scriptBlockText": "$ErrorActionPreference = 'Stop' $start = Get-Date Add-Type -TypeDefinition @' using System; using System.Runtime.InteropServices; public static class Phase3ProcessQuery {   [DllImport(\\\"kernel32.dll\\\", SetLastError=true)] public static extern IntPtr OpenProcess(uint access, bool inherit, int pid);   [DllImport(\\\"kernel32.dll\\\")] public static extern bool CloseHandle(IntPtr handle); } '@ $lsass = Get-Process -Name lsass $queryLimitedInformation = 0x1000 $handle = [Phase3ProcessQuery]::OpenProcess($queryLimitedInformation, $false, $lsass.Id) $opened = $handle -ne [IntPtr]::Zero if ($opened) { [Phase3ProcessQuery]::CloseHandle($handle) | Out-Null } Start-Sleep -Seconds 3 $events = foreach ($event in Get-WinEvent -FilterHashtable @{ LogName='Microsoft-Windows-Sysmon/Operational'; Id=10; StartTime=$start } -ErrorAction SilentlyContinue) {   [xml]$xml = $event.ToXml(); $fields = @{}   foreach ($item in $xml.Event.EventData.Data) { $fields[$item.Name] = [string]$item.'#text' }   if ($fields.TargetImage -like '*\\\\lsass.exe' -and $fields.SourceImage -like '*\\\\powershell.exe') {     [ordered]@{ event_id=10; record_id=$event.RecordId; timestamp_utc=$event.TimeCreated.ToUniversalTime().ToStrin"
       }
     },
+    "alertPath": "incidents/INC-004-credential-access/evidence/wazuh-alerts.json",
     "severity": "Low",
     "origin": "Controlled Windows process on WIN-LAB-01",
+    "kaliRole": "Not applicable for the denied local query.",
     "method": "Requested only `PROCESS_QUERY_LIMITED_INFORMATION (0x1000)` against LSASS and immediately closed any handle. Windows denied the request.",
     "observables": "PowerShell process discovery; target `lsass.exe`; requested access 0x1000; handle-open result false; Event 10 count zero.",
     "investigation": "Confirmed the handle was not opened, no memory-read API was used, no artifact containing credentials existed, and no Event 10 was emitted.",
@@ -438,64 +446,36 @@
   {
     "id": "INC-005",
     "slug": "web-attack",
-    "title": "Host-only web findings",
+    "title": "Host only web findings",
     "status": "PASS",
-    "proof": "Application outcomes establish impact.",
-    "detail": "An isolated purpose-built app recorded SQL injection bypass and traversal constrained to synthetic lab files.",
-    "telemetry": "Application JSON / PowerShell",
-    "detection": "Two application-log Sigma rules",
+    "proof": "Kali requests. Verified application outcomes.",
+    "detail": "KALI-ATTACK sent controlled requests to an isolated purpose built app that recorded SQL injection bypass and traversal constrained to synthetic lab files.",
+    "telemetry": "Kali transcript / application JSON",
+    "detection": "Two application log Sigma rules",
     "mitre": "AppSec · no Enterprise mapping",
     "incident": "INC-7890B5F0",
-    "limit": "No Wazuh alert. A fixed-application remediation retest was not performed.",
-    "visual": "REQUEST → sql-injection-bypass / path-traversal",
-    "raw": [
-      {
-        "timestamp_utc": "2026-09-13T11:44:42.412039+05:30",
-        "source": "192.168.56.1",
-        "method": "GET",
-        "path": "/health",
-        "status": 200,
-        "finding": "health",
-        "response_bytes": 44
-      },
-      {
-        "timestamp_utc": "2026-09-13T11:44:47.772731+05:30",
-        "source": "192.168.56.20",
-        "method": "GET",
-        "path": "/login?username=viewer&password=wrong",
-        "status": 200,
-        "finding": "login",
-        "response_bytes": 47
-      },
-      {
-        "timestamp_utc": "2026-09-13T11:44:48.04335+05:30",
-        "source": "192.168.56.20",
-        "method": "GET",
-        "path": "/login?username=admin'%20--&password=wrong",
-        "status": 200,
-        "finding": "sql-injection-bypass",
-        "response_bytes": 52
-      },
-      {
-        "timestamp_utc": "2026-09-13T11:44:48.047736+05:30",
-        "source": "192.168.56.20",
-        "method": "GET",
-        "path": "/files?name=..%2Fsecrets%2Fdemo-secret.txt",
-        "status": 200,
-        "finding": "path-traversal",
-        "response_bytes": 88
-      }
-    ],
-    "rawPath": "incidents/INC-005-web-attack/evidence/application-requests.json",
+    "limit": "No Wazuh alert. The service was stopped and its request log was preserved.",
+    "visual": "KALI → sql-injection-bypass / path-traversal",
+    "raw": {
+      "status": "PASS",
+      "address": "192.168.56.1",
+      "port": 8085,
+      "listening_after_stop": false,
+      "request_log_preserved": true,
+      "request_log_sha256": "c1a113a1618f6e3927fb280edae83c24ec294a49b0a2977ef0eb16c412fc8973"
+    },
+    "rawPath": "incidents/INC-005-web-attack/evidence/containment-confirmation.json",
     "alert": null,
+    "alertPath": null,
     "severity": "High",
-    "origin": "WIN-LAB-01 → host-only application",
-    "method": "Sent one failed normal login, one crafted username that altered the SQL query, and one traversal path escaping the intended public directory while remaining inside the lab app root.",
-    "observables": "Destination 192.168.56.1:8085; HTTP GET; explicit application findings; synthetic path `../secrets/demo-secret.txt`.",
-    "investigation": "Confirmed normal authentication failed, injection returned the synthetic admin role, traversal returned only the synthetic marker, source was WIN-LAB-01, and the listener was host-only.",
-    "containment": "Stopped the temporary server and verified port 8085 no longer listened. The vulnerable root remained inside CyberLab evidence storage.",
+    "origin": "KALI-ATTACK 192.168.56.10 to host only application 192.168.56.1:8085",
+    "kaliRole": "Controlled request source.",
+    "method": "## Verified evidence flow\r\n\r\n```text\r\nKALI-ATTACK 192.168.56.10\r\nto controlled HTTP requests\r\nto synthetic application 192.168.56.1:8085\r\nto application request records\r\nto authored AppSec Sigma selections\r\nto VYOMRIX INC-7890B5F0\r\nto analyst containment and retest\r\n```\r\n\r\nKali was the genuine request source. The application bound only to the host only adapter.",
+    "observables": "| Source | Record | Result |\r\n|---|---|---|\r\n| KALI-ATTACK | Sanitized curl transcript | Source 192.168.56.10 confirmed |\r\n| Synthetic application | requests.jsonl | SQL injection bypass and path traversal confirmed |\r\n| WAZUH-MGR | Primary behavior alert | Not observed |\r\n| VYOMRIX | INC-7890B5F0 | Kali timeline and evidence references added |",
+    "investigation": "The application log identifies 192.168.56.10 as the request source. The SQL injection request returned the synthetic admin row. The traversal request returned only `SYNTHETIC-LAB-DATA-NOT-A-REAL-SECRET`. The normal login retest returned unauthenticated. This establishes Kali as the real request source without claiming access to a public target or real data.",
+    "containment": "The temporary service was stopped. Port 8085 no longer listened on 192.168.56.1. The request log remained readable and its SHA256 remained c1a113a1618f6e3927fb280edae83c24ec294a49b0a2977ef0eb16c412fc8973.",
     "remediation": "Use parameterized queries; resolve and enforce an allowlisted content root; return generic errors; add structured security logging and tests.",
-    "retest": "PASS as a vulnerability demonstration. A fixed application was not deployed, so remediation retest remains a documented next engineering step.",
+    "retest": "The normal synthetic credentials remained unauthenticated. The service was then stopped and port 8085 was confirmed closed. A remediated application was not deployed, so code remediation requires further validation.",
     "rules": [
       {
         "file": "web_sql_injection.yml",
@@ -513,16 +493,16 @@
     "customRule": null,
     "sources": [
       {
-        "file": "incidents/INC-005-web-attack/evidence/application-requests.json",
-        "sha256": "3410cf2f1d998bcffa542085b7a7e0c8be76d89bfebfc629f90410d8a7dcd3de"
+        "file": "incidents/INC-005-web-attack/evidence/containment-confirmation.json",
+        "sha256": "111ebc4c74974b0bb119ebabe41930d38cacc6cf575a347b0e96038245eba316"
       },
       {
         "file": "incidents/INC-005-web-attack/README.md",
-        "sha256": "f27a97c12af6e6268d086e5d49f25a41a45dca09d072ae0e909c0ed242ac33b5"
+        "sha256": "871eb04d43ff4f3b34ead1bc4502e1019ce318ffe63ac8d7d5fdc5c542f89088"
       },
       {
         "file": "incidents/INC-005-web-attack/CONTAINMENT.md",
-        "sha256": "172228ba4ceda7b48a6c3c2cf2d898c7a6d4b6b9c67461e5c04d0b3070b000ee"
+        "sha256": "bdaed78e7aaca8faed47cbad8bbdc370b327e9405041351eb3bbf5c3c57243b0"
       },
       {
         "file": "incidents/INC-005-web-attack/REMEDIATION.md",
@@ -530,7 +510,7 @@
       },
       {
         "file": "incidents/INC-005-web-attack/RETEST.md",
-        "sha256": "b04574b210939467d990c0ef7bc7f4b647ad2f43dec0e3d7e4b3961853006738"
+        "sha256": "934241d2c3e1e7a406b0c427cad13a48aad27adc1451e06481f747869acd89ba"
       },
       {
         "file": "detections/sigma/web_sql_injection.yml",
@@ -547,42 +527,55 @@
     "slug": "exfiltration",
     "title": "Synthetic data transfer",
     "status": "PASS",
-    "proof": "508 bytes. Matching hashes.",
-    "detail": "Three synthetic files were archived and transferred by HTTP to the host-only collector. Source staging was removed.",
-    "telemetry": "PowerShell 4104 / collector JSON",
-    "detection": "Archive-staging Sigma",
+    "proof": "489 bytes. Matching hashes.",
+    "detail": "WIN-LAB-01 transferred three synthetic files to the isolated Kali collector. Source staging and received payloads were removed.",
+    "telemetry": "PowerShell 4104 / Kali collector JSON",
+    "detection": "Archive staging Sigma / built in Wazuh 91819 context",
     "mitre": "T1560.001 / T1048.003",
     "incident": "INC-4C4C2C05",
-    "limit": "No Internet egress, C2, real data, or Wazuh transfer alert.",
-    "visual": "SOURCE SHA-256 = COLLECTOR SHA-256",
+    "limit": "No Internet egress, command and control, or real data. Wazuh 91819 is supporting endpoint context, not a direct transfer detector.",
+    "visual": "WINDOWS SHA256 = KALI SHA256",
     "raw": {
-      "scenario": "synthetic archive staging and isolated transfer",
-      "source": "WIN-LAB-01",
-      "destination": "192.168.56.1:8085",
-      "filenames": [
-        "finance_demo.csv",
-        "employees_demo.csv",
-        "research_demo.txt"
-      ],
-      "bytes": 508,
-      "sha256": "7f9416decf11f483c93b76f60ecc956e2763af7debbf90eeefffd95d73b978a7",
-      "collector_bytes": 508,
-      "collector_sha256": "7f9416decf11f483c93b76f60ecc956e2763af7debbf90eeefffd95d73b978a7",
-      "hash_match": true,
-      "cleanup_complete": true,
-      "sysmon_network_events": [],
-      "sysmon_file_events": []
+      "StartUtc": "2026-09-14T10:19:17.4114999Z",
+      "EndUtc": "2026-09-14T10:19:17.9764677Z",
+      "Source": "WIN-LAB-01 192.168.56.20",
+      "Destination": "KALI-ATTACK 192.168.56.10:8090",
+      "HttpStatus": 201,
+      "Bytes": 489,
+      "SourceSHA256": "69755c314f43aef1f88ec80e2ec6f3e3fb78fcac8b1b15dc4ff7812b7478b936",
+      "CollectorSHA256": "69755c314f43aef1f88ec80e2ec6f3e3fb78fcac8b1b15dc4ff7812b7478b936",
+      "HashesMatch": true,
+      "SyntheticOnly": true,
+      "CleanupComplete": true
     },
-    "rawPath": "incidents/INC-006-exfiltration/evidence/windows-client.json",
-    "alert": null,
+    "rawPath": "incidents/INC-006-exfiltration/evidence/windows-transfer.json",
+    "alert": {
+      "timestamp": "2026-09-14T15:50:07.339+05:30",
+      "alert_id": "1789381207.5448611",
+      "rule_id": "91819",
+      "level": 4,
+      "description": "Powershell script searching filesystem",
+      "agent": {
+        "name": "WIN-LAB-01"
+      },
+      "event_id": "4104",
+      "record_id": "3406",
+      "rule": {
+        "id": "91819",
+        "level": 4,
+        "description": "Powershell script searching filesystem"
+      }
+    },
+    "alertPath": "incidents/INC-006-exfiltration/evidence/wazuh-alerts-adversary.json",
     "severity": "Medium",
-    "origin": "WIN-LAB-01 → host-only collector",
-    "method": "Created three clearly labeled synthetic files, used PowerShell `Compress-Archive`, uploaded the archive to the temporary host-only collector, compared hashes, and deleted Windows staging.",
-    "observables": "Files `finance_demo.csv`, `employees_demo.csv`, `research_demo.txt`; 508 bytes; destination 192.168.56.1:8085; matching SHA-256.",
-    "investigation": "Confirmed three synthetic filenames, 508 transferred bytes, matching hashes, destination 192.168.56.1:8085, no default guest route, and successful source cleanup.",
-    "containment": "Deleted Windows staging and the archive, stopped the collector, and retained only the synthetic evidence copy inside CyberLab.",
+    "origin": "WIN-LAB-01 192.168.56.20 to KALI-ATTACK 192.168.56.10:8090",
+    "kaliRole": "Isolated collection endpoint.",
+    "method": "## Verified evidence flow\r\n\r\n```text\r\nWIN-LAB-01 192.168.56.20\r\nto synthetic archive creation\r\nto HTTP transfer inside 192.168.56.0/24\r\nto KALI-ATTACK collector 192.168.56.10:8090\r\nto PowerShell 4104 and Wazuh 91819\r\nto VYOMRIX INC-4C4C2C05\r\nto receiver shutdown and payload removal\r\n```\r\n\r\nKali was the genuine isolated collection endpoint. The transfer never left the host only network.",
+    "observables": "| Source | Record | Result |\r\n|---|---|---|\r\n| WIN-LAB-01 | windows-transfer.json | HTTP 201, 489 bytes, source cleanup confirmed |\r\n| KALI-ATTACK | kali-collector.json | Source 192.168.56.20 and destination 192.168.56.10:8090 confirmed |\r\n| PowerShell | Event 4104 record 3406 | Archive and transfer script preserved |\r\n| WAZUH-MGR | Rule 91819 | Alert 1789381207.5448611 observed |\r\n| VYOMRIX | INC-4C4C2C05 | Kali collector and Wazuh evidence references added |\r\n\r\nSource and collector SHA256: 69755c314f43aef1f88ec80e2ec6f3e3fb78fcac8b1b15dc4ff7812b7478b936.",
+    "investigation": "WIN-LAB-01 created three clearly synthetic files and compressed them into a 489 byte archive. KALI-ATTACK received the archive at 192.168.56.10:8090. Both systems calculated SHA256 69755c314f43aef1f88ec80e2ec6f3e3fb78fcac8b1b15dc4ff7812b7478b936. PowerShell 4104 record 3406 and Wazuh alert 1789381207.5448611 provide endpoint context. The collector record proves network receipt.",
+    "containment": "Windows staging was removed. The Kali receiver process was stopped. Port 8090 was confirmed closed. The received synthetic archive and temporary receiver files were deleted after hash verification.",
     "remediation": "Apply data classification, DLP, destination allowlists, proxy logging, archive monitoring, and least-privilege controls.",
-    "retest": "PASS: bytes and SHA-256 matched, transfer stayed host-only, source cleanup completed, and no Internet route existed.",
+    "retest": "The corrected transfer returned HTTP 201. Source and collector hashes matched. Windows cleanup completed. Kali port 8090 closed after containment. No default route or non host only adapter was present.",
     "rules": [
       {
         "file": "powershell_archive_staging.yml",
@@ -594,16 +587,16 @@
     "customRule": null,
     "sources": [
       {
-        "file": "incidents/INC-006-exfiltration/evidence/windows-client.json",
-        "sha256": "fac7a57a4391105cbd196ee0ae3dcd5154b633a8cc17c0885976df2798c549fa"
+        "file": "incidents/INC-006-exfiltration/evidence/windows-transfer.json",
+        "sha256": "6967df02fe623fe6aefcf976f815cdd83f686dec96d256a29f5b442370a0a79e"
       },
       {
         "file": "incidents/INC-006-exfiltration/README.md",
-        "sha256": "6129e36fb0e66f979cd41b10a03322930b49ce6e4016b0c06356d81182105e4b"
+        "sha256": "1dc62e3b02c5f9105dbe2b59063ad94f8ebaeca59dc03162de36dd7f201c0350"
       },
       {
         "file": "incidents/INC-006-exfiltration/CONTAINMENT.md",
-        "sha256": "8f93fb833807d13fa5eba5e1ee6e8bb0b48675a934187441d2c2c1e53fcfd35a"
+        "sha256": "74c1869f7b1ced757c30fa19473c14587a42f7763d1c6572898cbf1aa21c30be"
       },
       {
         "file": "incidents/INC-006-exfiltration/REMEDIATION.md",
@@ -611,11 +604,15 @@
       },
       {
         "file": "incidents/INC-006-exfiltration/RETEST.md",
-        "sha256": "54152415840b73fff4b5c7c3e21fce4cbb1e15c6fb9d52017c6ebac6dc517104"
+        "sha256": "47030d2cf5085e1fd9cdee57c64e8badcab863a93a758b7395a5d9a6fb24602e"
       },
       {
         "file": "detections/sigma/powershell_archive_staging.yml",
         "sha256": "2ec366632b1ecbe114bdc92a74eb24669ecdb4395ef2baaf9e5f08432d3669a6"
+      },
+      {
+        "file": "incidents/INC-006-exfiltration/evidence/wazuh-alerts-adversary.json",
+        "sha256": "a46e0fe81cdfdb9f84a4701adc970b33ff9b70e9f615b5b0da812b4584f456e1"
       }
     ]
   }

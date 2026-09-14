@@ -1,12 +1,12 @@
 VirtualBox: 7.2.16r174877
 Name:            VirtualBox Host-Only Ethernet Adapter
-GUID: [REDACTED: host interface identifier]
+GUID:            286d31ba-9a4a-4590-a090-08a90a5fee4b
 DHCP:            Disabled
 IPAddress:       192.168.56.1
 NetworkMask:     255.255.255.0
-IPV6Address: [REDACTED: host interface identifier]
-IPV6NetworkMaskPrefixLength: [REDACTED: host interface identifier]
-HardwareAddress: [REDACTED: host interface identifier]
+IPV6Address:     fe80::c4a:643d:dd78:5ecb
+IPV6NetworkMaskPrefixLength: 64
+HardwareAddress: 0a:00:27:00:00:07
 MediumType:      Ethernet
 Wireless:        No
 Status:          Up
