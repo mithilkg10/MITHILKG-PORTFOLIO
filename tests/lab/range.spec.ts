@@ -1,6 +1,7 @@
 import {test,expect, type Page} from '@playwright/test';
 import fs from 'node:fs';
 import path from 'node:path';
+import crypto from 'node:crypto';
 import {pathToFileURL} from 'node:url';
 import records from '../../src/app/lab/replay-data.json';
 
@@ -30,7 +31,7 @@ for(const demo of [false,true])for(const [i,c] of records.entries())test(`${demo
   await range.getByRole('button',{name:'Open incident',exact:true}).click();await expect(range.getByRole('region',{name:'Analyst workspace',exact:true})).toBeVisible();await range.getByRole('button',{name:'Review telemetry',exact:true}).click();await expect(range.locator('.range-main')).toBeVisible();await range.getByRole('button',{name:'Open analyst workspace',exact:true}).click();
   const note='<script>window.replayLeak=true</script> Evidence reviewed.';await range.getByLabel(/Analyst note —/).fill(note);await range.getByRole('button',{name:'Add analyst note',exact:true}).click();await expect(range.locator('.range-notes')).toContainText(note);expect(await page.evaluate(()=>Object.prototype.hasOwnProperty.call(window,'replayLeak'))).toBe(false);
   await range.getByRole('button',{name:'Contain',exact:true}).click();await expect(range.locator('[data-testid=range-status]')).toHaveText('COMPLETE');await expect(range.getByRole('region',{name:'Simulated incident summary'})).toContainText(c.status);
-  const downloadPromise=page.waitForEvent('download');await range.getByRole('button',{name:'Download simulated incident report',exact:true}).click();const download=await downloadPromise;const file=path.resolve(`lab-test-results/${c.id}-report.json`);await download.saveAs(file);const report=JSON.parse(fs.readFileSync(file,'utf8'));expect(report.historical.outcome).toBe(c.status);expect(report.visitor.notes).toEqual([note]);expect(report.sources).toEqual(c.sources);expect(report.timeline).toHaveLength(8);expect(report.visitor.action).toBe('Contain');
+  const downloadPromise=page.waitForEvent('download');await range.getByRole('button',{name:'Download simulated incident report',exact:true}).click();const download=await downloadPromise;const file=path.resolve(`lab-test-results/${c.id}-report.json`);await download.saveAs(file);const report=JSON.parse(fs.readFileSync(file,'utf8'));expect(report.historical.outcome).toBe(c.status);expect(report.visitor.notes).toEqual([note]);expect(report.sources.map((source:{file:string})=>source.file)).toEqual(c.sources.map(source=>source.file));await Promise.all(report.sources.map(async(source:{file:string;sha256:string})=>{const response=await page.request.get('/lab/evidence/'+source.file);expect(response.status()).toBe(200);expect(crypto.createHash('sha256').update(await response.body()).digest('hex'),source.file).toBe(source.sha256);}));expect(report.timeline).toHaveLength(8);expect(report.visitor.action).toBe('Contain');
   await expect(range.getByRole('link',{name:'Open full investigation'})).toHaveAttribute('href',`/lab/incidents/${c.slug}`);
   await range.getByRole('button',{name:'Run another scenario',exact:true}).click();await expect(range.getByRole('combobox',{name:'Scenario',exact:true})).toBeFocused();await expect(range.locator('[data-testid=range-status]')).toHaveText('IDLE');await expect(range.locator('.range-notes')).toHaveCount(0);expect(errors).toEqual([]);expect(unsafe).toEqual([]);
 });

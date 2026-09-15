@@ -36,3 +36,11 @@ No layout, visual direction, lab scenario or preserved evidence changed. The tes
 ## Verification scope
 
 Lint, typecheck, production compilation, browser regression, internal evidence links, six scenario replays, analyst decisions, reports, reset and offline controls are release gates. Four viewport widths are exercised: 1440, 1280, 768 and 390 pixels. Accessibility checks are targeted keyboard, focus, reduced motion and semantic checks, not a full assistive technology certification.
+
+## Public verification result
+
+The existing Vercel production domain is https://mithilkg-portfolio.vercel.app. All 32 checks passed across the public regression run and focused provenance retest. All six pinned GitHub case links returned HTTP 200. No Vercel runtime errors were reported in the inspected window.
+
+The first public run exposed four test failures because it compared Linux deployment hashes with Windows checkout hashes. The affected text files have CRLF line endings in the Windows checkout and LF in the Git deployment. For the INC 005 containment record, normalizing the local line endings reproduces the public hash exactly. The test now verifies each report hash against the response bytes of its public source file and still checks the complete expected source list. Evidence contents and application behavior did not change.
+
+Lint and typecheck passed after the test correction. The production application build passed before deployment. The final follow up changes only this record and the provenance test.
