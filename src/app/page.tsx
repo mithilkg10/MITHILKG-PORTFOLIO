@@ -27,6 +27,7 @@ export default function Home() {
       <Navigation />
       <main>
         <Hero />
+        <CyberLab />
         <About />
         <Education />
         <Experience />
@@ -35,7 +36,7 @@ export default function Home() {
           <RoleCompetency />
         </div>
         <Projects />
-        <CyberLab />
+
         <SecurityAssessments />
         <Certifications />
         <Achievements />

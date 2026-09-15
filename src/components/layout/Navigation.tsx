@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Shield } from "lucide-react";
-import { navLinks, personal } from "@/lib/data/resume";
+import { Menu, X } from "lucide-react";
+import { navLinks } from "@/lib/data/resume";
+import {RangeMark} from "@/components/ui/RangeMark";
 import { cn } from "@/lib/utils";
 
 export function Navigation() {
@@ -29,21 +30,14 @@ export function Navigation() {
       >
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-6">
           <a href="#" className="group flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-black transition-transform duration-300 group-hover:scale-105">
-              <Shield className="h-5 w-5" />
-            </div>
-            <span className="hidden font-heading text-sm font-bold tracking-widest sm:block">
-              {personal.firstName.toUpperCase()}
-              <span className="text-foreground/40">.SEC</span>
-            </span>
-          </a>
+            <RangeMark className="nav-range-mark"/><span className="portfolio-wordmark">MKG<small>SECURITY ENGINEERING</small></span></a>
 
           <div className="hidden items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 lg:flex relative">
-            {navLinks.slice(0, 5).map((link) => (
+            {[{href:"/lab",label:"CYBER LAB"}, ...navLinks.slice(0, 3), navLinks[4]].map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="rounded-full px-4 py-2 text-sm font-medium text-foreground/60 transition-colors hover:bg-white/10 hover:text-foreground"
+                className={link.href === "/lab" ? "nav-cyber-link" : "rounded-full px-3 py-2 text-sm font-medium text-foreground/60 transition-colors hover:bg-white/10 hover:text-foreground"}
               >
                 {link.label}
               </a>
@@ -53,7 +47,7 @@ export function Navigation() {
               <button className="rounded-full px-4 py-2 text-sm font-medium text-foreground/60 transition-colors hover:bg-white/10 hover:text-foreground flex items-center gap-1">
                 More <Menu className="h-3 w-3" />
               </button>
-              <div className="absolute right-0 top-full mt-2 w-48 rounded-xl border border-white/10 bg-black/90 p-2 backdrop-blur-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-2xl">
+              <div className="absolute right-0 top-full mt-2 w-48 rounded-xl border border-white/10 bg-black/90 p-2 backdrop-blur-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:visible group-focus-within:opacity-100 transition-all duration-200 shadow-2xl">
                 {navLinks.slice(5).map((link) => (
                   <a
                     key={link.href}
@@ -74,7 +68,7 @@ export function Navigation() {
           <button
             className="rounded-full border border-white/10 bg-white/5 p-2.5 text-foreground/70 hover:bg-white/10 lg:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
+            aria-label="Toggle menu" aria-expanded={mobileOpen} aria-controls="mobile-navigation"
           >
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -84,12 +78,12 @@ export function Navigation() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 bg-background/95 backdrop-blur-2xl lg:hidden"
+            id="mobile-navigation" className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-3 overflow-y-auto py-24 bg-background/95 backdrop-blur-2xl lg:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            {navLinks.map((link, i) => (
+            {[{href:"/lab",label:"CYBER LAB"}, ...navLinks].map((link, i) => (
               <motion.a
                 key={link.href}
                 href={link.href}

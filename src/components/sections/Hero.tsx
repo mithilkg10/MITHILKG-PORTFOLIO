@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+import {RangeMark} from "@/components/ui/RangeMark";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FileText } from "lucide-react";
@@ -47,9 +49,10 @@ export function Hero() {
 
             {/* Value Proposition */}
             <p className="mt-8 text-base leading-relaxed text-neutral-400 md:text-lg">
-              I architect distributed, AI-driven defense systems and cryptographic trust frameworks. Currently engineering multi-agent threat detection pipelines and researching post-quantum cryptography.
+              I architect distributed, AI driven defense systems and cryptographic trust frameworks. Currently engineering multi agent threat detection pipelines and researching post quantum cryptography.
             </p>
 
+            <Link className="hero-range-demo" href="/lab/demo?duration=90">90 Second Range Demo ↗</Link>
             {/* CTAs */}
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4 lg:justify-start">
               <a
@@ -91,7 +94,8 @@ export function Hero() {
                 className="object-cover object-top opacity-100"
               />
             </div>
-          </motion.div>
+          <Link href="/lab" className="hero-range-badge" aria-label="MKG Cyber Range: open isolated lab"><RangeMark/><span><b>MKG CYBER RANGE</b><small>RANGE READY <i>·</i> ISOLATED LAB</small></span><span aria-hidden="true">↗</span></Link>
+</motion.div>
         </div>
       </div>
     </section>

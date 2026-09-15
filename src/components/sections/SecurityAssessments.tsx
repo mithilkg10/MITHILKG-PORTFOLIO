@@ -1,21 +1,24 @@
 "use client";
 
+import Link from "next/link";
+import {RangeMark} from "@/components/ui/RangeMark";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Shield, Target, FileText, CheckCircle, ChevronRight, Activity } from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 
-type TabId = "audits" | "incident" | "journal";
+type TabId = "audits" | "incident" | "journal" | "cyberlab";
 
 const tabs = [
+  { id: "cyberlab", label: "CyberLab Evidence", icon: Activity },
   { id: "audits", label: "Security Audits", icon: Shield },
   { id: "incident", label: "Incident Response", icon: Activity },
   { id: "journal", label: "Handler Journals", icon: FileText },
 ] as const;
 
 export function SecurityAssessments() {
-  const [activeTab, setActiveTab] = useState<TabId>("audits");
+  const [activeTab, setActiveTab] = useState<TabId>("cyberlab");
 
   return (
     <section id="assessments" className="section-padding relative">
@@ -33,7 +36,7 @@ export function SecurityAssessments() {
               const Icon = tab.icon;
               return (
                 <button
-                  key={tab.id}
+                  key={tab.id} aria-pressed={isActive}
                   onClick={() => setActiveTab(tab.id)}
                   className={`group relative flex w-full min-w-max items-center gap-3 rounded-xl px-4 py-4 text-left transition-all duration-300 ${
                     isActive ? "bg-white/10 text-foreground" : "text-foreground/50 hover:bg-white/5 hover:text-foreground/80"
@@ -53,8 +56,9 @@ export function SecurityAssessments() {
             })}
           </div>
 
-          <div className="flex-1">
+          <div className="min-w-0 flex-1 overflow-hidden">
             <AnimatePresence mode="wait">
+              {activeTab === "cyberlab" && <motion.div key="cyberlab" className="range-assessment" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}><RangeMark/><p className="range-kicker">PUBLIC INVESTIGATION RECORD</p><h3>Six investigations. Inspectable evidence.</h3><p>Preserved telemetry, detection evidence, Wazuh alerts and MITRE mappings. Each case includes containment records, retests and public documentation.</p><p>Five PASS cases. INC 004 remains PARTIAL. Application evidence supports INC 005; Wazuh context for INC 006 does not prove direct transfer detection.</p><div className="range-feature-actions"><Link className="range-action-primary" href="/evidence">Open Evidence Vault ↗</Link><a href="https://github.com/mithilkg10/MKG-Cyber-Defense-Lab/tree/main/incidents">Open GitHub Cases</a></div></motion.div>}
               {activeTab === "audits" && (
                 <motion.div
                   key="audits"

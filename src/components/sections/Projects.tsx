@@ -1,5 +1,6 @@
 "use client";
 
+import {RangeFeature} from "./RangeFeature";
 import { motion } from "framer-motion";
 import { Shield, AlertTriangle, CheckCircle, Wrench } from "lucide-react";
 import { GitHubIcon } from "@/components/ui/SocialIcons";
@@ -17,10 +18,10 @@ export function Projects() {
         <SectionHeader
           label="Projects"
           title="Security Engineering in Practice"
-          description="Each project engineered with security-first principles — from multi-agent defense frameworks to secure authentication systems."
+          description="Security engineering through working systems, authored logic and documented investigations."
         />
 
-        <div className="space-y-12">
+        <div className="space-y-12"><RangeFeature project/>
           {[...projects]
             .sort((a, b) => {
               if (selectedRole === "General") return 0;
