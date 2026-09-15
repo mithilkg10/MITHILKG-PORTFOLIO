@@ -105,7 +105,7 @@ export const researchItems = [
     title: "HoneyBee-Inspired Multi-Agent Cyber Defense Framework",
     tagline: "Detect–Mislead–Neutralize–Learn security lifecycle for autonomous defense",
     overview:
-      "A highly concurrent, multi-agent threat detection system built on Python and Apache Kafka. Ingests network telemetry to train a hybrid XGBoost/CNN-LSTM model, achieving 98.24% accuracy on CIC-IDS2017 datasets.",
+      "A highly concurrent, multi-agent threat detection system built on Python and Apache Kafka. Ingests network telemetry to train a hybrid XGBoost/CNN-LSTM model, with 98.24% accuracy on CIC-IDS2017 reported in the linked research paper.",
     architecture:
       "Scalable agent-based framework utilizing Apache Kafka, Flask-based deception environments, XGBoost, CNN-LSTM, Deep Q-Network (DQN) reinforcement learning, adaptive honeypots, and distributed threat intelligence sharing.",
     conference: "ICIICE 2026, Dubai, UAE (Oral Presentation Accepted)",
@@ -113,7 +113,7 @@ export const researchItems = [
       "Book chapter accepted in Metaheuristic Optimization for Social Good — First Author & Corresponding Author",
     techStack: ["Python", "Apache Kafka", "XGBoost", "CNN-LSTM", "DQN", "Reinforcement Learning"],
     impact:
-      "Evaluated on CIC-IDS2017 and simulated enterprise attacks: 98.24% detection accuracy, 98.51% precision, 98.10% recall, 0.992 ROC-AUC, 1.85% false positive rate, and 92.40% deception engagement rate.",
+      "Reported in the linked research paper on CIC-IDS2017 and simulated enterprise attacks: 98.24% detection accuracy, 98.51% precision, 98.10% recall, 0.992 ROC-AUC, 1.85% false positive rate, and 92.40% deception engagement rate.",
     innovation:
       "Agents utilize DQN reinforcement learning to autonomously redirect attackers into ephemeral honeypots with sub-second latency.",
     github: "https://github.com/mithilkg10",
@@ -171,9 +171,9 @@ export const projects = [
     problem:
       "Enterprise networks face sophisticated, adaptive cyber attacks that overwhelm traditional single-point defenses and lack autonomous response capabilities.",
     solution:
-      "A highly concurrent, multi-agent threat detection system built on Python and Apache Kafka. Ingests network telemetry to train a hybrid XGBoost/CNN-LSTM model, achieving 98.24% accuracy on CIC-IDS2017 datasets.",
+      "A highly concurrent, multi-agent threat detection system built on Python and Apache Kafka. Ingests network telemetry to train a hybrid XGBoost/CNN-LSTM model, with 98.24% accuracy on CIC-IDS2017 reported in the linked research paper.",
     securityFeatures: [
-      "Adaptive honeypots with 92.40% deception engagement rate",
+      "Paper reported deception engagement rate: 92.40%",
       "Distributed threat intelligence sharing via Apache Kafka",
       "XGBoost + CNN-LSTM hybrid threat classification",
       "DQN reinforcement learning for autonomous response",
@@ -181,7 +181,7 @@ export const projects = [
     challenges:
       "Achieving sub-second autonomous response while coordinating distributed agents across deception, detection, and neutralization layers without increasing false positives.",
     results:
-      "98.24% detection accuracy, 0.992 ROC-AUC, and 1.85% false positive rate on CIC-IDS2017 and simulated enterprise attack scenarios.",
+      "The linked research paper reports 98.24% accuracy, 0.992 ROC-AUC and 1.85% false positive rate on CIC-IDS2017 and simulated enterprise attacks. These are research results, not CyberLab measurements.",
     github: "https://github.com/mithilkg10/Multi-Agent-AI-Cyber-Defense-Framework",
     liveDemo: null,
     featured: true,
@@ -391,7 +391,7 @@ export const achievements = [
   { label: "International Conference Publications", value: 3, suffix: "+", roles: ["General", "AI Security Engineer", "Threat Intelligence Analyst", "Data Scientist", "AI / ML Engineer"] },
   { label: "Research Publications", value: 3, suffix: "+", roles: ["General", "AI Security Engineer", "Threat Intelligence Analyst", "Data Scientist", "AI / ML Engineer"] },
   { label: "Security Research Projects", value: 4, suffix: "", roles: ["General", "Cybersecurity Engineer", "Application Security Engineer", "Cloud Security Engineer", "DevSecOps Engineer"] },
-  { label: "Detection Accuracy (HoneyBee)", value: 98, suffix: "%", roles: ["General", "AI Security Engineer", "Threat Intelligence Analyst", "SOC Analyst"] },
+  { label: "Paper Reported Accuracy (HoneyBee)", value: 98, suffix: "%", roles: ["General", "AI Security Engineer", "Threat Intelligence Analyst", "SOC Analyst"] },
   { label: "ISRO LEOS Internship", value: 1, suffix: "", roles: ["General", "Backend Engineer", "Data Analyst", "Business Intelligence Analyst", "Cloud Security Engineer"] },
 ];
 

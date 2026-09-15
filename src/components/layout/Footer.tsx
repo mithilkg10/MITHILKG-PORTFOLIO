@@ -32,7 +32,7 @@ export function Footer() {
             title="Strict-Transport-Security, X-Frame-Options, X-XSS-Protection enabled"
           >
             <CheckCircle2 className="h-3 w-3" />
-            <span className="font-mono tracking-wide">INFRASTRUCTURE: HARDENED (A+ HTTP SECURITY)</span>
+            <span className="font-mono tracking-wide">PUBLIC SECURITY ENGINEERING PORTFOLIO</span>
           </div>
         </div>
 

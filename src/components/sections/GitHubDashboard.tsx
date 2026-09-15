@@ -72,34 +72,34 @@ export function GitHubDashboard() {
                 <Shield className="h-8 w-8" />
               </div>
               <div>
-                <h3 className="font-heading text-lg font-bold text-foreground">Cybersecurity Impact</h3>
-                <p className="font-mono text-sm text-foreground/60">Self-Reported Metrics</p>
+                <h3 className="font-heading text-lg font-bold text-foreground">CyberLab Evidence</h3>
+                <p className="font-mono text-sm text-foreground/60">Audited Lab Results</p>
               </div>
             </div>
             
             <div className="mt-8 grid grid-cols-2 gap-4">
               <div className="rounded-2xl border border-white/5 bg-white/5 p-4 text-center transition-colors hover:bg-white/10">
-                <p className="font-mono text-2xl font-bold text-foreground">10k+</p>
-                <p className="mt-1 text-xs font-medium text-foreground/50">Attacks Neutralized</p>
+                <p className="font-mono text-2xl font-bold text-foreground">6</p>
+                <p className="mt-1 text-xs font-medium text-foreground/50">Investigations</p>
               </div>
               <div className="rounded-2xl border border-white/5 bg-white/5 p-4 text-center transition-colors hover:bg-white/10">
-                <p className="font-mono text-2xl font-bold text-foreground">98.2%</p>
-                <p className="mt-1 text-xs font-medium text-foreground/50">Detection Accuracy</p>
+                <p className="font-mono text-2xl font-bold text-foreground">10</p>
+                <p className="mt-1 text-xs font-medium text-foreground/50">Sigma Authored</p>
               </div>
               <div className="rounded-2xl border border-white/5 bg-white/5 p-4 text-center transition-colors hover:bg-white/10">
-                <p className="font-mono text-2xl font-bold text-foreground">25+</p>
-                <p className="mt-1 text-xs font-medium text-foreground/50">Threat Models</p>
+                <p className="font-mono text-2xl font-bold text-foreground">7</p>
+                <p className="mt-1 text-xs font-medium text-foreground/50">Sigma Validated</p>
               </div>
               <div className="rounded-2xl border border-white/5 bg-white/5 p-4 text-center transition-colors hover:bg-white/10">
-                <p className="font-mono text-2xl font-bold text-foreground">15+</p>
-                <p className="mt-1 text-xs font-medium text-foreground/50">ML Models Trained</p>
+                <p className="font-mono text-2xl font-bold text-foreground">5</p>
+                <p className="mt-1 text-xs font-medium text-foreground/50">Evidenced ATT&CK Techniques</p>
               </div>
             </div>
 
             {/* Contribution-style grid */}
             <div className="mt-8">
               <p className="mb-4 font-mono text-xs uppercase tracking-wider text-foreground/50">
-                Research Activity
+                Decorative Activity Pattern
               </p>
               <div className="grid grid-cols-[repeat(26,minmax(0,1fr))] gap-1">
                 {Array.from({ length: 182 }).map((_, i) => (
