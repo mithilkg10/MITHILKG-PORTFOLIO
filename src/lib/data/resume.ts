@@ -4,15 +4,15 @@ export const personal = {
   name: "Mithil K Gowda",
   firstName: "Mithil",
   lastName: "Gowda",
-  title: "Security Engineer & Systems Researcher",
+  title: "Cybersecurity Engineer",
   email: "mithil.k.g.10@gmail.com",
   phone: "+91-8431196506",
   linkedin: "https://www.linkedin.com/in/mithil-k-gowda",
   github: "https://github.com/mithilkg10",
   githubUsername: "mithilkg10",
-  location: "Bangalore, India",
+  location: "United Kingdom",
   summary:
-    "I architect distributed, AI-driven defense systems and cryptographic trust frameworks. Currently engineering multi-agent threat detection pipelines and researching post-quantum cryptography applications for critical infrastructure.",
+    "MSc Cyber Security Engineering at the University of Warwick (2026–2027). Focused on security operations, detection engineering, incident response, Python, and Linux.",
 };
 
 export const education = {
@@ -44,7 +44,7 @@ export const experience: Array<{
     highlights: [
       "Architected HoneyBee, a distributed multi-agent cyber defense framework using Apache Kafka and Deep Q-Networks.",
       "Designed and simulated the STAVP cryptographic pipeline, implementing AES-256 and Zero-Knowledge Proofs (ZKPs) for decentralized trust validation.",
-      "Authored two peer-reviewed publications on AI-driven threat intelligence and carbon market security.",
+      "Developed research prototypes and manuscripts on multi-agent cyber defence and digital trust.",
     ],
     roles: [
       "General", "Cybersecurity Engineer", "AI Security Engineer", "Threat Intelligence Analyst",
@@ -61,7 +61,7 @@ export const experience: Array<{
     logo: "ISRO",
     highlights: [
       "Engineered Python/Flask backend microservices for telemetry data processing and visualization.",
-      "Optimized secure database workflows, reducing query latency and ensuring strict RBAC compliance for sensitive analytics dashboards.",
+      "Worked on database-backed analytics workflows and access-controlled dashboards.",
       "Participated in research-oriented software development for data-driven decision-making systems.",
     ],
     roles: [
@@ -102,62 +102,49 @@ export const researchItems = [
   {
     id: "honeybee",
     slug: "honeybee-distributed-ai-defense",
-    title: "HoneyBee-Inspired Multi-Agent Cyber Defense Framework",
-    tagline: "Detect–Mislead–Neutralize–Learn security lifecycle for autonomous defense",
-    overview:
-      "A highly concurrent, multi-agent threat detection system built on Python and Apache Kafka. Ingests network telemetry to train a hybrid XGBoost/CNN-LSTM model, with 98.24% accuracy on CIC-IDS2017 reported in the linked research paper.",
-    architecture:
-      "Scalable agent-based framework utilizing Apache Kafka, Flask-based deception environments, XGBoost, CNN-LSTM, Deep Q-Network (DQN) reinforcement learning, adaptive honeypots, and distributed threat intelligence sharing.",
-    conference: "ICIICE 2026, Dubai, UAE (Oral Presentation Accepted)",
-    publication:
-      "Book chapter accepted in Metaheuristic Optimization for Social Good — First Author & Corresponding Author",
-    techStack: ["Python", "Apache Kafka", "XGBoost", "CNN-LSTM", "DQN", "Reinforcement Learning"],
-    impact:
-      "Reported in the linked research paper on CIC-IDS2017 and simulated enterprise attacks: 98.24% detection accuracy, 98.51% precision, 98.10% recall, 0.992 ROC-AUC, 1.85% false positive rate, and 92.40% deception engagement rate.",
-    innovation:
-      "Agents utilize DQN reinforcement learning to autonomously redirect attackers into ephemeral honeypots with sub-second latency.",
-    github: "https://github.com/mithilkg10",
+    title: "ABHEDYA: Multi-Agent AI Cyber Defence",
+    tagline: "Network telemetry, threat scoring, and deception research prototype",
+    overview: "A controlled-lab prototype combining packet-derived telemetry, Kafka event transport, hybrid threat scoring, and a separate honeypot service.",
+    architecture: "TShark/PyShark capture → Kafka or direct prediction → XGBoost, CNN-LSTM, and DQN decision layer → dashboard or deception trigger.",
+    conference: "ICIICE 2026 (acceptance listed in existing portfolio; confirmation requested)",
+    publication: "Accepted research listed in existing portfolio",
+    techStack: ["Python", "Kafka", "Flask", "PyShark", "TShark"],
+    impact: "The repository documents implementation, a threat model, evaluation boundaries, and known limitations.",
+    innovation: "The research explores coordinated scoring and deception; independent production detection performance is not claimed.",
+    github: "https://github.com/mithilkg10/Multi-Agent-AI-Cyber-Defense-Framework",
     paperUrl: "/research papers/CH32 (2).pdf",
-    roles: ["General", "AI Security Engineer", "Threat Intelligence Analyst", "Cybersecurity Engineer", "AI / ML Engineer", "Backend Engineer", "Software Engineer", "SOC Analyst"],
+    roles: ["General", "Cybersecurity Engineer", "SOC Analyst", "AI Security Engineer"],
   },
   {
     id: "carbon-credit",
     slug: "carbon-credit-exchange",
-    title: "AI-Governed Carbon Credit Exchange with Digital Carbon Passport",
-    tagline: "Secure digital trust ecosystem for carbon market governance",
-    overview:
-      "Proposed and designed an AI-governed carbon trading ecosystem integrating Digital Carbon Passports, intelligent governance, fraud detection, trust scoring, and dynamic pricing mechanisms.",
-    architecture:
-      "Secure Trade Authorization and Verification Pipeline (STAVP) with AES-256 encryption, SHA-256 hashing, secure transaction validation, and ML-driven market intelligence layers.",
-    conference: "ICASF 2027, Abu Dhabi University, UAE",
-    publication: "Abstract Accepted",
-    techStack: ["Random Forest", "XGBoost", "Neural Networks", "AES-256", "SHA-256", "STAVP"],
-    impact:
-      "Addresses fraud detection, trust evaluation, and adaptive pricing in carbon credit markets through AI-driven governance and secure transaction pipelines.",
-    innovation:
-      "Combines Digital Carbon Passports with intelligent governance and the STAVP pipeline for end-to-end secure carbon credit authorization and verification.",
-    github: "https://github.com/mithilkg10",
+    title: "CarbonEx: Secure Platform Prototype",
+    tagline: "Digital carbon passports, role-based workflows, and audit visibility",
+    overview: "A full-stack carbon credit exchange prototype with trading APIs, role-specific views, and security-focused transaction experiments.",
+    architecture: "Next.js application with authentication, company and regulator workflows, audit logging, and demonstration data.",
+    conference: "ICASF 2027 abstract acceptance listed in existing portfolio; confirmation requested",
+    publication: "Accepted abstract listed in existing portfolio",
+    techStack: ["Next.js", "TypeScript", "JWT", "Zod"],
+    impact: "The public repository documents a deployed demonstration and explicit security limitations.",
+    innovation: "Explores governance and transaction traceability in a research prototype.",
+    github: "https://github.com/mithilkg10/CARBON-EX-PLATFORM",
     paperUrl: "/research papers/carbon paper .pdf",
-    roles: ["General", "Data Scientist", "Data Analyst", "GRC Analyst", "Business Intelligence Analyst", "Cloud Security Engineer"],
+    roles: ["General", "Cybersecurity Engineer", "Application Security Engineer"],
   },
   {
     id: "c3t-stavp",
     slug: "stavp-zero-knowledge-pipeline",
-    title: "C3T-STAVP Cryptographic Framework",
-    tagline: "Hybrid cryptography for critical infrastructure and digital trust",
-    overview:
-      "A privacy-preserving transaction authorization protocol. Implements Character Chaffing & Transposition Technology (C3T) at the application layer, combined with ZKP validation for off-chain state verification.",
-    architecture:
-      "Application-layer semantic obfuscation, ephemeral key generation, Zero-Knowledge Proof (ZKP) verification, distributed trust architectures, Crypto-Shredding, and off-chain storage integration.",
-    conference: "Ongoing Research",
-    publication: "In Development",
-    techStack: ["Cryptography", "ZKP", "Post-Quantum Security", "C3T", "STAVP"],
-    impact:
-      "Designed to prevent double-spending and data tampering in high-trust environments such as critical infrastructure and financial systems.",
-    innovation:
-      "Investigating privacy-preserving techniques including Crypto-Shredding, off-chain storage, and post-quantum cryptography migration strategies within a unified trust framework.",
-    github: "https://github.com/mithilkg10",
-    roles: ["General", "Application Security Engineer", "Cybersecurity Engineer", "Software Engineer", "Backend Engineer"],
+    title: "STAVP: Cryptographic Research Specification",
+    tagline: "Architecture and projected performance model",
+    overview: "A theoretical specification exploring security mechanisms for transaction authorisation.",
+    architecture: "Layered research concept covering key lifecycle, integrity verification, privacy-preserving validation, and audit mechanisms.",
+    conference: "No publication status verified",
+    publication: "Research specification",
+    techStack: ["Cryptography", "Security Architecture"],
+    impact: "The repository identifies the reference implementation, benchmark harness, threat model, and independent review as future work.",
+    innovation: "Studies the operational cost of combining established security mechanisms.",
+    github: "https://github.com/mithilkg10/C3T-STAVP-Cryptographic-Framework",
+    roles: ["General", "Cybersecurity Engineer", "Application Security Engineer"],
   },
 ];
 
@@ -165,150 +152,61 @@ export const projects = [
   {
     id: "honeybee-project",
     slug: "honeybee-distributed-ai-defense",
-    title: "HoneyBee | Distributed AI Defense Framework",
+    title: "ABHEDYA | Multi-Agent AI Cyber Defence",
     image: "/projects/honeybee.svg",
-    techStack: ["Python", "Apache Kafka", "XGBoost", "CNN-LSTM", "DQN"],
-    problem:
-      "Enterprise networks face sophisticated, adaptive cyber attacks that overwhelm traditional single-point defenses and lack autonomous response capabilities.",
-    solution:
-      "A highly concurrent, multi-agent threat detection system built on Python and Apache Kafka. Ingests network telemetry to train a hybrid XGBoost/CNN-LSTM model, with 98.24% accuracy on CIC-IDS2017 reported in the linked research paper.",
-    securityFeatures: [
-      "Paper reported deception engagement rate: 92.40%",
-      "Distributed threat intelligence sharing via Apache Kafka",
-      "XGBoost + CNN-LSTM hybrid threat classification",
-      "DQN reinforcement learning for autonomous response",
-    ],
-    challenges:
-      "Achieving sub-second autonomous response while coordinating distributed agents across deception, detection, and neutralization layers without increasing false positives.",
-    results:
-      "The linked research paper reports 98.24% accuracy, 0.992 ROC-AUC and 1.85% false positive rate on CIC-IDS2017 and simulated enterprise attacks. These are research results, not CyberLab measurements.",
+    techStack: ["Python", "Kafka", "Flask", "PyShark", "TShark"],
+    problem: "Controlled security research needs a traceable path from packet telemetry to a detection decision.",
+    solution: "Built a prototype combining packet capture, Kafka event transport, hybrid scoring, and a separate honeypot.",
+    securityFeatures: ["Telemetry and detection history", "Configurable threat thresholds", "Honeypot redirection"],
+    challenges: "Coordinating local services while keeping model evaluation separate from independent detection claims.",
+    results: "Research prototype with architecture, threat model, and limitations documented in the repository.",
     github: "https://github.com/mithilkg10/Multi-Agent-AI-Cyber-Defense-Framework",
     liveDemo: null,
     featured: true,
-    roles: ["General", "AI Security Engineer", "Threat Intelligence Analyst", "Cybersecurity Engineer", "AI / ML Engineer", "Backend Engineer", "Software Engineer", "SOC Analyst"],
-  },
-  {
-    id: "c3t-stavp-project",
-    slug: "stavp-zero-knowledge-pipeline",
-    title: "STAVP | Zero-Knowledge Cryptographic Pipeline",
-    image: "/projects/crypto.svg",
-    techStack: ["Cryptography", "ZKP", "C3T", "STAVP", "Post-Quantum Security"],
-    problem:
-      "Critical infrastructure and financial systems require next-generation cryptographic protection against evolving and post-quantum threats while maintaining transaction privacy.",
-    solution:
-      "A privacy-preserving transaction authorization protocol. Implements Character Chaffing & Transposition Technology (C3T) at the application layer, combined with ZKP validation for off-chain state verification.",
-    securityFeatures: [
-      "Character Chaffing & Transposition Technology (C3T)",
-      "Zero-Knowledge Proof (ZKP) verification",
-      "Ephemeral key generation",
-      "Crypto-Shredding and off-chain storage",
-    ],
-    challenges:
-      "Designing privacy-preserving trust validation that scales across financial, healthcare, and critical infrastructure domains while planning post-quantum migration.",
-    results:
-      "Ongoing research evaluating framework applications for EHR protection, financial systems security, and critical infrastructure defense.",
-    github: "https://github.com/mithilkg10/C3T-STAVP-Cryptographic-Framework",
-    liveDemo: null,
-    featured: true,
-    roles: ["General", "Application Security Engineer", "Cybersecurity Engineer", "Software Engineer", "Backend Engineer"],
+    roles: ["General", "Cybersecurity Engineer", "SOC Analyst", "AI Security Engineer"],
   },
   {
     id: "carbon-credit-project",
     slug: "carbon-credit-exchange",
-    title: "AI-Governed Carbon Credit Exchange Pipeline",
+    title: "CarbonEx | Secure AI-Governed Platform",
     image: "/projects/carbon.svg",
-    techStack: ["Random Forest", "XGBoost", "Neural Networks", "AES-256", "SHA-256"],
-    problem:
-      "Carbon credit markets lack transparent trust mechanisms, enabling fraud, double-counting, and unreliable pricing in digital trading ecosystems.",
-    solution:
-      "Built an AI-governed carbon trading ecosystem with Digital Carbon Passports, STAVP secure pipelines, and ML models for anomaly detection, trust scoring, and dynamic pricing.",
-    securityFeatures: [
-      "STAVP with AES-256 encryption and SHA-256 hashing",
-      "Secure transaction validation pipeline",
-      "AI-driven fraud detection and trust scoring",
-      "Digital Carbon Passport identity layer",
-    ],
-    challenges:
-      "Balancing transparent market governance with privacy-preserving transaction validation across distributed carbon credit stakeholders.",
-    results:
-      "Abstract accepted at ICASF 2027, Abu Dhabi University — establishing a secure, AI-governed framework for carbon market intelligence.",
+    techStack: ["Next.js", "TypeScript", "JWT", "Zod"],
+    problem: "Carbon credit transactions need traceable identity and audit workflows.",
+    solution: "Built a full-stack prototype with digital carbon passports, trading APIs, and regulator views.",
+    securityFeatures: ["Authentication", "Company and regulator roles", "Audit logging"],
+    challenges: "Separating security experiments and demonstration data from production claims.",
+    results: "Deployed prototype with documented security boundaries.",
     github: "https://github.com/mithilkg10/CARBON-EX-PLATFORM",
     liveDemo: null,
     featured: false,
-    roles: ["General", "Data Scientist", "Data Analyst", "GRC Analyst", "Business Intelligence Analyst", "Cloud Security Engineer"],
+    roles: ["General", "Cybersecurity Engineer", "Application Security Engineer"],
   },
   {
     id: "canteen-management-system",
-    slug: "canteen-management-system",
-    title: "Enterprise Canteen Management System",
+    slug: "vyomrix-security-platform",
+    title: "Vyomrix | SIEM / XDR Security Operations Platform",
     image: "/projects/honeybee.svg",
-    techStack: ["Full Stack", "Data Analytics", "RBAC", "Access Control"],
-    problem:
-      "Manual canteen management processes lead to inefficient meal ordering, poor inventory control, and lack of transparency in employee attendance tracking.",
-    solution:
-      "Developed a centralized enterprise canteen management platform with interactive analytics dashboards and role-based access control.",
-    securityFeatures: [
-      "Role-Based Access Control (RBAC)",
-      "Secure authentication mechanisms",
-      "Audit logging for operational transparency",
-      "Digital record management",
-    ],
-    challenges:
-      "Integrating meal demand forecasting and inventory optimization while maintaining strict access controls and compliance reporting.",
-    results:
-      "Automated manual business processes, improved efficiency, and reduced administrative overhead.",
-    github: "https://github.com/mithilkg10/Canteen-management-system",
+    techStack: ["Python", "FastAPI", "PostgreSQL", "Redis", "Wazuh"],
+    problem: "Security analysts need connected alert, detection, and incident workflows.",
+    solution: "Built a security operations platform with a Next.js interface and FastAPI services.",
+    securityFeatures: ["Wazuh integration", "Detection workflows", "Incident tracking", "Role-based access control"],
+    challenges: "Keeping unavailable external integrations explicit.",
+    results: "The linked Cyber Defense Lab documents six Vyomrix investigations.",
+    github: "https://github.com/mithilkg10/VYOMRIX",
     liveDemo: null,
-    featured: false,
-    roles: ["General", "Software Engineer", "Backend Engineer"],
+    featured: true,
+    roles: ["General", "Cybersecurity Engineer", "SOC Analyst", "DFIR Analyst"],
   },
 ];
 
 export const cyberLab = {
   categories: [
-    {
-      name: "Network Security",
-      skills: ["Network Security", "Intrusion Detection Systems (IDS)", "Threat Modeling", "Security Architecture", "Zero Trust", "Firewall Configuration", "VPN setup", "DDoS Mitigation"],
-    },
-    {
-      name: "Web Security",
-      skills: ["Web Application Security", "Vulnerability Assessment", "Burp Suite", "OWASP ZAP", "SQL Injection", "XSS Mitigation", "API Security", "CSRF Protection", "DAST / SAST"],
-    },
-    {
-      name: "Threat Intelligence",
-      skills: ["Threat Intelligence", "Threat Detection", "Security Analytics", "Nmap", "Wireshark", "OSINT", "Maltego", "Dark Web Analysis", "YARA Rules", "MISP"],
-    },
-    {
-      name: "Cloud Security",
-      skills: ["Google Cloud Platform (GCP)", "Secure Access Control", "Cloud Architecture", "AWS IAM", "GuardDuty", "Container Security", "Kubernetes Hardening"],
-    },
-    {
-      name: "Programming",
-      skills: ["Python", "Java", "JavaScript", "SQL", "HTML", "CSS", "Go (Golang)", "TypeScript", "Bash/Shell Scripting", "C/C++"],
-    },
-    {
-      name: "Databases",
-      skills: ["MySQL", "MongoDB", "PostgreSQL", "Redis", "Database Sharding", "Secure DB Workflows"],
-    },
-    {
-      name: "Operating Systems",
-      skills: ["Linux", "Kali Linux", "Windows", "Debian/RHEL", "macOS", "Windows Server", "Active Directory"],
-    },
-    {
-      name: "Frameworks",
-      skills: ["Flask", "Node.js", "REST APIs", "Git", "React", "Next.js", "Express", "Django"],
-    },
-    {
-      name: "Research",
-      skills: ["Predictive Modeling", "Data Analytics", "Pandas", "NumPy", "Data Visualization", "AI Security", "Zero-Knowledge Proofs", "Cryptography"],
-    },
-    {
-      name: "Tools",
-      skills: ["Kali Linux", "Wireshark", "Nmap", "Burp Suite", "OWASP ZAP", "Metasploit", "Splunk", "CrowdStrike", "Docker"],
-    },
+    { name: "Security operations", skills: ["Wazuh", "Wireshark", "PyShark / TShark", "Incident investigation", "Detection engineering"] },
+    { name: "Engineering", skills: ["Python", "Linux", "Kafka", "FastAPI", "Flask", "Docker", "REST APIs"] },
+    { name: "Data and access", skills: ["SQL / PostgreSQL", "IAM / RBAC"] },
+    { name: "Frameworks", skills: ["MITRE ATT&CK", "NIST CSF", "OWASP Top 10"] },
   ],
 };
-
 
 export const certifications = [
   {
@@ -415,7 +313,7 @@ export const aboutCards = [
     title: "AI Security Research",
     icon: "Brain",
     content:
-      "Published author on multi-agent cyber defense, bridging the gap between deep reinforcement learning and practical intrusion detection.",
+      "Developing multi-agent cyber defence research with documented evaluation limits.",
   },
   {
     id: "isro",
@@ -428,15 +326,9 @@ export const aboutCards = [
 
 export const navLinks = [
   { href: "#experience", label: "Experience" },
-  { href: "#projects", label: "Systems" },
+  { href: "#projects", label: "Projects" },
+  { href: "#lab", label: "Cyber Lab" },
   { href: "#research", label: "Research" },
-  { href: "#lab", label: "Competencies" },
-  { href: "/blog", label: "Blog" },
-  { href: "#about", label: "About" },
-  { href: "#certifications", label: "Certs" },
-  { href: "#achievements", label: "Achievements" },
-  { href: "#github", label: "Impact" },
-  { href: "#assessments", label: "Assessments" },
   { href: "#contact", label: "Contact" },
 ];
 
