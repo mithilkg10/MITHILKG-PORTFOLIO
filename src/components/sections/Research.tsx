@@ -36,8 +36,8 @@ export function Research() {
       <div className="relative mx-auto max-w-7xl">
         <SectionHeader
           label="Research"
-          title="Advancing Cyber Defense Science"
-          description="International conference publications and multi-agent security frameworks advancing AI-driven threat mitigation and digital trust."
+          title="Research and Publication Status"
+          description="Accepted work, prototypes, and specifications are described by their current status."
           align="center"
         />
 
@@ -116,11 +116,11 @@ export function Research() {
                     <div className="flex flex-col gap-4 border-t border-white/10 pt-8 sm:flex-row sm:items-center sm:justify-between">
                       <div className="space-y-2">
                         <div className="text-sm">
-                          <span className="text-foreground/50">Publication: </span>
+                          <span className="text-foreground/50">Status: </span>
                           <span className="font-medium text-foreground">{item.publication}</span>
                         </div>
                         <div className="text-sm">
-                          <span className="text-foreground/50">Conference: </span>
+                          <span className="text-foreground/50">Venue: </span>
                           <span className="font-medium text-foreground">{item.conference}</span>
                         </div>
                       </div>
