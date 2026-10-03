@@ -26,6 +26,8 @@ export const projects = [
     challenges: "Integrating external security providers while keeping unconfigured capabilities explicit.",
     results: "Six documented incidents in the linked Cyber Defense Lab use Vyomrix for investigation; the lab records five PASS and one PARTIAL outcome.",
     github: "https://github.com/mithilkg10/VYOMRIX",
+    liveDemo: "https://vyomrix.vercel.app/demo",
+    loginUrl: "https://vyomrix.vercel.app/login",
     featured: true,
   },
   {
