@@ -1,8 +1,10 @@
 # Mithil K Gowda Cybersecurity Portfolio
 
-Personal cybersecurity engineering and research portfolio built with Next.js, React, TypeScript, Tailwind CSS, Framer Motion, GSAP, Three.js, and Mermaid.
+Recruiter-facing portfolio for cybersecurity engineering, security operations, detection engineering, and incident response roles. Mithil K Gowda is pursuing an MSc Cyber Security Engineering at the University of Warwick (2026–2027).
 
-The site presents security projects, research work, professional experience, certifications, technical assessments, and selected engineering evidence in one recruiter friendly interface.
+The site leads with ISRO LEOS experience and three flagship projects: [Vyomrix](https://github.com/mithilkg10/VYOMRIX), [ABHEDYA](https://github.com/mithilkg10/Multi-Agent-AI-Cyber-Defense-Framework), and [CarbonEx](https://github.com/mithilkg10/CARBON-EX-PLATFORM).
+
+[Live portfolio](https://mithilkg-portfolio.vercel.app) · [LinkedIn](https://www.linkedin.com/in/mithil-k-gowda)
 
 ## Technology
 
