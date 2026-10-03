@@ -21,12 +21,12 @@ export function Hero() {
             </h1>
             <p className="mt-6 font-mono text-xl font-medium text-white md:text-2xl">Cybersecurity Engineer</p>
             <p className="mt-3 text-base text-neutral-300 md:text-lg">MSc Cyber Security Engineering · University of Warwick (2026–2027)</p>
-            <p className="mt-4 text-sm leading-relaxed text-neutral-400 md:text-base">Security Operations · Detection Engineering · Incident Response · Python · Linux</p>
+            <p className="mt-4 text-sm leading-relaxed text-neutral-400 md:text-base">SIEM · Security Operations · Detection Engineering · Incident Response · Network Security · Application Security · Python / Linux</p>
             <p className="mt-6 max-w-2xl text-sm leading-relaxed text-neutral-400 md:text-base">
               Former backend and data analytics intern at ISRO LEOS. I build security operations tools and document detection and investigation work in controlled labs. Based in the UK; open to strong opportunities in India.
             </p>
             <p className="mt-5 text-sm text-neutral-400">
-              Featured: <a className="text-white underline underline-offset-4" href="#projects">Vyomrix, ABHEDYA and CarbonEx</a>
+              Featured: <a className="text-white underline underline-offset-4" href="#projects">VYOMRIX, ABHEDYA, CarbonEx and the Cyber Defense Lab</a>
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
               <a href={personal.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-white/10">

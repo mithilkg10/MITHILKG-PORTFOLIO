@@ -43,7 +43,7 @@ const details: Record<string, {
   "vyomrix-security-platform": {
     architecture: "Next.js analyst interface → FastAPI security services → PostgreSQL persistence and Redis-supported workflows. Wazuh and other security products connect through explicit integration boundaries.",
     diagram: "flowchart LR\n  W[Wazuh and security providers] --> A[FastAPI services]\n  A --> P[PostgreSQL]\n  A --> R[Redis]\n  A --> U[Next.js analyst interface]",
-    testing: "The repository documents backend automated tests, a CI workflow, frontend build checks, and Playwright end-to-end validation. The linked Cyber Defense Lab documents six investigation cases.",
+    testing: "The repository contains backend tests and an end-to-end CI workflow; its current run status should be checked on GitHub. The linked Cyber Defense Lab documents six investigation cases.",
     deployment: "Docker-based development and deployment assets are documented in the repository. External providers require configuration.",
     limitations: "Some integrations are unavailable without provider credentials and production configuration. The project is an actively engineered security platform, not a claim of a deployed enterprise SOC.",
   },
@@ -58,8 +58,15 @@ const details: Record<string, {
     architecture: "Next.js application → trading and passport workflows → company and regulator views with authentication and audit logging.",
     diagram: "flowchart LR\n  U[Company and regulator users] --> A[Next.js application]\n  A --> T[Trading and passport workflows]\n  T --> L[Audit logging]",
     testing: "A reproducible performance or security evaluation is not documented in the public README.",
-    deployment: "The repository documents local npm setup and links to a deployed demonstration.",
+    deployment: "The repository documents local npm setup and a demonstration deployment; sign-in requires configured deployment secrets.",
     limitations: "Prototype with demonstration data and storage paths. It is not a production financial exchange or certified cryptographic system.",
+  },
+  "mkg-cyber-defense-lab": {
+    architecture: "Isolated Windows and Kali range → endpoint and application telemetry → Wazuh and Sigma detection → VYOMRIX investigation → sanitized case evidence.",
+    diagram: "flowchart LR\n  W[Windows and application events] --> Z[Wazuh and Sigma]\n  Z --> V[VYOMRIX investigation]\n  V --> E[Sanitized evidence and retest]",
+    testing: "Six controlled incident case studies are documented with telemetry, detection logic, and retests. Five are PASS and INC-004 remains PARTIAL.",
+    deployment: "The live portfolio range is a safe evidence replay. VM capture and response remain local to the isolated lab.",
+    limitations: "This is a controlled lab, not a production SOC or evidence of real-world compromise. The public replay does not expose the private VMs.",
   },
 };
 
@@ -87,5 +94,6 @@ export const detailedProjects: ProjectData[] = projects.map((project) => {
     tradeOffs: detail.limitations,
     futureImprovements: detail.limitations,
     githubUrl: project.github,
+    liveDemoUrl: project.liveDemo ?? undefined,
   };
 });
