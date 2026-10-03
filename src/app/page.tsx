@@ -1,46 +1,28 @@
 import dynamic from "next/dynamic";
 import { Navigation } from "@/components/layout/Navigation";
 import { Footer } from "@/components/layout/Footer";
-import { ThreatMapBackground } from "@/components/ui/ThreatMapBackground";
 import { Hero } from "@/components/sections/Hero";
-import { Preloader } from "@/components/ui/Preloader";
-import { RoleCompetency } from "@/components/sections/RoleCompetency";
 
-// Dynamic imports for performance and Lighthouse code splitting
-const About = dynamic(() => import("@/components/sections/About").then((m) => m.About));
-const Education = dynamic(() => import("@/components/sections/Education").then((m) => m.Education));
-const Experience = dynamic(() => import("@/components/sections/Experience").then((m) => m.Experience));
-const Research = dynamic(() => import("@/components/sections/Research").then((m) => m.Research));
 const Projects = dynamic(() => import("@/components/sections/Projects").then((m) => m.Projects));
+const Experience = dynamic(() => import("@/components/sections/Experience").then((m) => m.Experience));
 const CyberLab = dynamic(() => import("@/components/sections/CyberLab").then((m) => m.CyberLab));
-const SecurityAssessments = dynamic(() => import("@/components/sections/SecurityAssessments").then((m) => m.SecurityAssessments));
+const Education = dynamic(() => import("@/components/sections/Education").then((m) => m.Education));
+const Research = dynamic(() => import("@/components/sections/Research").then((m) => m.Research));
 const Certifications = dynamic(() => import("@/components/sections/Certifications").then((m) => m.Certifications));
-const Achievements = dynamic(() => import("@/components/sections/Achievements").then((m) => m.Achievements));
-const GitHubDashboard = dynamic(() => import("@/components/sections/GitHubDashboard").then((m) => m.GitHubDashboard));
 const Contact = dynamic(() => import("@/components/sections/Contact").then((m) => m.Contact));
 
 export default function Home() {
   return (
     <>
-      <Preloader />
-      <ThreatMapBackground />
       <Navigation />
       <main>
         <Hero />
-        <CyberLab />
-        <About />
-        <Education />
-        <Experience />
-        <Research />
-        <div className="my-20 relative z-20">
-          <RoleCompetency />
-        </div>
         <Projects />
-
-        <SecurityAssessments />
+        <Experience />
+        <CyberLab />
+        <Education />
+        <Research />
         <Certifications />
-        <Achievements />
-        <GitHubDashboard />
         <Contact />
       </main>
       <Footer />
