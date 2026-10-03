@@ -217,11 +217,27 @@ export const certifications = [
     url: "/certificates/google-cyber-security-professional-certificate.png",
   },
   {
+    id: "ibm-cyber",
+    title: "IBM IT Fundamentals for Cybersecurity Specialization",
+    issuer: "IBM",
+    year: "2026",
+    status: "Coursera",
+    url: "https://www.coursera.org/account/accomplishments/specialization/YKUEYK44AIQI",
+  },
+  {
+    id: "ibm-frontend",
+    title: "IBM Front-End Developer Specialization",
+    issuer: "IBM",
+    year: "2026",
+    status: "Coursera",
+    url: "https://www.coursera.org/account/accomplishments/specialization/Y1GBH9GSCHE5",
+  },
+  {
     id: "ceh-cisco",
     title: "Certified Ethical Hacker course",
-    issuer: "Cisco Networking Academy",
+    issuer: "Cisco",
     year: "2025",
-    status: "Course completion",
+    status: "Networking Academy",
     url: "/certificates/cisco networking academy certified ethical hacker .jpg",
   },
   {
@@ -239,6 +255,30 @@ export const certifications = [
     year: "2025",
     status: "Course completion",
     url: "/certificates/systems and usable security.jpg",
+  },
+  {
+    id: "iot",
+    title: "Introduction to Internet of Things",
+    issuer: "NPTEL",
+    year: "2025",
+    status: "Silver",
+    url: "/certificates/iot.jpg",
+  },
+  {
+    id: "bi-analytics",
+    title: "Business Intelligence and Analytics",
+    issuer: "NPTEL",
+    year: "2025",
+    status: "Silver",
+    url: "/certificates/buissness intelligence and analytics.jpg",
+  },
+  {
+    id: "gcp-nptel",
+    title: "Google Cloud Computing",
+    issuer: "NPTEL",
+    year: "2024",
+    status: "Course completion",
+    url: "/certificates/google cloud somputing.jpg",
   },
 ];
 
@@ -278,8 +318,9 @@ export const aboutCards = [
 export const navLinks = [
   { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
-  { href: "#lab", label: "Cyber Lab" },
+  { href: "/lab", label: "Cyber Lab" },
   { href: "#research", label: "Research" },
+  { href: "#certifications", label: "Certifications" },
   { href: "#contact", label: "Contact" },
 ];
 
