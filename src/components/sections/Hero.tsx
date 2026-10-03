@@ -1,101 +1,46 @@
 "use client";
 
 import Link from "next/link";
-import {RangeMark} from "@/components/ui/RangeMark";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { FileText } from "lucide-react";
 import { GitHubIcon } from "@/components/ui/SocialIcons";
 import { personal } from "@/lib/data/resume";
-import { ScrambleText } from "@/components/ui/ScrambleText";
-import { TypeWriter } from "@/components/ui/TypeWriter";
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden pt-24 pb-12 bg-black">
-      {/* Background - Ultra Minimalist Grid */}
+    <section className="relative flex min-h-[80vh] items-center overflow-hidden bg-black pb-12 pt-28">
       <div className="absolute inset-0 z-0 bg-black">
-        <div 
-          className="absolute inset-0 opacity-[0.02]" 
-          style={{ backgroundImage: 'linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }}
-        />
+        <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: "linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(255,255,255,0.03),transparent_100%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-black to-transparent" />
       </div>
-
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6">
-        <div className="flex flex-col-reverse items-center justify-between gap-12 lg:flex-row lg:gap-8">
-          
-          {/* Left Content - Typography & Details */}
-          <motion.div 
-            className="flex flex-1 flex-col justify-center text-center lg:text-left lg:max-w-2xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            {/* Name */}
-            <h1 className="font-heading text-6xl font-black leading-[0.9] tracking-tighter text-white md:text-7xl lg:text-[6.5rem]">
-              <ScrambleText text="MITHIL" /><br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-neutral-500">K GOWDA</span>
+        <div className="flex flex-col items-center justify-between gap-10 lg:flex-row">
+          <motion.div className="flex flex-1 flex-col justify-center text-center lg:max-w-2xl lg:text-left" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <h1 className="font-heading text-5xl font-black leading-[0.95] tracking-tighter text-white md:text-7xl lg:text-[6.5rem]">
+              MITHIL<br /><span className="bg-gradient-to-r from-white to-neutral-500 bg-clip-text text-transparent">K GOWDA</span>
             </h1>
-
-            {/* Dynamic Role */}
-            <div className="mt-6 flex h-10 items-center justify-center lg:justify-start">
-                <TypeWriter 
-                  words={["Security Engineer.", "Systems Researcher.", "Threat Intelligence Analyst.", "Cybersecurity Engineer.", "AI Security Engineer."]}
-                  className="font-mono text-lg font-medium tracking-wide text-neutral-400 md:text-xl"
-                />
-            </div>
-
-            {/* Value Proposition */}
-            <p className="mt-8 text-base leading-relaxed text-neutral-400 md:text-lg">
-              I architect distributed, AI driven defense systems and cryptographic trust frameworks. Currently engineering multi agent threat detection pipelines and researching post quantum cryptography.
+            <p className="mt-6 font-mono text-xl font-medium text-white md:text-2xl">Cybersecurity Engineer</p>
+            <p className="mt-3 text-base text-neutral-300 md:text-lg">MSc Cyber Security Engineering · University of Warwick (2026–2027)</p>
+            <p className="mt-4 text-sm leading-relaxed text-neutral-400 md:text-base">Security Operations · Detection Engineering · Incident Response · Python · Linux</p>
+            <p className="mt-6 max-w-2xl text-sm leading-relaxed text-neutral-400 md:text-base">
+              Former backend and data analytics intern at ISRO LEOS. I build security operations tools and document detection and investigation work in controlled labs. Based in the UK; open to strong opportunities in India.
             </p>
-
-            <Link className="hero-range-demo" href="/lab/demo?duration=90">90 Second Range Demo ↗</Link>
-            {/* CTAs */}
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-4 lg:justify-start">
-              <a
-                href={personal.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-7 py-3.5 text-sm font-medium text-white transition-all hover:bg-white/10 active:scale-[0.98]"
-              >
-                <GitHubIcon className="h-4 w-4 text-neutral-300" />
-                GitHub
+            <p className="mt-5 text-sm text-neutral-400">
+              Featured: <a className="text-white underline underline-offset-4" href="#projects">Vyomrix, ABHEDYA and CarbonEx</a>
+            </p>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
+              <a href={personal.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-white/10">
+                <GitHubIcon className="h-4 w-4" /> GitHub
               </a>
-              <a
-                href="#research"
-                className="flex items-center gap-2 rounded-full border border-transparent px-5 py-3.5 text-sm font-medium text-neutral-400 transition-colors hover:text-white"
-              >
-                <FileText className="h-4 w-4" />
-                Technical Research
-              </a>
+              <a href={personal.linkedin} target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/10 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-white/10">LinkedIn</a>
+              <Link href="#contact" className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition-all hover:bg-neutral-200">Contact</Link>
             </div>
           </motion.div>
-
-          {/* Right Content - Profile Image or Abstract Render */}
-          <motion.div 
-            className="relative flex w-full max-w-[14rem] items-center justify-center self-end md:max-w-[18rem] lg:mr-10 lg:mt-24 lg:max-w-[20rem]"
-            initial={{ opacity: 0, x: 50, filter: "blur(10px)" }}
-            animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            whileHover={{ y: -10, transition: { duration: 0.4 } }}
-          >
-            <div className="absolute inset-0 -z-10 rounded-full bg-white/20 blur-[60px] animate-pulse" />
-            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-t-[2.5rem] rounded-b-[1rem] border border-white/10 bg-[#0a0a0a] backdrop-blur-3xl drop-shadow-[0_0_30px_rgba(255,255,255,0.2)] transition-all duration-500">
-              <div className="absolute inset-x-0 bottom-0 z-10 h-1/2 bg-gradient-to-t from-black via-black/40 to-transparent" />
-              <Image 
-                src="/profile.png" 
-                alt={personal.name}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                priority
-                className="object-cover object-top opacity-100"
-              />
+          <motion.div className="relative w-full max-w-[12rem] shrink-0 md:max-w-[16rem] lg:mr-10 lg:max-w-[20rem]" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>
+            <div className="relative aspect-[3/4] overflow-hidden rounded-t-[2.5rem] rounded-b-[1rem] border border-white/10 bg-[#0a0a0a]">
+              <Image src="/profile.png" alt={personal.name} fill sizes="(max-width: 768px) 192px, 320px" priority className="object-cover object-top" />
             </div>
-          <Link href="/lab" className="hero-range-badge" aria-label="MKG Cyber Range: open isolated lab"><RangeMark/><span><b>MKG CYBER RANGE</b><small>RANGE READY <i>·</i> ISOLATED LAB</small></span><span aria-hidden="true">↗</span></Link>
-</motion.div>
+          </motion.div>
         </div>
       </div>
     </section>
