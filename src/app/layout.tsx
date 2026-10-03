@@ -82,9 +82,13 @@ const jsonLd = {
     "https://www.linkedin.com/in/mithil-k-gowda"
   ],
   "knowsAbout": ["Security Operations", "Detection Engineering", "Incident Response", "Python", "Linux", "Wazuh"],
-  "alumniOf": {
+  "affiliation": {
     "@type": "CollegeOrUniversity",
     "name": "University of Warwick"
+  },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "M.S. Ramaiah University of Applied Sciences"
   }
 };
 
