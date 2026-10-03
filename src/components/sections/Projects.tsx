@@ -1,6 +1,5 @@
 "use client";
 
-import {RangeFeature} from "./RangeFeature";
 import { motion } from "framer-motion";
 import { Shield, AlertTriangle, CheckCircle, Wrench } from "lucide-react";
 import { GitHubIcon } from "@/components/ui/SocialIcons";
@@ -21,7 +20,7 @@ export function Projects() {
           description="Security engineering through working systems, authored logic and documented investigations."
         />
 
-        <div className="space-y-12"><RangeFeature project/>
+        <div className="space-y-12">
           {[...projects]
             .sort((a, b) => {
               if (selectedRole === "General") return 0;
@@ -86,7 +85,7 @@ export function Projects() {
                         </div>
                         <div>
                           <div className="mb-2 flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-foreground/50">
-                            <CheckCircle className="h-4 w-4" /> Solution
+                            <CheckCircle className="h-4 w-4" /> What I built
                           </div>
                           <p className="text-sm leading-relaxed text-foreground/70">{project.solution}</p>
                         </div>
@@ -111,19 +110,20 @@ export function Projects() {
                       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                         <div>
                           <div className="mb-2 flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-foreground/50">
-                            <Wrench className="h-4 w-4" /> Challenges
+                            <Wrench className="h-4 w-4" /> Architecture / stack
                           </div>
-                          <p className="text-sm leading-relaxed text-foreground/60">{project.challenges}</p>
+                          <p className="text-sm leading-relaxed text-foreground/60">{project.techStack.join(" · ")}</p>
                         </div>
                         <div>
                           <div className="mb-2 flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-foreground/50">
-                            <CheckCircle className="h-4 w-4" /> Results
+                            <CheckCircle className="h-4 w-4" /> Evidence / status
                           </div>
                           <p className="text-sm leading-relaxed text-foreground/60">{project.results}</p>
                         </div>
                       </div>
 
                       <div className="flex flex-wrap gap-4 border-t border-white/10 pt-6">
+                        <MagneticButton href={`/projects/${project.slug}`} variant="secondary">Case study</MagneticButton>
                         <MagneticButton href={project.github} variant="secondary" external>
                           <GitHubIcon className="h-4 w-4" /> Code
                         </MagneticButton>
