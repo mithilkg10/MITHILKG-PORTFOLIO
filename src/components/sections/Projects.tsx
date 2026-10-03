@@ -127,7 +127,16 @@ export function Projects() {
                         <MagneticButton href={project.github} variant="secondary" external>
                           <GitHubIcon className="h-4 w-4" /> Code
                         </MagneticButton>
-                        {project.liveDemo && <MagneticButton href={project.liveDemo} variant="secondary">Live evidence demo</MagneticButton>}
+                        {project.liveDemo && (
+                          <MagneticButton href={project.liveDemo} variant="secondary" external={project.liveDemo.startsWith("http")}>
+                            {project.id === "vyomrix-security-platform" ? "Recruiter demo" : "Live evidence demo"}
+                          </MagneticButton>
+                        )}
+                        {"loginUrl" in project && project.loginUrl && (
+                          <MagneticButton href={project.loginUrl} variant="secondary" external>
+                            Open VYOMRIX login
+                          </MagneticButton>
+                        )}
                       </div>
                     </div>
                   </div>
