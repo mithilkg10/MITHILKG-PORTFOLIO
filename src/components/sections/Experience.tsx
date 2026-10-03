@@ -41,8 +41,8 @@ export function Experience() {
       <div className="mx-auto max-w-4xl">
         <SectionHeader
           label="Experience"
-          title="Building Security at Scale"
-          description="Security research, freelance SOC operations, vulnerability analysis, and backend engineering experience across independent work and ISRO LEOS."
+          title="Professional Experience"
+          description="ISRO LEOS internship in backend engineering and data analytics."
         />
 
         <div className="relative">
