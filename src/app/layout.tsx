@@ -25,21 +25,10 @@ const inter = Inter({
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://mithilgowda.com';
 
 export const metadata: Metadata = {
-  title: "Mithil K Gowda | Security Engineer & Systems Researcher",
+  title: "Mithil K Gowda | Cybersecurity Engineer",
   description:
-    "I architect distributed, AI-driven defense systems and cryptographic trust frameworks. Currently engineering multi-agent threat detection pipelines and researching post-quantum cryptography.",
-  keywords: [
-    "Security Engineer",
-    "DevSecOps",
-    "Cloud Security",
-    "AI Security",
-    "Backend Engineer",
-    "Data Scientist",
-    "Threat Intelligence",
-    "Systems Researcher",
-    "Apache Kafka",
-    "Zero-Knowledge Proofs",
-  ],
+    "MSc Cyber Security Engineering at the University of Warwick. Security operations, detection engineering, incident response, Python and Linux.",
+  keywords: ["Cybersecurity Engineer", "Security Operations", "Detection Engineering", "Incident Response", "Python", "Linux", "Wazuh", "University of Warwick"],
   authors: [{ name: "Mithil K Gowda", url: baseUrl }],
   creator: "Mithil K Gowda",
   metadataBase: new URL(baseUrl),
@@ -47,8 +36,8 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: "Mithil K Gowda | Security Engineer",
-    description: "Architecting distributed, AI-driven defense systems and cryptographic trust frameworks.",
+    title: "Mithil K Gowda | Cybersecurity Engineer",
+    description: "Security operations, detection engineering and incident response. MSc Cyber Security Engineering at the University of Warwick.",
     url: baseUrl,
     siteName: "Mithil K Gowda Portfolio",
     images: [
@@ -56,7 +45,7 @@ export const metadata: Metadata = {
         url: `${baseUrl}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: "Mithil K Gowda - Security Engineer & Systems Researcher",
+        alt: "Mithil K Gowda - Cybersecurity Engineer",
       },
     ],
     locale: "en_US",
@@ -64,8 +53,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mithil K Gowda | Security Engineer",
-    description: "Architecting distributed, AI-driven defense systems and cryptographic trust frameworks.",
+    title: "Mithil K Gowda | Cybersecurity Engineer",
+    description: "Security operations, detection engineering and incident response. MSc Cyber Security Engineering at the University of Warwick.",
     creator: "@mithilkgowda",
     images: [`${baseUrl}/og-image.jpg`],
   },
@@ -86,27 +75,16 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Mithil K Gowda",
-  "jobTitle": "Security Engineer",
+  "jobTitle": "Cybersecurity Engineer",
   "url": baseUrl,
   "sameAs": [
     "https://github.com/mithilkg10",
     "https://www.linkedin.com/in/mithil-k-gowda"
   ],
-  "knowsAbout": [
-    "Cybersecurity",
-    "Distributed Systems",
-    "Apache Kafka",
-    "Machine Learning",
-    "Artificial Intelligence",
-    "Cryptography",
-    "Zero-Knowledge Proofs",
-    "Cloud Security",
-    "DevSecOps",
-    "Threat Intelligence"
-  ],
+  "knowsAbout": ["Security Operations", "Detection Engineering", "Incident Response", "Python", "Linux", "Wazuh"],
   "alumniOf": {
     "@type": "CollegeOrUniversity",
-    "name": "M.S. Ramaiah University of Applied Sciences"
+    "name": "University of Warwick"
   }
 };
 
