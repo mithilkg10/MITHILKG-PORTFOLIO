@@ -60,9 +60,8 @@ export const experience: Array<{
     period: "Aug 2025 – Oct 2025",
     logo: "ISRO",
     highlights: [
-      "Engineered Python/Flask backend microservices for telemetry data processing and visualization.",
-      "Worked on database-backed analytics workflows and access-controlled dashboards.",
-      "Participated in research-oriented software development for data-driven decision-making systems.",
+      "Developed a Purchase Order and Budget Analytics Application during a nine-week internship at LEOS.",
+      "Used Flask, JavaScript and Plotly to visualise purchase-order and budget data for division-wise analysis.",
     ],
     roles: [
       "General", "Backend Engineer", "Data Scientist", "Data Analyst",
@@ -211,34 +210,18 @@ export const cyberLab = {
 export const certifications = [
   {
     id: "google-cyber",
-    title: "Google Cybersecurity",
+    title: "Google Cybersecurity Professional Certificate",
     issuer: "Google",
     year: "2026",
     status: "Coursera",
     url: "/certificates/google-cyber-security-professional-certificate.png",
   },
   {
-    id: "ibm-cyber",
-    title: "IBM IT Fundamentals for Cybersecurity Specialization",
-    issuer: "IBM",
-    year: "2026",
-    status: "Coursera",
-    url: "https://www.coursera.org/account/accomplishments/specialization/Y1GBH9GSCHE5",
-  },
-  {
-    id: "ibm-frontend",
-    title: "IBM Front-End Developer Specialization",
-    issuer: "IBM",
-    year: "2026",
-    status: "Coursera",
-    url: "https://www.coursera.org/account/accomplishments/specialization/YKUEYK44AIQI",
-  },
-  {
     id: "ceh-cisco",
-    title: "Certified Ethical Hacker (CEH)",
-    issuer: "Cisco",
+    title: "Certified Ethical Hacker course",
+    issuer: "Cisco Networking Academy",
     year: "2025",
-    status: "Networking Academy",
+    status: "Course completion",
     url: "/certificates/cisco networking academy certified ethical hacker .jpg",
   },
   {
@@ -254,44 +237,12 @@ export const certifications = [
     title: "Systems and Usable Security",
     issuer: "NPTEL",
     year: "2025",
-    status: "Elite Certification",
+    status: "Course completion",
     url: "/certificates/systems and usable security.jpg",
   },
-  {
-    id: "iot",
-    title: "Introduction to Internet of Things",
-    issuer: "NPTEL",
-    year: "2025",
-    status: "Silver Medal",
-    url: "/certificates/iot.jpg",
-  },
-  {
-    id: "bi-analytics",
-    title: "Business Intelligence and Analytics",
-    issuer: "NPTEL",
-    year: "2025",
-    status: "Completed",
-    url: "/certificates/buissness intelligence and analytics.jpg",
-  },
-  {
-    id: "gcp-nptel",
-    title: "Google Cloud Computing",
-    issuer: "NPTEL",
-    year: "2024",
-    status: "Completed",
-    url: "/certificates/google cloud somputing.jpg",
-  },
 ];
 
-
-export const achievements = [
-  { label: "Reliance Foundation Scholar", value: 1, suffix: "", roles: ["General", "Software Engineer", "Cybersecurity Engineer", "Data Scientist"] },
-  { label: "International Conference Publications", value: 3, suffix: "+", roles: ["General", "AI Security Engineer", "Threat Intelligence Analyst", "Data Scientist", "AI / ML Engineer"] },
-  { label: "Research Publications", value: 3, suffix: "+", roles: ["General", "AI Security Engineer", "Threat Intelligence Analyst", "Data Scientist", "AI / ML Engineer"] },
-  { label: "Security Research Projects", value: 4, suffix: "", roles: ["General", "Cybersecurity Engineer", "Application Security Engineer", "Cloud Security Engineer", "DevSecOps Engineer"] },
-  { label: "Paper Reported Accuracy (HoneyBee)", value: 98, suffix: "%", roles: ["General", "AI Security Engineer", "Threat Intelligence Analyst", "SOC Analyst"] },
-  { label: "ISRO LEOS Internship", value: 1, suffix: "", roles: ["General", "Backend Engineer", "Data Analyst", "Business Intelligence Analyst", "Cloud Security Engineer"] },
-];
+export const achievements: { label: string; value: number; suffix: string; roles: Role[] }[] = [];
 
 export const aboutCards = [
   {
@@ -320,7 +271,7 @@ export const aboutCards = [
     title: "ISRO Internship",
     icon: "Rocket",
     content:
-      "Engineered secure backend workflows and optimized telemetry data processing for the Indian Space Research Organisation.",
+      "Developed a Flask-based purchase-order and budget analytics application at ISRO LEOS.",
   },
 ];
 
