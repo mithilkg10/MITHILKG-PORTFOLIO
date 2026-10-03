@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import { Navigation } from "@/components/layout/Navigation";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
+import { ThreatMapBackground } from "@/components/ui/ThreatMapBackground";
 
 const Projects = dynamic(() => import("@/components/sections/Projects").then((m) => m.Projects));
 const Experience = dynamic(() => import("@/components/sections/Experience").then((m) => m.Experience));
@@ -14,6 +15,7 @@ const Contact = dynamic(() => import("@/components/sections/Contact").then((m) =
 export default function Home() {
   return (
     <>
+      <ThreatMapBackground />
       <Navigation />
       <main>
         <Hero />
