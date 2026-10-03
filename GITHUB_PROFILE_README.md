@@ -1,15 +1,21 @@
 # Mithil K Gowda
 
-**Cybersecurity Engineer | Security Operations | Detection Engineering | Incident Response**
+**Cybersecurity Engineer | Security Operations | SIEM | Detection Engineering | Incident Response**
 
-MSc Cyber Security Engineering, University of Warwick (2026–2027). UK based and open to strong opportunities in India.
+MSc Cyber Security Engineering, University of Warwick (2026–2027). Currently based in the UK, with flexibility to consider strong cybersecurity opportunities in India.
 
-My professional experience includes a backend engineering and data analytics internship at **ISRO LEOS** (Aug–Oct 2025). I work with Python, Linux, Wazuh, packet analysis, and security investigation workflows.
+At **ISRO LEOS**, I developed a purchase-order and budget analytics application using Flask, JavaScript and Plotly. My security engineering work focuses on Python and Linux, Wazuh-based telemetry, detection workflows, and documented incident investigations.
 
-### Selected security engineering work
+## Focus areas
 
-1. [Vyomrix](https://github.com/mithilkg10/VYOMRIX) — SIEM / XDR security operations platform with analyst, detection, and incident workflows.
-2. [ABHEDYA](https://github.com/mithilkg10/Multi-Agent-AI-Cyber-Defense-Framework) — multi-agent cyber defence research prototype using packet telemetry, Kafka, hybrid scoring, and deception.
-3. [CarbonEx](https://github.com/mithilkg10/CARBON-EX-PLATFORM) — secure carbon credit platform prototype with role-based workflows and audit logging.
+Security Operations · SIEM · Detection Engineering · Incident Response · Network Security · Application Security · Python Security Automation
+
+## Featured security projects
+
+1. **[VYOMRIX](https://github.com/mithilkg10/VYOMRIX)** — SIEM and Security Operations platform with XDR-style detection and incident workflows.
+2. **[ABHEDYA](https://github.com/mithilkg10/Multi-Agent-AI-Cyber-Defense-Framework)** — multi-agent AI cyber defence research prototype combining network telemetry, detection, deception, and controlled response.
+3. **[CarbonEx](https://github.com/mithilkg10/CARBON-EX-PLATFORM)** — secure platform prototype with authentication, role-based workflows, audit visibility, and transaction security experiments.
+
+Practical detection and investigation evidence: [MKG Cyber Defense Lab](https://github.com/mithilkg10/MKG-Cyber-Defense-Lab).
 
 [Portfolio](https://mithilkg-portfolio.vercel.app) · [LinkedIn](https://www.linkedin.com/in/mithil-k-gowda)
