@@ -122,14 +122,14 @@ export function Projects() {
                         </div>
                       </div>
 
-                      <div className="flex flex-wrap gap-4 border-t border-white/10 pt-6">
+                      <div className="project-actions flex flex-wrap gap-3 border-t border-white/10 pt-6">
                         <MagneticButton href={`/projects/${project.slug}`} variant="secondary">Case study</MagneticButton>
                         <MagneticButton href={project.github} variant="secondary" external>
                           <GitHubIcon className="h-4 w-4" /> Code
                         </MagneticButton>
                         {project.liveDemo && (
                           <MagneticButton href={project.liveDemo} variant="secondary" external={project.liveDemo.startsWith("http")}>
-                            {project.id === "vyomrix-security-platform" ? "Recruiter demo" : "Live evidence demo"}
+                            {project.id === "vyomrix-security-platform" ? "Recruiter demo" : project.id === "carbon-credit-project" ? "Live demo" : "Live evidence demo"}
                           </MagneticButton>
                         )}
                         {"loginUrl" in project && project.loginUrl && (

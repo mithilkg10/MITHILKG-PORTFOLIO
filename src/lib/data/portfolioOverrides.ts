@@ -62,6 +62,7 @@ export const projects = [
     challenges: "Separating demonstration data and security experiments from production financial-system claims.",
     results: "Prototype with synthetic in-memory data, configured login, and documented security boundaries. Deployment login depends on environment secrets.",
     github: "https://github.com/mithilkg10/CARBON-EX-PLATFORM",
+    liveDemo: "https://carbon-ex-platform.vercel.app/login",
     featured: false,
   },
   {

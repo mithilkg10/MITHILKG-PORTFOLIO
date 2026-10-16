@@ -138,3 +138,23 @@ body {
 @media(min-width:1024px){.hero-range-demo{align-self:flex-start}}@media(max-width:800px){.range-feature,.range-project{grid-template-columns:1fr}.range-feature-art{padding:24px;flex-direction:row;gap:24px}.range-feature-art>.range-mark,.range-project .range-feature-art>.range-mark{width:90px}.vault-flow{grid-template-columns:repeat(3,1fr)}.vault-case dl{grid-template-columns:1fr}.vault-intro{padding-top:60px}.range-proof-strip{gap:18px}.range-proof-strip a{margin-left:0}.vault-nav{align-items:flex-start}.vault-nav nav{flex-direction:column;gap:14px}.range-proof-strip span{font-size:11px}.lab-range-watermark{max-width:90vw}}@media(max-width:480px){.hero-range-badge{min-width:268px;right:0;padding:13px;gap:10px}.hero-range-badge .range-mark{width:34px;height:34px}.portfolio-wordmark small{font-size:8px}.vault-case h2{font-size:23px}.vault-case dl>div{grid-template-columns:1fr;gap:7px}.vault-flow{grid-template-columns:repeat(2,1fr)}.vault-brand{gap:7px}.vault-brand span{display:none}.range-feature-art small{font-size:9px}.range-feature-actions a{font-size:11px}.vault-intro .range-kicker{font-size:9px;line-height:1.8}.vault-links a{font-size:11px}.vault-case-heading{gap:10px}.vault-status{padding:8px}.range-assessment{padding:24px}}
 @media(prefers-reduced-motion:reduce){.range-orbit,.hero-range-badge *{animation:none!important;transition:none!important}html{scroll-behavior:auto!important}}
 #contact{overflow-x:clip}
+
+/* Solid surfaces keep action labels readable in Safari and embedded browsers. */
+.magnetic-button-secondary {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: #15191f;
+  color: #fafafa;
+  -webkit-text-fill-color: currentColor;
+  border: 1px solid #505963;
+  isolation: isolate;
+}
+.magnetic-button-secondary:visited { color: #fafafa; }
+.magnetic-button-secondary:active { background-color: #29333e; }
+@media (hover: hover) and (pointer: fine) {
+  .magnetic-button-secondary:hover { background-color: #26303a; border-color: #95b7c6; }
+}
+@media (max-width: 639px) {
+  .project-actions { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .project-actions > a { width: 100%; min-height: 48px; }
+}

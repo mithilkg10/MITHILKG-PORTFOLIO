@@ -27,7 +27,7 @@ export function MagneticButton({
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   const handleMouse = (e: React.MouseEvent) => {
-    if (!ref.current) return;
+    if (!ref.current || !window.matchMedia("(hover: hover) and (pointer: fine)").matches || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const rect = ref.current.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
@@ -40,12 +40,12 @@ export function MagneticButton({
     primary:
       "bg-foreground text-background font-semibold hover:bg-foreground/90 shadow-sm",
     secondary:
-      "glass-card text-foreground border border-white/10 hover:border-white/20 hover:bg-white/5",
+      "magnetic-button-secondary",
     ghost: "text-foreground/70 hover:text-foreground hover:bg-white/5",
   };
 
   const baseClass = cn(
-    "relative inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm transition-all duration-300",
+    "relative inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-center text-sm transition-colors duration-300 [&_svg]:shrink-0",
     variants[variant],
     className
   );
