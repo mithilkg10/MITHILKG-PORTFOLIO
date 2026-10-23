@@ -85,6 +85,14 @@ export default async function BlogPost({ params }: Props) {
                     ))}
                   </ul>
                 );
+              case "source":
+                return block.url ? (
+                  <p key={index} className="my-3 text-sm leading-relaxed">
+                    <a href={block.url} target="_blank" rel="noopener noreferrer" className="text-cyan-300 underline decoration-cyan-300/30 underline-offset-4 hover:text-white">
+                      {block.text || block.url} ↗
+                    </a>
+                  </p>
+                ) : null;
               case "code":
                 return (
                   <div key={index} className="my-8 rounded-xl border border-white/10 bg-[#0d1117] overflow-hidden">

@@ -7,7 +7,7 @@ import { ThreatMapBackground } from "@/components/ui/ThreatMapBackground";
 
 export const metadata = {
   title: "Engineering Blog | Security & Systems",
-  description: "Deep technical dives into cryptography, distributed systems, and machine learning security.",
+  description: "Incident briefings, evidence-led security research and practical detection engineering.",
 };
 
 export default function BlogIndex() {
@@ -26,8 +26,8 @@ export default function BlogIndex() {
 
         <SectionHeader
           label="Engineering Blog"
-          title="Technical Deep Dives"
-          description="Exploring the mathematics, architecture, and code behind modern cybersecurity and distributed systems."
+          title="Threat Briefings & Technical Analysis"
+          description="Current incidents mapped to verified lab evidence, project architecture, and clearly stated limits. Reporting is independent, sourced, and does not claim real-world incident prevention."
           align="center"
         />
 

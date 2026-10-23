@@ -320,6 +320,7 @@ export const navLinks = [
   { href: "#projects", label: "Projects" },
   { href: "/lab", label: "Cyber Lab" },
   { href: "#research", label: "Research" },
+  { href: "/blog", label: "Threat Briefings" },
   { href: "#certifications", label: "Certifications" },
   { href: "#contact", label: "Contact" },
 ];
